@@ -9,11 +9,15 @@ import firebaseDB from "../utils/fire";
 const Contact = () => {
   const db = firebaseDB();
   const contactSubmit = ({ name, email, message }) => {
-    db.collection("contacts").add({ name, email, message });
+    const d = new Date();
+    const ts = d.getUTCDate();
+    db.collection("contacts").add({ name, email, message, ts });
   };
 
   const newsletterSubmit = ({ email }) => {
-    db.collection("newsletter").add({ email });
+    const d = new Date();
+    const ts = d.getUTCDate();
+    db.collection("newsletter").add({ email, ts });
   };
   return (
     <React.Fragment>
