@@ -1,31 +1,40 @@
-import React, { Component } from "react";
+import React from "react";
+import { useForm } from "react-hook-form";
 
-class Newsletter extends Component {
-  render() {
-    return (
-      <section className="newsletter-area">
-        <div className="container">
-          <div className="newsletter-inner-area">
-            <div className="newsletter-content">
-              <span className="sub-title">Get Started Instantly!</span>
-              <h2>Get the only new update from this newsletter</h2>
+const Newsletter = ({ onSubmit }) => {
+  const { register, handleSubmit, reset } = useForm();
+  const submit = handleSubmit((data) => {
+    onSubmit(data);
+    reset();
+  });
+  return (
+    <section className="newsletter-area">
+      <div className="container">
+        <div className="newsletter-inner-area">
+          <div className="newsletter-content">
+            <span className="sub-title">Get Started Instantly!</span>
+            <h2>Get the only new update from this newsletter</h2>
 
-              <form className="newsletter-form" name="newsletter" data-netlify="true">
-                <input
-                  type="email"
-                  className="form-control"
-                  placeholder="Enter your email"
-                  name="email"
-                  required
-                />
-                <button type="submit">Subscribe!</button>
-              </form>
-            </div>
+            <form
+              className="newsletter-form"
+              name="newsletter"
+              onSubmit={submit}
+            >
+              <input
+                type="email"
+                ref={register}
+                className="form-control"
+                placeholder="Enter your email"
+                name="email"
+                required
+              />
+              <button type="submit">Subscribe!</button>
+            </form>
           </div>
         </div>
-      </section>
-    );
-  }
-}
+      </div>
+    </section>
+  );
+};
 
 export default Newsletter;
