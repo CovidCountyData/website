@@ -34,33 +34,6 @@ class ContactForm extends Component {
                   />
                 </div>
               </div>
-
-              <div className="col-lg-6">
-                <div className="form-group">
-                  <input
-                    type="text"
-                    name="phone_number"
-                    id="phone_number"
-                    className="form-control"
-                    placeholder="Phone"
-                    required
-                  />
-                </div>
-              </div>
-
-              <div className="col-lg-6">
-                <div className="form-group">
-                  <input
-                    type="text"
-                    name="msg_subject"
-                    id="msg_subject"
-                    className="form-control"
-                    placeholder="Subject"
-                    required
-                  />
-                </div>
-              </div>
-
               <div className="col-lg-12 col-md-12">
                 <div className="form-group">
                   <textarea
