@@ -10,13 +10,13 @@ const Contact = () => {
   const db = firebaseDB();
   const contactSubmit = ({ name, email, message }) => {
     const d = new Date();
-    const ts = d.getUTCDate();
+    const ts = d.toISOString();
     db.collection("contacts").add({ name, email, message, ts });
   };
 
   const newsletterSubmit = ({ email }) => {
     const d = new Date();
-    const ts = d.getUTCDate();
+    const ts = d.toISOString();
     db.collection("newsletter").add({ email, ts });
   };
   return (
