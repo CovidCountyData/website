@@ -7,21 +7,21 @@ const withVideos = require('next-videos');
 
 const nextJsConfig = {
     exportTrailingSlash: true,
-    exportPathMap: function() {
-        return {
-            '/': { page: '/' },
-            '/R': { page: '/R' },
-            '/python': { page: '/python' },
-            '/graphql-api': { page: '/graphql-api' },
-            '/rest-api': { page: '/rest-api' },
-            '/contact': { page: '/contact' },
-            '/error': { page: '/error' },
-            '/faq': { page: '/faq' },
-            '/privacy-policy': { page: '/privacy-policy' },
-            '/faq': { page: '/faq' },
-            '/error': { page: '/error' },
-        }
-    }
+    // exportPathMap: function() {
+    //     return {
+    //         '/': { page: '/' },
+    //         '/R': { page: '/R' },
+    //         '/python': { page: '/python' },
+    //         '/graphql-api': { page: '/graphql-api' },
+    //         '/rest-api': { page: '/rest-api' },
+    //         '/contact': { page: '/contact' },
+    //         '/error': { page: '/error' },
+    //         '/faq': { page: '/faq' },
+    //         '/privacy-policy': { page: '/privacy-policy' },
+    //         '/faq': { page: '/faq' },
+    //         '/error': { page: '/error' },
+    //     }
+    // }
 }
 
 module.exports = withPlugins([
