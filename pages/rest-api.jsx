@@ -13,7 +13,7 @@ class ServiceDetails extends Component {
       <React.Fragment>
         <NavbarThree />
         <PageBanner pageTitle="REST API" />
-        <RedocStandalone specUrl="https://api.covid.valorum.ai/" />
+        <RedocStandalone specUrl="https://clean-swagger-inunbrtacq-uk.a.run.app" />
 
         {/* <WIP imgname="undraw_medical_research_qg4d.svg" /> */}
         {/* <ServiceDetailsContent /> */}
