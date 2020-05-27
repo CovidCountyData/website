@@ -3,8 +3,8 @@ import NavbarThree from "../components/Layouts/Navbar";
 import PageBanner from "../components/Common/PageBanner";
 // import ServiceDetailsContent from "../components/Libraries/ServiceDetailsContent";
 // import CtaAreaTwo from "../components/Common/CtaAreaTwo";
-import Footer from "../components/Layouts/Footer";
 // import WIP from "../components/Common/WIP";
+import Footer from "../components/Layouts/Footer";
 import { RedocStandalone } from "redoc";
 
 class ServiceDetails extends Component {
