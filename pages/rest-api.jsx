@@ -4,7 +4,8 @@ import PageBanner from "../components/Common/PageBanner";
 // import ServiceDetailsContent from "../components/Libraries/ServiceDetailsContent";
 // import CtaAreaTwo from "../components/Common/CtaAreaTwo";
 import Footer from "../components/Layouts/Footer";
-import WIP from "../components/Common/WIP";
+// import WIP from "../components/Common/WIP";
+import { RedocStandalone } from "redoc";
 
 class ServiceDetails extends Component {
   render() {
@@ -12,7 +13,9 @@ class ServiceDetails extends Component {
       <React.Fragment>
         <NavbarThree />
         <PageBanner pageTitle="REST API" />
-        <WIP imgname="undraw_medical_research_qg4d.svg" />
+        <RedocStandalone specUrl="https://api.covid.valorum.ai/" />
+
+        {/* <WIP imgname="undraw_medical_research_qg4d.svg" /> */}
         {/* <ServiceDetailsContent /> */}
         {/* <CtaAreaTwo /> */}
         <Footer />
