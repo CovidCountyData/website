@@ -12,7 +12,12 @@ class ServiceDetails extends Component {
       <React.Fragment>
         <NavbarThree />
         <PageBanner pageTitle="GraphQL API" />
-        <WIP imgname="undraw_social_distancing_2g0u.svg" />
+        {/* <WIP imgname="undraw_social_distancing_2g0u.svg" /> */}
+        <iframe
+          src="https://api.covid.valorum.ai/graphiql"
+          height="800px"
+          width="100%"
+        />
         {/* <ServiceDetailsContent /> */}
         {/* <CtaAreaTwo /> */}
         <Footer />
