@@ -5,7 +5,12 @@ import PageBanner from "../components/Common/PageBanner";
 // import CtaAreaTwo from "../components/Common/CtaAreaTwo";
 // import WIP from "../components/Common/WIP";
 import Footer from "../components/Layouts/Footer";
-import "rapidoc";
+import dynamic from "next/dynamic";
+
+const RapiDoc = dynamic(
+  () => import("../components/Libraries/RapiDocSwagger"),
+  { ssr: false }
+);
 
 class ServiceDetails extends Component {
   render() {
@@ -14,16 +19,7 @@ class ServiceDetails extends Component {
         <NavbarThree />
         <PageBanner pageTitle="REST API" />
         {/* <RedocStandalone specUr`l="https://clean-swagger-inunbrtacq-uk.a.run.app" /> */}
-        <rapi-doc
-          spec-url="https://api.covid.valorum.ai/swagger.json"
-          render-style="view"
-          schema-style="table"
-          show-header="false"
-          layout="column"
-          schema-description-expanded="true"
-          show-info="true"
-          allow-server-selection="false"
-        />
+        <RapiDoc />
 
         {/* <WIP imgname="undraw_medical_research_qg4d.svg" /> */}
         {/* <ServiceDetailsContent /> */}
