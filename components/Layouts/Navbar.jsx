@@ -86,7 +86,7 @@ class Navbar extends Component {
                     <ul className="dropdown-menu">
                       <li className="nav-item">
                         <Link href="/python" activeClassName="active">
-                          <a className="nav-link">Python (Coming soon!)</a>
+                          <a className="nav-link">Python</a>
                         </Link>
                       </li>
 
