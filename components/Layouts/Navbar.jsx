@@ -115,6 +115,18 @@ class Navbar extends Component {
                       <a className="nav-link">Contact Us</a>
                     </Link>
                   </li>
+
+                  <li className="nav-item">
+                    <Link href="/about" activeClassName="active">
+                      <a className="nav-link">About</a>
+                    </Link>
+                  </li>
+
+                  <li className="nav-item">
+                    <Link href="/faq" activeClassName="active">
+                      <a className="nav-link">FAQ</a>
+                    </Link>
+                  </li>
                 </ul>
               </div>
             </div>
