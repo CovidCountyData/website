@@ -2,27 +2,30 @@ import React, { Component } from "react";
 import NavbarThree from "../components/Layouts/Navbar";
 import PageBanner from "../components/Common/PageBanner";
 import FaqContent from "../components/Faq/FaqContent";
-import FaqForm from "../components/Faq/FaqForm";
-import CtaAreaTwo from "../components/Common/CtaAreaTwo";
+import ContactForm from "../components/Contact/ContactForm";
 import Footer from "../components/Layouts/Footer";
+import firebaseDB from "../utils/fire";
 
-class Faq extends Component {
-  render() {
-    return (
-      <React.Fragment>
-        <NavbarThree />
-        <PageBanner pageTitle="Frequently Asked Questions" />
-        <FaqContent />
+const Faq = () => {
+  const db = firebaseDB();
+  const onSubmit = ({ name, email, message }) => {
+    const d = new Date();
+    const ts = d.toISOString();
+    db.collection("questions").add({ name, email, message, ts });
+  };
+  return (
+    <React.Fragment>
+      <NavbarThree />
+      <PageBanner pageTitle="Frequently Asked Questions" />
+      <FaqContent />
 
-        <div className="pb-100">
-          <FaqForm />
-        </div>
+      <div className="pb-100">
+        <ContactForm onSubmit={onSubmit} title="Ask us your questions" />
+      </div>
 
-        <CtaAreaTwo />
-        <Footer />
-      </React.Fragment>
-    );
-  }
-}
+      <Footer />
+    </React.Fragment>
+  );
+};
 
 export default Faq;
