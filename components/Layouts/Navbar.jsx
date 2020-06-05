@@ -77,6 +77,12 @@ class Navbar extends Component {
                   </li>
 
                   <li className="nav-item">
+                    <Link href="/about" activeClassName="active">
+                      <a className="nav-link">About</a>
+                    </Link>
+                  </li>
+
+                  <li className="nav-item">
                     <Link href="#">
                       <a className="nav-link">
                         Client Libraries <i className="icofont-thin-down"></i>
@@ -113,12 +119,6 @@ class Navbar extends Component {
                   <li className="nav-item">
                     <Link href="/contact" activeClassName="active">
                       <a className="nav-link">Contact Us</a>
-                    </Link>
-                  </li>
-
-                  <li className="nav-item">
-                    <Link href="/about" activeClassName="active">
-                      <a className="nav-link">About</a>
                     </Link>
                   </li>
 
