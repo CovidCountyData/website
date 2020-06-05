@@ -19,6 +19,12 @@ class MyDocument extends Document {
             type="image/svg"
             href={require("../images/valorum_circles.svg")}
           ></link>
+          <script
+            async
+            defer
+            data-domain="covid.valorum.ai"
+            src="https://plausible.io/js/plausible.js"
+          ></script>
         </Head>
         <body>
           <Main />
