@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import Navbar from "../components/Layouts/Navbar";
 import PageBanner from "../components/Common/PageBanner";
 import ContactForm from "../components/Contact/ContactForm";
@@ -24,7 +24,7 @@ const Contact = () => {
       <Navbar />
       <PageBanner pageTitle="Keep In Touch" />
       <div className="pt-100">
-        <ContactForm onSubmit={contactSubmit} />
+        <ContactForm onSubmit={contactSubmit} title="Send us a Message" />
       </div>
 
       <div className="ptb-100">

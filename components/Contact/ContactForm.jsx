@@ -2,7 +2,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 
 const ContactForm = (props) => {
-  const { onSubmit } = props;
+  const { onSubmit, title } = props;
   const { register, handleSubmit, reset } = useForm();
   const submit = handleSubmit((data) => {
     onSubmit(data);
@@ -11,7 +11,7 @@ const ContactForm = (props) => {
 
   return (
     <div className="contact-form">
-      <h2>Contact Info</h2>
+      <h2>{title}</h2>
 
       <form id="contactForm" onSubmit={submit}>
         <div className="container">
