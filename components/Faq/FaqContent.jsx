@@ -92,10 +92,8 @@ class FaqContent extends Component {
                       <p>
                         Tell us! We're trying to rapidly expand the datasets
                         that we have available in our API and would love to hear
-                        about the data that you need! You can find us on
-                        <a href="https://twitter.com/valorumdata">
-                          Twitter
-                        </a>,{" "}
+                        about the data that you need! You can find us on{" "}
+                        <a href="https://twitter.com/valorumdata">Twitter</a>,{" "}
                         <a href="mailto:covid.data@valorumdata.com">Email</a>,
                         or our <a href="/contact">Contact page</a>.
                       </p>
@@ -113,20 +111,20 @@ class FaqContent extends Component {
 
                       <ol>
                         <li>
-                          You can interact with the data using our
+                          You can interact with the data using our{" "}
                           <a href="/python">Python client</a>/
                           <a href="/R">R client</a>. This route will hide much
                           of the behind-the-scenes work and get you working with
                           the data quickly.
                         </li>
                         <li>
-                          You can directly query our
+                          You can directly query our{" "}
                           <a href="/rest-api">REST API</a> which will give you
                           more control on how to bring the data into your
                           environment.
                         </li>
                         <li>
-                          You can interface with the data using
+                          You can interface with the data using{" "}
                           <a href="/graphql-api">GraphQL</a>
                           which is another option that gives you a high degree
                           of control.
