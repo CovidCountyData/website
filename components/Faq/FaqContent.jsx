@@ -76,8 +76,8 @@ class FaqContent extends Component {
                       <p>
                         All over. We collect the data from a variety of sources.
                         You can learn more about where each dataset comes from
-                        by reading the [API documentation](). We use official
-                        government sources where possible.
+                        by reading the <a href="/rest-api">API documentation</a>
+                        . We use official government sources where possible.
                       </p>
                     </AccordionItemPanel>
                   </AccordionItem>
@@ -93,7 +93,11 @@ class FaqContent extends Component {
                         Tell us! We're trying to rapidly expand the datasets
                         that we have available in our API and would love to hear
                         about the data that you need! You can find us on
-                        [twitter](), [email](), or …
+                        <a href="https://twitter.com/valorumdata">
+                          Twitter
+                        </a>,{" "}
+                        <a href="mailto:covid.data@valorumdata.com">Email</a>,
+                        or our <a href="/contact">Contact page</a>.
                       </p>
                     </AccordionItemPanel>
                   </AccordionItem>
