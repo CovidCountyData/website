@@ -42,9 +42,13 @@ export default class MyApp extends App {
           openGraph={{
             type: "website",
             locale: "en_IE",
-            url: "https://trynext-react.envytheme.com/",
-            site_name:
-              "Pungent - React Next Multipurpose Digital Agency Portfolio Template",
+            url: "https://covid.valorum.ai",
+            site_name: "CMDC - COVID Modeling Data Collaborative",
+          }}
+          twitter={{
+            handle: "@ValorumData",
+            site: "@site",
+            cardType: "summary_large_image",
           }}
         />
 
