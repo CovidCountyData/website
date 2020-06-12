@@ -11,7 +11,13 @@ const Contact = () => {
   const contactSubmit = ({ name, email, message }) => {
     const d = new Date();
     const ts = d.toISOString();
-    db.collection("contacts").add({ name, email, message, ts });
+    db.collection("contacts").add({
+      name,
+      email,
+      message,
+      ts,
+      to: "spencer.lyon@valorumdata.com",
+    });
   };
 
   const newsletterSubmit = ({ email }) => {
@@ -19,6 +25,7 @@ const Contact = () => {
     const ts = d.toISOString();
     db.collection("newsletter").add({ email, ts });
   };
+
   return (
     <React.Fragment>
       <Navbar />
