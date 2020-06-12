@@ -14,7 +14,13 @@ const Contact = () => {
     db.collection("contacts").add({
       name,
       email,
-      message,
+      originalMsg: message,
+      message: {
+        from: email,
+        text: message,
+        subject: `Message from ${name} at ${ts}`,
+        replyTo: email,
+      },
       ts,
       to: "spencer.lyon@valorumdata.com",
     });
