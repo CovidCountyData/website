@@ -29,6 +29,7 @@
         "next-videos": "^1.1.4",
         "node-sass": "^4.14.1",
         "rapidoc": "^8.0.0",
+        "rc-slider": "^9.3.1",
         "react": "^16.13.1",
         "react-accessible-accordion": "^3.0.1",
         "react-dom": "^16.13.1",
