@@ -1,9 +1,10 @@
 import React from "react";
 
-const SourceFrame = () => {
+const SourceFrame = (props) => {
+  const { url } = props;
   return (
     <React.Fragment>
-      <p>IFrame here</p>
+      <iframe src={url} height="800px" width="100%" />
     </React.Fragment>
   );
 };

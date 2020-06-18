@@ -6080,3 +6080,27 @@ Go Top CSS
     }
   }
 }
+
+/*================================================
+Audit CSS
+=================================================*/
+.audit-content {
+  .button-row {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    button {
+      margin-left: 20px;
+      margin-right: 20px;
+    }
+  }
+  .geo-row {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  .source-row {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+}

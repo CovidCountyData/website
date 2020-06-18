@@ -9,7 +9,7 @@ Below you will see the name of a region or geography from our database.
 
 Beneath the geography name, you will also see a table containing current values of the database.
 
-To the right of the table is an IFrame containing the raw source from which we gathered the data.
+Beneath the table is an IFrame containing the raw source from which we gathered the data.
 
 We need your help checking the raw source and cofirming that the variables match our table.
 
