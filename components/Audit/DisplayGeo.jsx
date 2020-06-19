@@ -4,24 +4,23 @@ import Slider from "rc-slider";
 const DisplayGeo = (props) => {
   const { data, values, setVal, sliderMarks } = props;
 
-  const rows = Object.keys(data).map((k) => {
+  const rows = data.map((dp) => {
     return (
-      <tr key={k}>
-        <td>{k}</td>
-        <td>{data[k]}</td>
+      <tr key={dp.variable}>
+        <td>{dp.variable}</td>
+        <td>{dp.value}</td>
         <td>
           <Slider
             marks={sliderMarks}
             min={0}
             max={2}
-            defaultValue={values[k]}
-            onChange={(v) => setVal(k, v)}
+            defaultValue={values[dp.variable]}
+            onChange={(v) => setVal(dp.variable, v)}
           />
         </td>
       </tr>
     );
   });
-  console.log(values);
   return (
     <React.Fragment>
       <table className="table">

@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import DisplayGeo from "./DisplayGeo";
 import SourceFrame from "./SourceFrame";
 
-const AuditForm = () => {
+const AuditForm = (props) => {
+  const { geography } = props;
+  const { name, data } = geography;
   // TODO: make request to endpoint to load county. Needs to return geo,
   // source, and covidData
   const geo = "Los Angeles, California";
@@ -13,13 +15,9 @@ const AuditForm = () => {
     1: "UNKNOWN",
     2: "CORRECT",
   };
-  const covidData = {
-    total_deaths: 100,
-    total_cases: 1000,
-  };
   const defaultVals = {};
-  Object.keys(covidData).map((k) => {
-    defaultVals[k] = 1;
+  data.map((dp) => {
+    defaultVals[dp.variable] = 1;
   });
   const [values, setValues] = useState(defaultVals);
   const setVal = (k, val) => {
@@ -30,14 +28,15 @@ const AuditForm = () => {
   console.log(values);
 
   // props for iframe
-  const url =
-    "http://dashboard.publichealth.lacounty.gov/covid19_surveillance_dashboard/";
+  console.log(data.map((x) => x.source));
+  const url = data[0].source;
 
   return (
     <div className="container audit-content">
       <div className="row section-title pt-100">
         <div className="col-lg-12">
-          <h2>{geo}</h2>
+          <h2>{name}</h2>
+          <p>From {url}</p>
         </div>
       </div>
       <div className="row button-row">
@@ -55,16 +54,16 @@ const AuditForm = () => {
       <div className="row geo-row">
         <div className="col-lg-12">
           <DisplayGeo
-            data={covidData}
+            data={data}
             setVal={setVal}
             sliderMarks={sliderMarks}
             values={values}
-          ></DisplayGeo>
+          />
         </div>
       </div>
       <div className="row source-row">
         <div className="col lg-12">
-          <SourceFrame url={url}></SourceFrame>
+          <SourceFrame url={url} />
         </div>
       </div>
     </div>

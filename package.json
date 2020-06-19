@@ -43,5 +43,8 @@
         "react-wow": "^1.0.0",
         "sass": "^1.26.5",
         "swr": "^0.2.2"
+    },
+    "devDependencies": {
+        "prettier": "^2.0.5"
     }
 }

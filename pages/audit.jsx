@@ -2,7 +2,7 @@ import React from "react";
 import NavbarThree from "../components/Layouts/Navbar";
 import PageBanner from "../components/Common/PageBanner";
 import Instructions from "../components/Audit/Instructions";
-import AuditForm from "../components/Audit/AuditForm";
+import AuditFormContainer from "../components/Audit/AuditFormContainer";
 import Footer from "../components/Layouts/Footer";
 
 const Audit = () => {
@@ -11,7 +11,7 @@ const Audit = () => {
       <NavbarThree />
       <PageBanner pageTitle="Data Audit" />
       <Instructions />
-      <AuditForm />
+      <AuditFormContainer />
       <Footer />
     </React.Fragment>
   );
