@@ -1,35 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import DisplayGeo from "./DisplayGeo";
 import SourceFrame from "./SourceFrame";
 
 const AuditForm = (props) => {
-  const { geography } = props;
+  const { geography, sliderMarks, url, setVal, refresh, sliderValues } = props;
   const { name, data } = geography;
-  // TODO: make request to endpoint to load county. Needs to return geo,
-  // source, and covidData
-  const geo = "Los Angeles, California";
-
-  // props for table
-  const sliderMarks = {
-    0: "WRONG",
-    1: "UNKNOWN",
-    2: "CORRECT",
-  };
-  const defaultVals = {};
-  data.map((dp) => {
-    defaultVals[dp.variable] = 1;
-  });
-  const [values, setValues] = useState(defaultVals);
-  const setVal = (k, val) => {
-    const out = { ...values };
-    out[k] = val;
-    setValues(out);
-  };
-  console.log(values);
-
-  // props for iframe
-  console.log(data.map((x) => x.source));
-  const url = data[0].source;
 
   return (
     <div className="container audit-content">
@@ -42,10 +17,14 @@ const AuditForm = (props) => {
       <div className="row button-row">
         <div className="col-lg-12">
           <div className="btn-group">
-            <button type="button" class="btn btn-success btn-lg">
+            <button type="button" className="btn btn-success btn-lg">
               Submit
             </button>
-            <button type="button" class="btn btn-dark btn-lg">
+            <button
+              type="button"
+              className="btn btn-dark btn-lg"
+              onClick={() => refresh()}
+            >
               Shuffle
             </button>
           </div>
@@ -57,7 +36,7 @@ const AuditForm = (props) => {
             data={data}
             setVal={setVal}
             sliderMarks={sliderMarks}
-            values={values}
+            values={sliderValues}
           />
         </div>
       </div>
