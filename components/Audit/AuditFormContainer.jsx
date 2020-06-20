@@ -62,7 +62,7 @@ const AuditFormContainer = () => {
 
   if (isLoading || isError || !geo.data || geo.data.length === 0) {
     const content =
-      isError || geo.data.length === 0 ? (
+      isError || (geo.data && geo.data.length === 0) ? (
         <p>Error! Try shuffling</p>
       ) : (
         <Loader />
