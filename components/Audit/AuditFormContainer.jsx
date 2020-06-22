@@ -1,7 +1,7 @@
 import React, { useState, useEffect, Component } from "react";
 import AuditForm from "./AuditForm";
 import Loader from "../Shared/Loader";
-import WIP from "../Common/WIP";
+import axios from "axios";
 
 const useGeoHook = () => {
   // main state -- the geo from server and audit slider values for data points
@@ -59,6 +59,25 @@ const AuditFormContainer = () => {
   const refresh = () => {
     setCounter(counter + 1);
   };
+  const submit = () => {
+    const newData = geo.data.map((dp) => {
+      const sv = sliderValues[dp.variable];
+      if (sv == 1) {
+        return dp;
+      }
+      return { ...dp, correct: sv == 2 };
+    });
+    const toUpload = { ...geo, data: newData };
+    console.log("AuditSubmit... Before:", geo);
+    console.log("AuditSubmit... After:", toUpload);
+    axios
+      .post("https://audits-inunbrtacq-uk.a.run.app/report", toUpload)
+      .then((res) => {
+        console.log(res);
+        refresh();
+      })
+      .catch(console.log);
+  };
 
   if (isLoading || isError || !geo.data || geo.data.length === 0) {
     const content =
@@ -89,6 +108,7 @@ const AuditFormContainer = () => {
       url={geo.data[0].source}
       setVal={setVal}
       refresh={refresh}
+      onSubmit={submit}
     />
   );
 };

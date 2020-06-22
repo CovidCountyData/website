@@ -23,15 +23,15 @@ const DisplayGeo = (props) => {
   });
   return (
     <React.Fragment>
-      <table className="table">
+      <table className="table table-hover">
         <thead>
           <tr>
             <th scope="col">variable</th>
             <th scope="col">value</th>
             <th scope="col">check</th>
           </tr>
-          {rows}
         </thead>
+        <tbody>{rows}</tbody>
       </table>
     </React.Fragment>
   );

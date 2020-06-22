@@ -3,7 +3,15 @@ import DisplayGeo from "./DisplayGeo";
 import SourceFrame from "./SourceFrame";
 
 const AuditForm = (props) => {
-  const { geography, sliderMarks, url, setVal, refresh, sliderValues } = props;
+  const {
+    geography,
+    sliderMarks,
+    url,
+    setVal,
+    refresh,
+    sliderValues,
+    onSubmit,
+  } = props;
   const { name, data } = geography;
 
   return (
@@ -17,13 +25,17 @@ const AuditForm = (props) => {
       <div className="row button-row">
         <div className="col-lg-12">
           <div className="btn-group">
-            <button type="button" className="btn btn-success btn-lg">
+            <button
+              type="button"
+              className="btn btn-success btn-lg"
+              onClick={onSubmit}
+            >
               Submit
             </button>
             <button
               type="button"
               className="btn btn-dark btn-lg"
-              onClick={() => refresh()}
+              onClick={refresh}
             >
               Shuffle
             </button>
