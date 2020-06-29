@@ -19,7 +19,9 @@ const Instructions = (props) => {
 
   return (
     <React.Fragment>
-      <p>Your API key is: {apiKey} </p>
+      <p>
+        Your API key is: <code>{apiKey}</code>{" "}
+      </p>
       <p>Congratulations on getting your new API key!</p>
       <p>
         Head over to the Client Library or API sections in the Navbar to get
