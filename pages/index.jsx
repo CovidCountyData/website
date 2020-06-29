@@ -12,8 +12,8 @@ class Home extends Component {
         <NavbarThree />
         <MainBanner />
         <FeaturedSources />
-        <FunFactsTwo />
         <RegisterFormContainer />
+        <FunFactsTwo />
       </React.Fragment>
     );
   }
