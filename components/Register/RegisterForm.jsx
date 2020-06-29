@@ -1,12 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 
 const RegisterForm = (props) => {
   const { onSubmit, title } = props;
   const { register, handleSubmit, reset } = useForm();
   const submit = handleSubmit((data) => {
-    onSubmit(data);
-    reset();
+    onSubmit(data).then((worked) => {
+      if (worked) {
+        reset();
+      }
+    });
   });
 
   return (
@@ -20,7 +23,7 @@ const RegisterForm = (props) => {
               <div className="form-group">
                 <input
                   type="text"
-                  name="name"
+                  name="email"
                   ref={register}
                   id="name"
                   className="form-control"
