@@ -6,6 +6,7 @@ import axios from "axios";
 const RegisterFormContainer = () => {
   const [key, setKey] = useState("");
   const [fetchedKey, setFetchedKey] = useState(false);
+  const [existingKey, setExistingKey] = useState(false);
   const successfulRequest = (data) => {
     const key = data.data.key;
     if (key) {
@@ -30,6 +31,7 @@ const RegisterFormContainer = () => {
         if (err.response) {
           if (err.response.status == 409) {
             // already in use, get api key
+            setExistingKey(true)
             return axios
               .get(`${url}/${data.email}`)
               .then(successfulRequest)
@@ -45,7 +47,7 @@ const RegisterFormContainer = () => {
       <RegisterForm onSubmit={submit} title="Get your free API key" />
       <div className="text-content">
         <div className="container">
-          <Instructions hasKey={fetchedKey} apiKey={key} />
+          <Instructions hasKey={fetchedKey} apiKey={key} existingKey={existingKey} />
         </div>
       </div>
     </div>
