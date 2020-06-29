@@ -46,7 +46,7 @@ class Home extends Component {
 
         <CtaAreaTwo />
         */}
-        <Footer />
+        {/*<Footer />*/}
       </React.Fragment>
     );
   }

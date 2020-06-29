@@ -55,7 +55,7 @@ $transition: .5s;
         box-shadow: 0 2px 28px 0 rgba(0, 0, 0, 0.06);
         background-color: #ffffff ;
         padding: 0;
-        
+
         .navbar-collapse {
             overflow-y: auto;
         }
@@ -305,7 +305,7 @@ $transition: .5s;
                 .owl-nav {
                     [class*="owl-"] {
                         left: 0;
-    
+
                         &.owl-next {
                             left: auto;
                             right: 0;
@@ -591,7 +591,7 @@ $transition: .5s;
                 .owl-nav {
                     [class*="owl-"] {
                         left: 0;
-    
+
                         &.owl-next {
                             left: auto;
                             right: 0;
@@ -685,7 +685,7 @@ $transition: .5s;
             margin-top: 15px;
         }
     }
-    
+
     .pricing-area {
         padding-bottom: 30px;
     }
@@ -702,7 +702,7 @@ $transition: .5s;
         .price {
             span {
                 font-size: 30px;
-                    
+
                 span {
                     font-size: 13px;
                 }
@@ -968,7 +968,7 @@ $transition: .5s;
 
     .pagination-area {
         margin-top: 18px;
-            
+
         .page-numbers {
             width: 35px;
             height: 35px;
@@ -1093,9 +1093,6 @@ $transition: .5s;
         }
     }
 
-    .footer-area {
-        padding-top: 60px;
-    }
     .single-footer-widget {
         padding-left: 0 !important;
         margin: {
@@ -1119,7 +1116,7 @@ $transition: .5s;
                 li {
                     margin-bottom: 21px;
                     padding-left: 40px;
-                        
+
                     i {
                         top: -5px;
                         width: 30px;
@@ -1132,9 +1129,6 @@ $transition: .5s;
                 }
             }
         }
-    }
-    .copyright-area {
-        margin-top: 30px;
     }
     .go-top {
         bottom: 15px;
@@ -1169,7 +1163,7 @@ $transition: .5s;
             left: 20px;
             top: auto;
             bottom: 20px;
-          
+
             i {
                 line-height: 38px !important;
             }
@@ -1178,7 +1172,7 @@ $transition: .5s;
             right: 20px;
             top: auto;
             bottom: 20px;
-          
+
             i {
                 line-height: 38px !important;
             }
@@ -1590,7 +1584,7 @@ $transition: .5s;
             max-width: 50%;
         }
     }
-    
+
 }
 
 /* Min width 768px to Max width 991px */
@@ -1933,7 +1927,7 @@ $transition: .5s;
     }
 
     .client-image-box {
-        img {    
+        img {
             &:nth-child(1) {
                 display: none;
             }
@@ -2039,7 +2033,7 @@ $transition: .5s;
     .contact-cta-box {
         margin: 20px auto 0;
     }
-    
+
     .pricing-area {
         padding-bottom: 60px;
     }
@@ -2295,7 +2289,7 @@ $transition: .5s;
                     margin-bottom: 21px;
                     font-size: 14px;
                     padding-left: 40px;
-                        
+
                     i {
                         top: -5px;
                         width: 30px;

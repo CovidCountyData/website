@@ -63,9 +63,9 @@ class Navbar extends Component {
                 aria-expanded="false"
                 aria-label="Toggle navigation"
               >
-                <span className="icon-bar top-bar"></span>
-                <span className="icon-bar middle-bar"></span>
-                <span className="icon-bar bottom-bar"></span>
+                <span className="icon-bar top-bar" />
+                <span className="icon-bar middle-bar" />
+                <span className="icon-bar bottom-bar" />
               </button>
 
               <div className={classOne} id="navbarSupportedContent">
@@ -85,7 +85,7 @@ class Navbar extends Component {
                   <li className="nav-item">
                     <Link href="#">
                       <a className="nav-link">
-                        Client Libraries <i className="icofont-thin-down"></i>
+                        Client Libraries <i className="icofont-thin-down" />
                       </a>
                     </Link>
 
@@ -110,15 +110,28 @@ class Navbar extends Component {
                   </li>
 
                   <li className="nav-item">
-                    <Link href="/rest-api" activeClassName="active">
-                      <a className="nav-link">REST API</a>
+                    <Link href="#">
+                      <a className="nav-link">
+                        API <i className="icofont-thin-down" />
+                      </a>
                     </Link>
-                  </li>
-
-                  <li className="nav-item">
-                    <Link href="/graphql-api" activeClassName="active">
-                      <a className="nav-link">GraphQL API</a>
-                    </Link>
+                    <ul className="dropdown-menu">
+                      <li className="nav-item">
+                        <Link href="/register" activeClassName="active">
+                          <a className="nav-link">Registration</a>
+                        </Link>
+                      </li>
+                      <li className="nav-item">
+                        <Link href="/rest-api" activeClassName="active">
+                          <a className="nav-link">REST API</a>
+                        </Link>
+                      </li>
+                      <li className="nav-item">
+                        <Link href="/graphql-api" activeClassName="active">
+                          <a className="nav-link">GraphQL API</a>
+                        </Link>
+                      </li>
+                    </ul>
                   </li>
 
                   <li className="nav-item">
