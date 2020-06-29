@@ -3,7 +3,6 @@ import Navbar from "../components/Layouts/Navbar";
 import PageBanner from "../components/Common/PageBanner";
 import ContactForm from "../components/Contact/ContactForm";
 import Newsletter from "../components/Common/Newsletter";
-import Footer from "../components/Layouts/Footer";
 import firebaseDB from "../utils/fire";
 
 const Contact = () => {
@@ -40,11 +39,9 @@ const Contact = () => {
         <ContactForm onSubmit={contactSubmit} title="Send us a Message" />
       </div>
 
-      <div className="ptb-100">
+      <div className="pt-100">
         <Newsletter onSubmit={newsletterSubmit} />
       </div>
-
-      <Footer />
     </React.Fragment>
   );
 };

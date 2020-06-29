@@ -1,8 +1,6 @@
 import React, { Component } from "react";
-import Link from "next/link";
 import NavbarThree from "../components/Layouts/Navbar";
 import PageBanner from "../components/Common/PageBanner";
-import Footer from "../components/Layouts/Footer";
 
 class PrivacyPolicy extends Component {
   render() {
@@ -11,7 +9,7 @@ class PrivacyPolicy extends Component {
         <NavbarThree />
         <PageBanner pageTitle="Privacy Policy" />
 
-        <div class="text-container ptb-100">
+        <div class="text-container pt-100">
           <div class="container">
             <h4>What is Lorem Ipsum?</h4>
 
@@ -107,8 +105,6 @@ class PrivacyPolicy extends Component {
             </p>
           </div>
         </div>
-
-        <Footer />
       </React.Fragment>
     );
   }

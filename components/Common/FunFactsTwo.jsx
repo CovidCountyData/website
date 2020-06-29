@@ -4,12 +4,14 @@ import Link from "next/link";
 class FunFactsTwo extends Component {
   render() {
     return (
-      <section className="funfacts-area ptb-100 bg-fcfbfb">
+      <section className="funfacts-area pt-100 bg-fcfbfb">
         <div className="container">
           <div className="section-title">
             <h2>How can we help?</h2>
             <p>
-              If you are a researcher or policy maker, we are interested in how we can help you find and aggregate relevant data. Please reach out to us in the contact box below.
+              If you are a researcher or policy maker, we are interested in how
+              we can help you find and aggregate relevant data. Please reach out
+              to us in the contact box below.
             </p>
           </div>
 
@@ -21,7 +23,7 @@ class FunFactsTwo extends Component {
               <a className="btn btn-primary">Contact Us</a>
             </Link>
           </div>
-{/*
+          {/*
           <div className="row">
             <div className="col-lg-3 col-sm-6">
               <div className="funfact">
