@@ -22,7 +22,7 @@ const NewsComponent = (props) => {
         // Build county updates
         const countyUpdates = state.counties.map(({ name, sources, fips }) => {
           return (
-            <li key={`${item.week_start}-${fips}`}>
+            <li key={`${item.week_start}-${fips}-county`}>
               <GeoReport name={name} sources={sources} />
             </li>
           );
@@ -42,7 +42,7 @@ const NewsComponent = (props) => {
         const stateVariables = Object.keys(state.sources).map((src) => {
           return (
             <SourceVariableList
-              key={src}
+              key={`${state.name}-${state.week_end}-${src}`}
               url={src}
               variables={state.sources[src]}
             />
@@ -58,7 +58,7 @@ const NewsComponent = (props) => {
 
         // Return state summary and list of county updates
         return (
-          <React.Fragment>
+          <React.Fragment key={`${state.name}-${state.week_end}-state`}>
             <h4 className="pt-15">{state.name}</h4>
             {stateContent}
             {countyContent}
