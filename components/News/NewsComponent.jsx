@@ -70,7 +70,7 @@ const NewsComponent = (props) => {
         <AccordionItem key={item.week_start}>
           <AccordionItemHeading>
             <AccordionItemButton>
-              Data addeded between {startDate} and {endDate}
+              Data added between {startDate} and {endDate}
             </AccordionItemButton>
           </AccordionItemHeading>
           <AccordionItemPanel>
