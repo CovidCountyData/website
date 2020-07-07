@@ -4,6 +4,7 @@ import MainBanner from "../components/Home/MainBanner";
 import FeaturedSources from "../components/Home/FeaturedSources";
 import FunFactsTwo from "../components/Common/FunFactsTwo";
 import RegisterFormContainer from "../components/Register/RegisterFormContainer";
+import News from "../components/News/News";
 
 class Home extends Component {
   render() {
@@ -13,6 +14,7 @@ class Home extends Component {
         <MainBanner />
         <FeaturedSources />
         <RegisterFormContainer />
+        <News />
         <FunFactsTwo />
       </React.Fragment>
     );

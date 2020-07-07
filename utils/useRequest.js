@@ -2,7 +2,7 @@ import useSWR from "swr";
 import axios from "axios";
 
 export default function useRequest(request, { initialData, ...config } = {}) {
-  return useSWR(
+  const { data, error } = useSWR(
     request && JSON.stringify(request),
     () => axios(request || {}).then((response) => response.data),
     {
@@ -15,4 +15,9 @@ export default function useRequest(request, { initialData, ...config } = {}) {
       },
     }
   );
+  return {
+    data,
+    error,
+    loading: !error && !data,
+  };
 }

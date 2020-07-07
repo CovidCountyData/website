@@ -61,11 +61,12 @@ $paragraph-color: #646464;
 $white-color: #ffffff;
 $transition: all 0.6s ease;
 
-html, body {
+html,
+body {
   height: 100%;
   margin: 0;
 }
-body>div.wrapper {
+body > div.wrapper {
   min-height: 100%;
   margin-bottom: -80px;
 }
@@ -167,6 +168,24 @@ button {
 .pb-60 {
   padding: {
     bottom: 60px;
+  }
+}
+.ptb-15 {
+  padding: {
+    top: 15px;
+    bottom: 15px;
+  }
+}
+
+.pb-15 {
+  padding: {
+    bottom: 15px;
+  }
+}
+
+.pt-15 {
+  padding: {
+    top: 15px;
   }
 }
 .bg-fixed {
@@ -6029,7 +6048,7 @@ Footer CSS
   height: 80px;
   background-color: #000000;
   text-align: center;
-   margin-top: 55px;
+  margin-top: 55px;
   padding: {
     top: 20px;
     bottom: 20px;
