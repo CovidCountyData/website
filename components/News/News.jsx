@@ -21,7 +21,12 @@ const News = () => {
   }
 
   if (error || loading) {
-    return <WIP imgname={"undraw_code_thinking_1jeh.svg"} />;
+    return (
+      <WIP
+        title="Loading Changelog..."
+        imgname={"undraw_code_thinking_1jeh.svg"}
+      />
+    );
   }
 };
 
