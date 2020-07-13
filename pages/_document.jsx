@@ -20,6 +20,10 @@ class MyDocument extends Document {
             type="image/svg"
             href={require("../images/valorum_circles.svg")}
           />
+          <meta
+            name="twitter:image"
+            content="https://github.com/valorumdata/cmdc-website/raw/master/images/homepage_image.png"
+          />
           <script
             async
             defer

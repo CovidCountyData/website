@@ -48,7 +48,6 @@ export default class MyApp extends App {
           }}
           twitter={{
             handle: "@ValorumData",
-            site: "@site",
             cardType: "summary_large_image",
           }}
         />
