@@ -1,0 +1,17 @@
+FROM node:12.18.2-stretch-slim
+RUN mkdir -p /opt/app
+
+EXPOSE 3000
+WORKDIR /opt/app
+
+COPY package.json /opt/app
+COPY package-lock.json /opt/app
+
+RUN npm install --no-optional
+
+COPY . /opt/app
+RUN npm run build
+
+RUN npx next telemetry disable
+
+CMD [ "npm", "start" ]

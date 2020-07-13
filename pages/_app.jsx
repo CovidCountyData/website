@@ -7,6 +7,7 @@ import "react-accessible-accordion/dist/fancy-example.css";
 import "react-image-lightbox/style.css";
 import "../assets/css/style.scss";
 import "../assets/css/responsive.scss";
+import "rc-slider/assets/index.css";
 
 import App from "next/app";
 import { DefaultSeo } from "next-seo";

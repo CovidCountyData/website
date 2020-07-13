@@ -1,4 +1,5 @@
 import Document, { Html, Head, Main, NextScript } from "next/document";
+import Footer from "../components/Layouts/Footer";
 
 class MyDocument extends Document {
   static async getInitialProps(ctx) {
@@ -18,16 +19,20 @@ class MyDocument extends Document {
             rel="icon"
             type="image/svg"
             href={require("../images/valorum_circles.svg")}
-          ></link>
+          />
           <script
             async
             defer
             data-domain="covid.valorum.ai"
             src="https://plausible.io/js/plausible.js"
-          ></script>
+          />
         </Head>
         <body>
-          <Main />
+          <div className="wrapper">
+            <Main />
+            <div className="push" />
+          </div>
+          <Footer />
           <NextScript />
         </body>
       </Html>

@@ -21,6 +21,7 @@
         "imagemin-mozjpeg": "^8.0.0",
         "imagemin-optipng": "^7.1.0",
         "imagemin-svgo": "^7.1.0",
+        "moment": "^2.27.0",
         "next": "^9.3.6",
         "next-compose-plugins": "^2.2.0",
         "next-fonts": "^1.1.0",
@@ -29,18 +30,24 @@
         "next-videos": "^1.1.4",
         "node-sass": "^4.14.1",
         "rapidoc": "^8.0.0",
+        "rc-slider": "^9.3.1",
         "react": "^16.13.1",
         "react-accessible-accordion": "^3.0.1",
+        "react-csv-to-table": "0.0.4",
         "react-dom": "^16.13.1",
         "react-hook-form": "^5.6.3",
         "react-image-lightbox": "^5.1.1",
         "react-markdown": "^4.3.1",
         "react-modal-video": "^1.2.3",
+        "react-moment": "^0.9.7",
         "react-owl-carousel3": "^2.2.5",
         "react-particles-js": "^2.7.1",
         "react-visibility-sensor": "^5.1.1",
         "react-wow": "^1.0.0",
         "sass": "^1.26.5",
         "swr": "^0.2.2"
+    },
+    "devDependencies": {
+        "prettier": "^2.0.5"
     }
 }

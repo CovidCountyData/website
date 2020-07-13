@@ -10,7 +10,6 @@ const ServiceDetails = () => {
       <NavbarThree />
       <PageBanner pageTitle="Julia Client Library" />
       <JlDocs />
-      <Footer />
     </React.Fragment>
   );
 };

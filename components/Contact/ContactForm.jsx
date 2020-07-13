@@ -53,7 +53,7 @@ const ContactForm = (props) => {
                   rows="8"
                   placeholder="Your Message"
                   required
-                ></textarea>
+                />
               </div>
             </div>
 

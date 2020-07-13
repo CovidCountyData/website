@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import NavbarThree from "../components/Layouts/Navbar";
 import PageBanner from "../components/Common/PageBanner";
-import Footer from "../components/Layouts/Footer";
 
 class GraphQL extends Component {
   render() {
@@ -21,8 +20,6 @@ class GraphQL extends Component {
             </div>
           </div>
         </div>
-
-        <Footer />
       </React.Fragment>
     );
   }
