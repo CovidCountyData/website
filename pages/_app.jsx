@@ -13,6 +13,7 @@ import App from "next/app";
 import { DefaultSeo } from "next-seo";
 // import Loader from '../components/Shared/Loader';
 import GoTop from "../components/Shared/GoTop";
+import MixpanelProvider from "../components/Common/mixpanel";
 
 export default class MyApp extends App {
   // Preloader
@@ -36,7 +37,7 @@ export default class MyApp extends App {
     const { Component, pageProps } = this.props;
 
     return (
-      <React.Fragment>
+      <MixpanelProvider>
         <DefaultSeo
           title="CMDC"
           description="CMDC - COVID Modeling Data Collaborative"
@@ -59,7 +60,7 @@ export default class MyApp extends App {
 
         {/* Go Top Button */}
         <GoTop scrollStepInPx="50" delayInMs="10.50" />
-      </React.Fragment>
+      </MixpanelProvider>
     );
   }
 }
