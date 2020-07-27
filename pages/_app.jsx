@@ -8,12 +8,14 @@ import "react-image-lightbox/style.css";
 import "../assets/css/style.scss";
 import "../assets/css/responsive.scss";
 import "rc-slider/assets/index.css";
+import ReactGA from "react-ga";
 
 import App from "next/app";
 import { DefaultSeo } from "next-seo";
-// import Loader from '../components/Shared/Loader';
 import GoTop from "../components/Shared/GoTop";
 import MixpanelProvider from "../components/Common/mixpanel";
+
+ReactGA.initialize("UA-112477777-3");
 
 export default class MyApp extends App {
   // Preloader
