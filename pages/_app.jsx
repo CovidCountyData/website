@@ -10,6 +10,10 @@ import "../assets/css/responsive.scss";
 import "rc-slider/assets/index.css";
 import ReactGA from "react-ga";
 
+import { config } from "@fortawesome/fontawesome-svg-core";
+import "@fortawesome/fontawesome-svg-core/styles.css"; // Import the CSS
+config.autoAddCss = false; // Tell Font Awesome to skip adding the CSS aut
+
 import App from "next/app";
 import { DefaultSeo } from "next-seo";
 import GoTop from "../components/Shared/GoTop";

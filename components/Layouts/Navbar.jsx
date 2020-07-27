@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUniversity } from "@fortawesome/free-solid-svg-icons";
 import Link from "../../utils/ActiveLink";
 
 class Navbar extends Component {
@@ -44,11 +46,60 @@ class Navbar extends Component {
             <div className="container">
               <Link href="/">
                 <a className="navbar-brand">
-                  <img
-                    src={require("../../images/valorumdata-2.png")}
-                    className="white-logo"
-                    alt="logo"
-                  />
+                  <div className="row">
+                    <div className="col">
+                      <div className="row justify-content-center">
+                        <FontAwesomeIcon
+                          className=""
+                          id="fa-project-icon"
+                          // style={{ "font-size": "50px" }}
+                          icon={faUniversity}
+                        />
+                      </div>
+                      <div className="row justify-content-center">
+                        <span className="nav-by">by</span>
+                      </div>
+                    </div>
+                    <div className="col nav-project-title">
+                      <div className="row">
+                        <p>covid</p>
+                        <p>County data</p>
+                      </div>
+                      <div className="row">
+                        <img
+                          src={require("../../images/valorumdata-2.png")}
+                          alt="logo"
+                          style={{ height: "1em" }}
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* <div className="row">
+                    <div className="col">
+                      <FontAwesomeIcon
+                        className=""
+                        id="fa-project-icon"
+                        // style={{ "font-size": "50px" }}
+                        icon={faUniversity}
+                      />
+                    </div>
+                    <div className="col nav-project-title">
+                      <p>covid</p>
+                      <p>County data</p>
+                    </div>
+                  </div>
+                  <div className="row">
+                    <div className="col">
+                      <span className="nav-by">by</span>
+                      <img
+                        src={require("../../images/valorumdata-2.png")}
+                        alt="logo"
+                        className="white-logo"
+                        style={{}}
+                      />
+                    </div>
+                  </div> */}
                 </a>
               </Link>
 

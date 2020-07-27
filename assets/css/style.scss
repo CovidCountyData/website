@@ -102,6 +102,9 @@ h5,
 h6 {
   font-weight: 600;
 }
+#fa-project-icon {
+  font-size: 50px;
+}
 p {
   line-height: 1.8;
   font-size: $font-size;
@@ -494,6 +497,21 @@ Preloader CSS
 /*================================================
 Navbar CSS
 =================================================*/
+.nav-project-title {
+  & p {
+    text-transform: uppercase;
+    margin-bottom: 0px;
+    font-size: 0.6em;
+  }
+}
+
+.nav-by {
+  font-style: italic;
+  font-size: 0.6em;
+  color: $paragraph-color;
+  padding-left: 10px;
+  margin-right: 10px;
+}
 .navbar-area {
   background: transparent;
   position: absolute;
