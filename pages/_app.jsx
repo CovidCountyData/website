@@ -12,7 +12,6 @@ import ReactGA from "react-ga";
 
 import App from "next/app";
 import { DefaultSeo } from "next-seo";
-// import Loader from '../components/Shared/Loader';
 import GoTop from "../components/Shared/GoTop";
 import MixpanelProvider from "../components/Common/mixpanel";
 
