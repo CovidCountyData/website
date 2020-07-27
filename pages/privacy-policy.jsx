@@ -9,8 +9,8 @@ class PrivacyPolicy extends Component {
         <NavbarThree />
         <PageBanner pageTitle="Privacy Policy" />
 
-        <div class="text-container pt-100">
-          <div class="container">
+        <div className="text-container pt-100">
+          <div className="container">
             <h4>What is Lorem Ipsum?</h4>
 
             <p>

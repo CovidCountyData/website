@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import RegisterForm from "./RegisterForm";
 import Instructions from "./Instructions";
 import axios from "axios";
+import { useMixpanel } from "../Common/mixpanel";
 
 const RegisterFormContainer = () => {
   const [key, setKey] = useState("");
@@ -17,6 +18,7 @@ const RegisterFormContainer = () => {
     console.error("Don't have successful key");
     return false;
   };
+  const mixpanel = useMixpanel();
 
   const erroredRequest = (err) => {
     console.error("Got an error requesting an API key: ", err);
@@ -24,6 +26,7 @@ const RegisterFormContainer = () => {
   };
   const submit = (data) => {
     const url = "https://api.covid.valorum.ai/auth";
+    mixpanel.track("User register", data);
     return axios
       .post(url, data)
       .then(successfulRequest)
@@ -31,7 +34,7 @@ const RegisterFormContainer = () => {
         if (err.response) {
           if (err.response.status == 409) {
             // already in use, get api key
-            setExistingKey(true)
+            setExistingKey(true);
             return axios
               .get(`${url}/${data.email}`)
               .then(successfulRequest)
@@ -47,7 +50,11 @@ const RegisterFormContainer = () => {
       <RegisterForm onSubmit={submit} title="Get your free API key" />
       <div className="text-content">
         <div className="container">
-          <Instructions hasKey={fetchedKey} apiKey={key} existingKey={existingKey} />
+          <Instructions
+            hasKey={fetchedKey}
+            apiKey={key}
+            existingKey={existingKey}
+          />
         </div>
       </div>
     </div>

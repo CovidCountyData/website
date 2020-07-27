@@ -9,8 +9,8 @@ class PrivacyPolicy extends Component {
         <NavbarThree />
         <PageBanner pageTitle="About the project" />
 
-        <div class="text-container pt-100">
-          <div class="container">
+        <div className="text-container pt-100">
+          <div className="container">
             <h3>CMDC: COVID-19 Modeling Data Collaborative</h3>
             <p>
               The COVID-19 pandemic has pushed many researchers and policy
