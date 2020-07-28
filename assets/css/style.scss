@@ -882,7 +882,7 @@ Main Banner CSS
 .main-banner {
   position: relative;
   z-index: 1;
-  height: 750px;
+  height: 520px;
   background: {
     position: bottom center;
     size: cover;
@@ -946,6 +946,7 @@ Main Banner CSS
     .main-banner-content {
       h1 {
         font-size: 50px;
+        font-weight: 500;
       }
       p {
         margin-bottom: 30px;
@@ -1615,10 +1616,10 @@ Featured Services CSS
 .featured-services-area {
   position: relative;
   z-index: 1;
-  margin: {
-    top: -85px;
-    // bottom: -30px;
-  }
+  // margin: {
+  //   top: -85px;
+  //   // bottom: -30px;
+  // }
   .featured-services-box {
     margin-top: 30px;
   }
@@ -6149,5 +6150,20 @@ Audit CSS
   .source-row {
     margin-top: 20px;
     margin-bottom: 20px;
+  }
+}
+
+/*================================================
+Mission CSS
+=================================================*/
+.mission-area {
+  & p {
+    text-align: center;
+    font-size: 1.4em;
+    max-width: 90%;
+  }
+
+  & .emph {
+    color: $main-color;
   }
 }

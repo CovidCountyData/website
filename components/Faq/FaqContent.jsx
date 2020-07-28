@@ -19,16 +19,16 @@ class FaqContent extends Component {
                   <AccordionItem>
                     <AccordionItemHeading>
                       <AccordionItemButton>
-                        What is COVID Modeling Data Collaborative?
+                        What is the "COVID County Data" project?
                       </AccordionItemButton>
                     </AccordionItemHeading>
                     <AccordionItemPanel>
                       <p>
-                        The COVID Modeling Data Collaborative is a collection of
-                        people, code, and data meant to help researchers, policy
-                        makers, and any interested parties access data that can
-                        be used to analyze and influence public policy related
-                        to the current pandemic.
+                        The COVID County Data project is a collection of people,
+                        code, and data meant to help researchers, policy makers,
+                        and any interested parties access data that can be used
+                        to analyze and influence public policy related to the
+                        current pandemic.
                       </p>
                     </AccordionItemPanel>
                   </AccordionItem>

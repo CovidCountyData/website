@@ -45,13 +45,13 @@ export default class MyApp extends App {
     return (
       <MixpanelProvider>
         <DefaultSeo
-          title="CMDC"
-          description="CMDC - COVID Modeling Data Collaborative"
+          title="CCD"
+          description="CCD - COVID County Data"
           openGraph={{
             type: "website",
             locale: "en_IE",
-            url: "https://covid.valorum.ai",
-            site_name: "CMDC - COVID Modeling Data Collaborative",
+            url: "https://covidcountydata.org",
+            site_name: "CCD - COVID County Data",
           }}
           twitter={{
             handle: "@ValorumData",

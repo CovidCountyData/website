@@ -57,20 +57,15 @@ class MainBanner extends Component {
             <div className="d-table-cell">
               <div className="container">
                 <div className="row align-items-center">
-                  <div className="col-lg-6">
+                  <div className="col-md-6">
                     <div className="main-banner-content">
-                      <h1>COVID Modeling Data Collaborative</h1>
-                      <p>
-                        <span style={{ display: "inline" }}>OUR MISSION</span>
-                        {" "} is to provide researchers and policy advisors
-                        the <em>data</em> they need to answer key{" "}
-                        <em>questions</em> about COVID-19 and the impact of
-                        economic and social policies.
-                      </p>
+                      <h1>
+                        Access free, up-to-date county-level COVID data to
+                        inform local policies
+                      </h1>
                     </div>
                   </div>
-
-                  <div className="col-lg-6">
+                  <div className="col-md-6">
                     <Particles params={{ ...particleOpt }} />
                   </div>
                 </div>
