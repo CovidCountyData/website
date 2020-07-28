@@ -523,6 +523,7 @@ Navbar CSS
   height: auto;
 
   nav {
+    padding: 0px;
     ul {
       padding: 0;
       margin: 0;
@@ -779,10 +780,6 @@ Navbar CSS
     top: 0;
     left: 0;
     width: 100%;
-    padding: {
-      bottom: 10px;
-      top: 5px;
-    }
     z-index: 999;
     box-shadow: 0 2px 28px 0 rgba(0, 0, 0, 0.06);
     background-color: $white-color !important;
