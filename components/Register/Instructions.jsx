@@ -6,12 +6,8 @@ const Instructions = (props) => {
     return (
       <React.Fragment>
         <p>
-          Register for a <em>FREE</em> API key by entering your email above and
-          pressing the Register button
-        </p>
-        <p>
-          Note that if you have previously registered for an API key, you can
-          use the form above to retrieve its value.
+          If you’ve previously registered for an API key, you can use the form
+          above to retrieve it.
         </p>
       </React.Fragment>
     );

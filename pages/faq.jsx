@@ -18,7 +18,9 @@ const Faq = () => {
       <PageBanner pageTitle="Frequently Asked Questions" />
       <FaqContent />
 
-      <ContactForm onSubmit={onSubmit} title="Ask us your questions" />
+      <div className="pb-100">
+        <ContactForm onSubmit={onSubmit} title="Ask us your questions" />
+      </div>
     </React.Fragment>
   );
 };

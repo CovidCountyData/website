@@ -12,7 +12,6 @@ import SourceVariableList from "./SourceVariableList";
 
 const NewsComponent = (props) => {
   const { newsItems } = props;
-  console.log("newsItems:", newsItems);
   let items = <p> Content goes here</p>;
   if (newsItems) {
     items = newsItems.map((item) => {

@@ -46,15 +46,19 @@ const RegisterFormContainer = () => {
   };
 
   return (
-    <div className="pt-100">
+    <div className="ptb-100">
       <RegisterForm onSubmit={submit} title="Get your free API key" />
-      <div className="text-content">
+      <div className="text-content pt-15">
         <div className="container">
-          <Instructions
-            hasKey={fetchedKey}
-            apiKey={key}
-            existingKey={existingKey}
-          />
+          <div className="row justify-content-center d-flex">
+            <div className="col-auto">
+              <Instructions
+                hasKey={fetchedKey}
+                apiKey={key}
+                existingKey={existingKey}
+              />
+            </div>
+          </div>
         </div>
       </div>
     </div>

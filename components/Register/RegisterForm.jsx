@@ -14,12 +14,13 @@ const RegisterForm = (props) => {
 
   return (
     <div className="contact-form">
-      <h2>{title}</h2>
-
-      <form id="registerForm" onSubmit={submit}>
-        <div className="container">
-          <div className="row">
-            <div className="col-6 offset-2">
+      <div className="container">
+        <div className="row d-flex justify-content-center align-items-center">
+          <div className="col-auto">
+            <h2>{title}</h2>
+          </div>
+          <div className="col-auto">
+            <form id="registerForm" onSubmit={submit} className="form-inline">
               <div className="form-group">
                 <input
                   type="text"
@@ -31,9 +32,6 @@ const RegisterForm = (props) => {
                   required
                 />
               </div>
-            </div>
-
-            <div className="col-4">
               <button
                 type="submit"
                 className="btn btn-primary"
@@ -41,10 +39,10 @@ const RegisterForm = (props) => {
               >
                 Register
               </button>
-            </div>
+            </form>
           </div>
         </div>
-      </form>
+      </div>
     </div>
   );
 };

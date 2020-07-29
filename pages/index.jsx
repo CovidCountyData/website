@@ -2,10 +2,11 @@ import React, { Component } from "react";
 import NavbarThree from "../components/Layouts/Navbar";
 import MainBanner from "../components/Home/MainBanner";
 import FeaturedSources from "../components/Home/FeaturedSources";
-import FunFactsTwo from "../components/Common/FunFactsTwo";
+import ContactCTA from "../components/Common/ContactCTA";
 import RegisterFormContainer from "../components/Register/RegisterFormContainer";
-import News from "../components/News/News";
+// import News from "../components/News/News";
 import Mission from "../components/Home/Mission";
+import DownloadCTA from "../components/Common/DownloadCTA";
 
 class Home extends Component {
   render() {
@@ -13,11 +14,12 @@ class Home extends Component {
       <React.Fragment>
         <NavbarThree />
         <MainBanner />
-        <Mission />
+        <Mission className="bg-grey" />
         <FeaturedSources />
+        <DownloadCTA className="bg-grey" />
         <RegisterFormContainer />
-        <News />
-        <FunFactsTwo />
+        {/*<News />*/}
+        <ContactCTA className="bg-grey" />
       </React.Fragment>
     );
   }

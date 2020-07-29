@@ -28,10 +28,12 @@ class FeaturedSources extends Component {
   state = {
     display: false,
   };
+
   componentDidMount() {
     this._isMounted = true;
     this.setState({ display: true });
   }
+
   componentWillUnmount() {
     this._isMounted = false;
   }
@@ -41,21 +43,19 @@ class FeaturedSources extends Component {
       <section className="featured-services-area">
         <div className="container">
           <div className="row">
-            <div className="col-lg-4">
-              <div className="featured-services-box">
-                <div className="icon">
-                  <i className="pe-7s-science"></i>
-                </div>
-                <h3>COVID-19 Exposure</h3>
-                <p>
-                  Estimating the past, present, and future prevalence of
-                  COVID-19 across regions?
-                </p>
-                <p>
-                  We redistribute testing numbers, confirmed cases, deaths, and
-                  other measures of a region's potential exposure.
-                </p>
+            <div className="col-lg-4 featured-services-box">
+              <div className="icon">
+                <i className="pe-7s-science"></i>
               </div>
+              <h3>COVID-19 Exposure</h3>
+              <p>
+                Estimating the past, present, and future prevalence of COVID-19
+                across regions?
+              </p>
+              <p>
+                We redistribute testing numbers, confirmed cases, deaths, and
+                other measures of a region's potential exposure.
+              </p>
             </div>
 
             <div className="col-lg-4">
@@ -89,60 +89,54 @@ class FeaturedSources extends Component {
                 </p>
               </div>
             </div>
-
-            <div className="col-lg-4">
-              <div className="featured-services-box">
-                <div className="icon">
-                  <i className="pe-7s-bandaid"></i>
-                </div>
-                <h3>Healthcare Systems and Public Health</h3>
-                <p>
-                  Analyzing a region's capacity for providing proper health care
-                  for new infections?
-                </p>
-                <p>
-                  We aggregate information on EMS calls, hospital capacity, and
-                  other important healthcare indicators.
-                </p>
+          </div>
+          <div className="row">
+            <div className="col-lg-4 featured-services-box">
+              <div className="icon">
+                <i className="pe-7s-bandaid"></i>
               </div>
+              <h3>Healthcare Systems and Public Health</h3>
+              <p>
+                Analyzing a region's capacity for providing proper health care
+                for new infections?
+              </p>
+              <p>
+                We aggregate information on EMS calls, hospital capacity, and
+                other important healthcare indicators.
+              </p>
             </div>
 
-            <div className="col-lg-4">
-              <div className="featured-services-box">
-                <div className="icon">
-                  <i className="pe-7s-global"></i>
-                </div>
-                <h3>International Statistics</h3>
-                <p>
-                  Comparing outcomes in the United States to outcomes globally?
-                </p>
-                <p>
-                  We provide up to date data from sources like{" "}
-                  <a href="https://ourworldindata.org/coronavirus-data">
-                    Our World in Data
-                  </a>
-                  .
-                </p>
-                <div className="back-text">Ia</div>
+            <div className="col-lg-4 featured-services-box">
+              <div className="icon">
+                <i className="pe-7s-global"></i>
               </div>
+              <h3>International Statistics</h3>
+              <p>
+                Comparing outcomes in the United States to outcomes globally?
+              </p>
+              <p>
+                We provide up to date data from sources like{" "}
+                <a href="https://ourworldindata.org/coronavirus-data">
+                  Our World in Data
+                </a>
+                .
+              </p>
             </div>
 
-            <div className="col-lg-4">
-              <div className="featured-services-box">
-                <div className="icon">
-                  <i className="pe-7s-hammer"></i>
-                </div>
-                <h3>Public Policy</h3>
-                <p>
-                  Do you know when, or what kind of, policy interventions went
-                  into place?
-                </p>
-                <p>
-                  We provide detailed accounts of which policies were
-                  implemented and when they were lifted for U.S. states,
-                  counties, and school districts.
-                </p>
+            <div className="col-lg-4 featured-services-box">
+              <div className="icon">
+                <i className="pe-7s-hammer"></i>
               </div>
+              <h3>Public Policy</h3>
+              <p>
+                Do you know when, or what kind of, policy interventions went
+                into place?
+              </p>
+              <p>
+                We provide detailed accounts of which policies were implemented
+                and when they were lifted for U.S. states, counties, and school
+                districts.
+              </p>
             </div>
           </div>
         </div>

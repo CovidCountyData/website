@@ -15,6 +15,7 @@ class Navbar extends Component {
       collapsed: !this.state.collapsed,
     });
   };
+
   componentDidMount() {
     let elementId = document.getElementById("navbar");
     document.addEventListener("scroll", () => {
@@ -26,6 +27,7 @@ class Navbar extends Component {
     });
     window.scrollTo(0, 0);
   }
+
   componentWillUnmount() {
     this._isMounted = false;
   }
@@ -73,21 +75,9 @@ class Navbar extends Component {
               <div className={classOne} id="navbarSupportedContent">
                 <ul className="navbar-nav">
                   <li className="nav-item">
-                    <Link href="/" activeClassName="active">
-                      <a className="nav-link">Home</a>
-                    </Link>
-                  </li>
-
-                  <li className="nav-item">
-                    <Link href="/about" activeClassName="active">
-                      <a className="nav-link">About</a>
-                    </Link>
-                  </li>
-
-                  <li className="nav-item">
-                    <Link href="#">
+                    <Link href="/data">
                       <a className="nav-link">
-                        Client Libraries <i className="icofont-thin-down" />
+                        Our Data <i className="icofont-thin-down" />
                       </a>
                     </Link>
 
@@ -112,39 +102,19 @@ class Navbar extends Component {
                   </li>
 
                   <li className="nav-item">
-                    <Link href="#">
-                      <a className="nav-link">
-                        API <i className="icofont-thin-down" />
-                      </a>
-                    </Link>
-                    <ul className="dropdown-menu">
-                      <li className="nav-item">
-                        <Link href="/register" activeClassName="active">
-                          <a className="nav-link">Registration</a>
-                        </Link>
-                      </li>
-                      <li className="nav-item">
-                        <Link href="/rest-api" activeClassName="active">
-                          <a className="nav-link">REST API</a>
-                        </Link>
-                      </li>
-                      <li className="nav-item">
-                        <Link href="/graphql-api" activeClassName="active">
-                          <a className="nav-link">GraphQL API</a>
-                        </Link>
-                      </li>
-                    </ul>
-                  </li>
-
-                  <li className="nav-item">
-                    <Link href="/contact" activeClassName="active">
-                      <a className="nav-link">Contact Us</a>
+                    <Link href="/about" activeClassName="active">
+                      <a className="nav-link">About us</a>
                     </Link>
                   </li>
 
                   <li className="nav-item">
                     <Link href="/faq" activeClassName="active">
-                      <a className="nav-link">FAQ</a>
+                      <a className="nav-link">FAQs</a>
+                    </Link>
+                  </li>
+                  <li className="nav-item">
+                    <Link href="/contact" activeClassName="active">
+                      <a className="nav-link">Contact Us</a>
                     </Link>
                   </li>
                 </ul>

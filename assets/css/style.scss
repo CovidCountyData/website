@@ -55,11 +55,20 @@ $main-color: #f0a216;
 $gradient-color: #09367b;
 $main-font-family: "Open Sans", sans-serif;
 $heading-font-family: "Saira", sans-serif;
-$font-size: 16px;
+$font-size: 18px;
 $black-color: #18181b;
 $paragraph-color: #646464;
 $white-color: #ffffff;
 $transition: all 0.6s ease;
+$transparent-bg: rgba(24, 24, 27, 0.05);
+
+.bg-grey {
+  background-color: $transparent-bg;
+
+  & .form-control {
+    background: $white-color;
+  }
+}
 
 html,
 body {
@@ -71,7 +80,7 @@ body > div.wrapper {
   margin-bottom: -80px;
 }
 div.push {
-  height: 80px;
+  height: 0px;
 }
 body {
   padding: 0;
@@ -138,7 +147,7 @@ button {
 .ptb-200 {
   padding: {
     top: 200px;
-    bottom: 2100px;
+    bottom: 200px;
   }
 }
 
@@ -184,6 +193,10 @@ button {
   padding: {
     bottom: 15px;
   }
+}
+
+.pb-50 {
+  padding-bottom: 50px;
 }
 
 .pt-15 {
@@ -425,6 +438,9 @@ a {
 /* form control */
 .form-group {
   margin-bottom: 25px;
+  & input {
+    min-width: 100px;
+  }
 }
 label {
   color: $black-color;
@@ -513,7 +529,7 @@ Navbar CSS
   margin-right: 10px;
 }
 .navbar-area {
-  background: transparent;
+  background: $white-color;
   position: absolute;
   top: 0;
   left: 0;
@@ -521,7 +537,9 @@ Navbar CSS
   width: 100%;
   z-index: 999;
   height: auto;
+}
 
+.navbar-area, .data-subnav {
   nav {
     padding: 0px;
     ul {
@@ -699,6 +717,7 @@ Navbar CSS
       }
     }
   }
+
   &.navbar-style-two {
     padding: {
       left: 55px;
@@ -1634,7 +1653,7 @@ Featured Services CSS
   padding: 40px 30px;
   box-shadow: 0 0 1.25rem rgba(108, 118, 134, 0.1);
   margin-bottom: 30px;
-  min-height: 400px;
+  min-height: 300px;
 
   .icon {
     font-size: 45px;
@@ -5150,7 +5169,6 @@ Contact CSS
   }
 }
 .contact-form {
-  background-color: $white-color;
   text-align: center;
 
   h2 {
@@ -6159,10 +6177,68 @@ Mission CSS
   & p {
     text-align: center;
     font-size: 1.4em;
-    max-width: 90%;
   }
 
   & .emph {
     color: $main-color;
+  }
+}
+
+/*================================================
+DownloadCTA CSS
+=================================================*/
+.download-area {
+  & p {
+    text-align: center;
+    font-size: 1.4rem;
+  }
+
+  & .emph {
+    color: $main-color;
+  }
+
+  & button {
+    margin: 2rem;
+  }
+}
+
+
+/*================================================
+Data CSS
+=================================================*/
+.data-banner {
+  height: auto;
+}
+
+
+.data-purpose {
+  & p {
+    & .emph {
+      font-weight: 800;
+      text-decoration: underline;
+    }
+  }
+}
+
+.data-sources {
+  & img {
+    padding: 10px
+  }
+}
+
+.data-download-cta {
+  & p {
+    font-size: 1.4rem;
+  }
+  & button {
+    margin: 2rem;
+  }
+}
+
+.data-subnav {
+  padding-top: 150px;
+
+  nav {
+
   }
 }
