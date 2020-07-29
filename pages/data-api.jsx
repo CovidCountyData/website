@@ -1,9 +1,16 @@
 import React from "react";
 import NavbarThree from "../components/Layouts/Navbar";
-import DownloadBanner from "../components/Download/DownloadBanner";
 import DataSubNav from "../components/Data/DataSubNav";
 import DownloadFieldDescriptions from "../components/Download/DownloadFieldDescriptions";
 import DownloadMoreAPI from "../components/Download/DownloadMoreInApi";
+import DataAPIBanner from "../components/DataAPI/DataAPIBanner";
+
+import dynamic from "next/dynamic";
+
+const RapiDoc = dynamic(
+  () => import("../components/Libraries/RapiDocSwagger"),
+  { ssr: false }
+);
 
 const DataAPI = () => {
   const backref = { title: "Our data", href: "/data" };
@@ -11,8 +18,8 @@ const DataAPI = () => {
     <React.Fragment>
       <NavbarThree />
       <DataSubNav title="Use Data API" backref={backref} />
-      <DownloadBanner />
-      <DownloadFieldDescriptions />
+      <DataAPIBanner />
+      <RapiDoc />
       <hr />
       <DownloadMoreAPI />
     </React.Fragment>

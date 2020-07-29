@@ -1,5 +1,6 @@
 import React from "react";
 import DownloadButton from "./DownloadButton";
+import TwoColumnBanner from "../Common/TwoColumnBanner";
 
 function DownloadBanner() {
   const datasets = [
@@ -40,32 +41,21 @@ function DownloadBanner() {
         "A timeseries of the number of total, positive, and negative COVID-19 tests in each US county.",
     },
   ];
-  return (
-    <React.Fragment>
-      <div className="data-download-banner bg-grey ptb-100">
-        <div className="container">
-          <div className="row align-items-center justify-content-between">
-            <div className="col-md-6 col-lg-6 col-xl-6 col-sm-12">
-              <h1>
-                These files contain the most up-to-date county-level COVID
-                stats. All dates and times are in US Eastern Time (ET). The data
-                can be downloaded in either CSV or JSON format.
-              </h1>
-            </div>
-            <div className="col-auto">
-              <div className="data-download-buttons">
-                <div className="container">
-                  {datasets.map((x) => {
-                    return <DownloadButton {...x} key={x.name} />;
-                  })}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+
+  const right = (
+    <div className="data-download-buttons">
+      <div className="container">
+        {datasets.map((x) => {
+          return <DownloadButton {...x} key={x.name} />;
+        })}
       </div>
-    </React.Fragment>
+    </div>
   );
+  const title = `
+  These files contain the most up-to-date county-level COVID
+  stats. All dates and times are in US Eastern Time (ET). The data
+  can be downloaded in either CSV or JSON format.`;
+  return <TwoColumnBanner title={title} right={right} />;
 }
 
 export default DownloadBanner;

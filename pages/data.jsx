@@ -15,7 +15,7 @@ const Data = () => {
     },
     {
       title: "Use data API",
-      href: "#",
+      href: "/data-api",
     },
   ];
 
