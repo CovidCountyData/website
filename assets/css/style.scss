@@ -289,11 +289,7 @@ a {
     color: $main-color;
     box-shadow: unset;
     background-color: transparent;
-    // border-color: $main-color;
-
-    &::before {
-      width: 0;
-    }
+    border-color: $main-color;
   }
 }
 .btn-secondary {
@@ -6226,9 +6222,10 @@ Data CSS
   }
 }
 
-.data-download-cta {
+.cta-title-buttons {
   & p {
     font-size: 1.4rem;
+    text-align: center;
   }
   & button {
     margin: 2rem;
@@ -6241,4 +6238,66 @@ Data CSS
   nav {
 
   }
+}
+
+/*================================================
+Download Page CSS
+=================================================*/
+.data-download-banner {
+  h1 {
+    font-weight: 400;
+    font-size: 36px;
+  }
+}
+.data-download-buttons {
+  & button {
+    width: 100%;
+    margin: 10px;
+  }
+  & i {
+    font-size: 24px;
+    float: left;
+    margin: {
+      right: 12px;
+    }
+  }
+}
+
+.data-download-button {
+  & p {
+    color: $white-color;
+  }
+  & .button-tooltip {
+    max-width: 250px;
+  }
+}
+
+.download-field-descriptions {
+  ul {
+    list-style: none;
+    margin-top: 30px;
+  }
+
+  ul li {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  .dataset-name {
+    font-weight: 600;
+    font-size: 1rem;
+  }
+
+  .dataset-field-type, .dataset-field-desc {
+    padding-left: 2rem;
+  }
+  .dataset-field-type {
+    font-style: italic;
+    font-size: 0.8rem;
+  }
+
+  .dataset-field-desc p {
+    font-size: 0.9rem;
+  }
+
 }

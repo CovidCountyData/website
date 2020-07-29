@@ -9,9 +9,9 @@ const Purpose = () => {
             <div className="col-6">
               <p>
                 Our main focus is to provide you with free{" "}
-                <span className="emph">county-level</span> COVID stats on
+                <span className="emph">county-level</span> COVID stats on{" "}
                 <span className="emph">testing</span>,{" "}
-                <span className="emph">hospitalizations</span>,
+                <span className="emph">hospitalizations</span>,{" "}
                 <span className="emph">cases</span>, and{" "}
                 <span className="emph">deaths</span>, and we’re expanding our
                 data coverage daily.

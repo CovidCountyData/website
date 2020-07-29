@@ -1,29 +1,20 @@
 import React from "react";
+import CTATitleButtons from "../Common/CTATitleButtons";
 
 const DataDownloadCTA = () => {
-  return (
-    <section className="data-download-cta ptb-100">
-      <div className="container">
-        <div className="row d-flex justify-content-center">
-          <div className="col-auto">
-            <p>
-              Easily accessible by csv download, data API, or client library
-            </p>
-          </div>
-        </div>
-        <div className="row d-flex justify-content-center">
-          <div className="col-auto">
-            <button type="button" className="btn btn-primary">
-              Download data
-            </button>
-            <button type="button" className="btn btn-primary">
-              Use API
-            </button>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
+  const buttons = [
+    {
+      target: "/download",
+      text: "Download data",
+    },
+    {
+      target: "/data-api",
+      text: "Use data API",
+    },
+  ];
+  const title =
+    "Easily accessible by csv download, data API, or client library";
+  return <CTATitleButtons title={title} buttons={buttons} />;
 };
 
 export default DataDownloadCTA;

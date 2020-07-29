@@ -18,7 +18,6 @@ class Home extends Component {
         <FeaturedSources />
         <DownloadCTA className="bg-grey" />
         <RegisterFormContainer />
-        {/*<News />*/}
         <ContactCTA className="bg-grey" />
       </React.Fragment>
     );
