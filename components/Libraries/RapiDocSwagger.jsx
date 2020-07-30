@@ -7,7 +7,7 @@ function RapiDoc() {
       <div className="row">
         <div className="col-lg-12">
           <rapi-doc
-            spec-url="https://api.covidcountydata.org/swagger.json"
+            spec-url="https://clean-swagger-inunbrtacq-uk.a.run.app"
             render-style="view"
             schema-style="table"
             show-header="false"

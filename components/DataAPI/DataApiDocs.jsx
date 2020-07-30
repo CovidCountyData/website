@@ -1,19 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 import Tabs from "react-bootstrap/Tabs";
 import Tab from "react-bootstrap/Tab";
 import { PyDocs, RDocs, JlDocs } from "../Libraries";
 import Container from "react-bootstrap/Container";
 import dynamic from "next/dynamic";
 import GraphQLApi from "../Libraries/GraphQLApi";
+import { useMixpanel } from "../Common/mixpanel";
 
 const RestAPI = dynamic(() => import("../Libraries/RapiDocSwagger"), {
   ssr: false,
 });
 
 const DataApiDocs = () => {
+  const [page, setPage] = useState("rest");
+  const mixpanel = useMixpanel();
+  const updatePage = (newPage) => {
+    mixpanel.track("api doc click", { from: page });
+    setPage(newPage);
+  };
   return (
     <Container className="pb-100 pt-50 api-docs-tab-panel">
-      <Tabs defaultActiveKey="rest" id="api-docs-tab-panel">
+      <Tabs activeKey={page} id="api-docs-tab-panel" onSelect={updatePage}>
         <Tab eventKey="rest" title="Rest API">
           <RestAPI />
         </Tab>
