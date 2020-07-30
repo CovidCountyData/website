@@ -6,6 +6,7 @@ import Purpose from "../components/Data/Purpose";
 import Sources from "../components/Data/Sources";
 import DataDownloadCTA from "../components/Data/DownloadCTA";
 import DataSubNav from "../components/Data/DataSubNav";
+import ContactCTA from "../components/Common/ContactCTA";
 
 const Data = () => {
   const navlinks = [
@@ -27,7 +28,7 @@ const Data = () => {
       <Purpose />
       <Sources />
       <DataDownloadCTA />
-      <hr />
+      <ContactCTA className="bg-grey" />
       <News />
     </React.Fragment>
   );

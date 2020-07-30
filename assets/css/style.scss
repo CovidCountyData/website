@@ -53,8 +53,9 @@ Default CSS
 $main-color: #f0a216;
 // $gradient-color: linear-gradient(to left top,#09367B, #f0a216);
 $gradient-color: #09367b;
+$hover-gradient-color: #0e56c4;
 $main-font-family: "Open Sans", sans-serif;
-$heading-font-family: "Saira", sans-serif;
+$heading-font-family: "Open Sans", "Saira", sans-serif;
 $font-size: 18px;
 $black-color: #18181b;
 $paragraph-color: #646464;
@@ -286,10 +287,16 @@ a {
   }
   &:hover,
   &:focus {
-    color: $main-color;
+    //color: $main-color;
     box-shadow: unset;
     background-color: transparent;
     border-color: $main-color;
+
+    &::before {
+      width: 100%;
+      background: $hover-gradient-color;
+    }
+
   }
 }
 .btn-secondary {
@@ -897,7 +904,7 @@ Main Banner CSS
 .main-banner {
   position: relative;
   z-index: 1;
-  height: 520px;
+  height: 600px;
   background: {
     position: bottom center;
     size: cover;
@@ -5171,7 +5178,6 @@ Contact CSS
     font: {
       size: 36px;
     }
-    margin-bottom: 30px;
   }
 }
 .contact-sidebar {
@@ -6142,6 +6148,12 @@ Go Top CSS
   }
 }
 
+#registerForm {
+  button {
+    margin: 2rem;
+  }
+}
+
 /*================================================
 Audit CSS
 =================================================*/
@@ -6169,7 +6181,7 @@ Audit CSS
 /*================================================
 Mission CSS
 =================================================*/
-.mission-area {
+.mission-area, .download-area, .data-purpose, .data-sources {
   & p {
     text-align: center;
     font-size: 1.4em;
@@ -6184,15 +6196,6 @@ Mission CSS
 DownloadCTA CSS
 =================================================*/
 .download-area {
-  & p {
-    text-align: center;
-    font-size: 1.4rem;
-  }
-
-  & .emph {
-    color: $main-color;
-  }
-
   & button {
     margin: 2rem;
   }
@@ -6204,16 +6207,6 @@ Data CSS
 =================================================*/
 .data-banner {
   height: auto;
-}
-
-
-.data-purpose {
-  & p {
-    & .emph {
-      font-weight: 800;
-      text-decoration: underline;
-    }
-  }
 }
 
 .data-sources {
@@ -6234,25 +6227,27 @@ Data CSS
 
 .data-subnav {
   padding-top: 150px;
-
-  nav {
-
-  }
 }
 
 /*================================================
 Download Page CSS
 =================================================*/
-.data-download-banner {
+.two-column-banner {
   h1 {
     font-weight: 400;
     font-size: 36px;
+  }
+  & p {
+    font-size: 1.2rem;
   }
 }
 .data-download-buttons {
   & button {
     width: 100%;
     margin: 10px;
+  }
+  & a {
+    width: 100%
   }
   & i {
     font-size: 24px;
@@ -6300,4 +6295,10 @@ Download Page CSS
     font-size: 0.9rem;
   }
 
+}
+
+.download-button {
+  button {
+    text-align: left;
+  }
 }

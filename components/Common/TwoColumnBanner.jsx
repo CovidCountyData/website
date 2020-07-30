@@ -5,10 +5,10 @@ function TwoColumnBanner(props) {
   const rightColClass = rightColNum ? "col-md-" + rightColNum : "col-auto";
   return (
     <React.Fragment>
-      <div className="data-download-banner bg-grey ptb-100">
+      <div className="two-column-banner bg-grey ptb-100">
         <div className="container">
           <div className="row align-items-center justify-content-between">
-            <div className="col-md-6 col-sm-12">
+            <div className="col-md-5 col-sm-12">
               <h1>{title}</h1>
             </div>
             <div className={rightColClass}>{right}</div>

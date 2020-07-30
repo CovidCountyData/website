@@ -13,7 +13,7 @@ const RegisterForm = (props) => {
   });
 
   return (
-    <div className="contact-form">
+    <div className="contact-form pb-50">
       <div className="container">
         <div className="row d-flex justify-content-center align-items-center">
           <div className="col-auto">

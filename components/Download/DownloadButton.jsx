@@ -2,16 +2,18 @@ import React from "react";
 import ReactTooltip from "react-tooltip";
 
 const DownloadButton = (props) => {
-  const { name, description } = props;
+  const { name, url, description } = props;
   const tipName = name + "-tooltip";
 
   return (
-    <div className="row align-items-center data-download-button">
+    <div className="download-button row data-download-button">
       <div className="col d-flex mr-auto">
-        <button className="btn btn-primary">
-          <i className="pe-7s-download" />
-          {name}
-        </button>
+        <a href={url} download>
+          <button className="btn btn-primary">
+            <i className="pe-7s-download" />
+            {name}
+          </button>
+        </a>
         <div className="col align-self-center">
           <i
             data-tip

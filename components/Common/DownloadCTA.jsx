@@ -5,7 +5,7 @@ import CTATitleButtons from "./CTATitleButtons";
 const DownloadCTA = (props) => {
   const { className } = props;
   const title =
-    "Our data is updated continuously. You can download the data as csv or json files, use our APIs, or use our client libraries.";
+    "Our data is updated continuously. You can download the data as a csv or use one of our API interfaces.";
   const buttons = [
     {
       target: "/download",

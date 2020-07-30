@@ -17,13 +17,12 @@ const DownloadFieldDescriptions = () => {
     {
       name: "Total Tests",
       type: "int",
-      description:
-        "Total number of COVID-19 tests that have been administered.",
+      description: "Total number of COVID-19 tests that have been administered",
     },
     {
       name: "Positive Tests",
       type: "int",
-      description: "Total number of COVID-19 tests with a positive result.",
+      description: "Total number of COVID-19 tests with a positive result",
     },
   ];
   const momentInTime = [
@@ -68,7 +67,7 @@ const DownloadFieldDescriptions = () => {
       <div className="container">
         <h2>Field Descriptions</h2>
         <div className="row justify-content-around">
-          <div className="col-sm-12 col-md-6 col-lg-6">
+          <div className="col-sm-12 col-md-5 col-lg-5">
             <strong>Cumulative</strong>
             <ul className="variable-list">
               {cumulative.map((x) => {
