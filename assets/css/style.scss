@@ -261,6 +261,10 @@ a {
   background-color: $white-color;
   // border: 1px solid $main-color;
 
+  & a {
+    color: $white-color;
+  }
+
   &::before {
     border-radius: 5px;
     content: "";

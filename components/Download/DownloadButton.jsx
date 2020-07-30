@@ -1,5 +1,6 @@
 import React from "react";
 import ReactTooltip from "react-tooltip";
+import MixButton from "../Common/MixButton";
 
 const DownloadButton = (props) => {
   const { name, url, description } = props;
@@ -8,12 +9,12 @@ const DownloadButton = (props) => {
   return (
     <div className="download-button row data-download-button">
       <div className="col d-flex mr-auto">
-        <a href={url} download>
-          <button className="btn btn-primary">
+        <MixButton event={name + " download"}>
+          <a href={url} download>
             <i className="pe-7s-download" />
             {name}
-          </button>
-        </a>
+          </a>
+        </MixButton>
         <div className="col align-self-center">
           <i
             data-tip

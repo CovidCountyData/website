@@ -6,10 +6,12 @@ const DataDownloadCTA = () => {
     {
       target: "/download",
       text: "Download data",
+      event: "click download data",
     },
     {
       target: "/data-api",
       text: "Use data API",
+      event: "click use api",
     },
   ];
   const title = "Easily accessible by csv download or our data API";

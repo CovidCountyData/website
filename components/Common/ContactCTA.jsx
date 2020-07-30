@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Link from "next/link";
 import classNames from "classnames";
+import MixButton from "./MixButton";
 
 const ContactCTA = (props) => {
   const { className } = props;
@@ -21,9 +22,9 @@ const ContactCTA = (props) => {
 
         <div className="row d-flex justify-content-center">
           <div className="col-auto">
-            <Link href="/contact">
-              <button className="btn btn-primary">Contact Us</button>
-            </Link>
+            <MixButton event="contact button click">
+              <Link href="/contact">Contact Us</Link>
+            </MixButton>
           </div>
         </div>
       </div>

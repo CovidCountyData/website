@@ -1,8 +1,20 @@
 import React from "react";
 import Link from "../../utils/ActiveLink";
+import { useMixpanel } from "./mixpanel";
+import MixButton from "./MixButton";
 
 const CTATitleButtons = (props) => {
   const { title, buttons } = props;
+
+  const buttonComponents = buttons.map((x) => {
+    return (
+      <MixButton event={x.event}>
+        <Link key={x.target} href={x.target}>
+          <span>{x.text}</span>
+        </Link>
+      </MixButton>
+    );
+  });
 
   return (
     <section className="cta-title-buttons ptb-100">
@@ -13,17 +25,7 @@ const CTATitleButtons = (props) => {
           </div>
         </div>
         <div className="row d-flex justify-content-center">
-          <div className="col-auto">
-            {buttons.map((x) => {
-              return (
-                <Link key={x.target} href={x.target}>
-                  <button type="button" className="btn btn-primary">
-                    {x.text}
-                  </button>
-                </Link>
-              );
-            })}
-          </div>
+          <div className="col-auto">{buttonComponents}</div>
         </div>
       </div>
     </section>

@@ -10,10 +10,12 @@ const DownloadCTA = (props) => {
     {
       target: "/download",
       text: "Download data",
+      event: "click download data",
     },
     {
       target: "/data-api",
       text: "Use data API",
+      event: "click use api",
     },
   ];
 
