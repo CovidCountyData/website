@@ -1,3 +1,4 @@
+import React from "react";
 import ReadmeDocs from "./DocsFromReadme";
 
 const PyDocs = () => {
