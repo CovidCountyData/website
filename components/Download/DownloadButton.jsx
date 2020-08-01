@@ -19,7 +19,6 @@ const DownloadButton = (props) => {
           <i
             data-tip
             data-effect="solid"
-            data-place="right"
             data-for={tipName}
             className="pe-7s-info"
           />
