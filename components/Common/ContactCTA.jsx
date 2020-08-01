@@ -10,7 +10,7 @@ const ContactCTA = (props) => {
     <section className={cn}>
       <div className="container">
         <div className="row d-flex justify-content-center">
-          <div className="col-auto section-title">
+          <div className="col section-title">
             <h2>How can we help?</h2>
             <p>
               If you are a researcher or policy maker, we’re interested in how
