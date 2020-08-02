@@ -151,7 +151,7 @@ class Footer extends Component {
         <div className="copyright-area">
           <div className="container">
             <p>
-              &copy; Copyright {currentYear} Valorum Data, LLC. All Rights
+              &copy; Copyright {currentYear} <a href="https://valorumdata.com">Valorum Data, LLC</a>. All Rights
               Reserved.
             </p>
           </div>
