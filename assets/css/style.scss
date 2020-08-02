@@ -987,6 +987,13 @@ Main Banner CSS
   &.startup-agency2 {
     background-color: #fbfbfb;
   }
+  a.nav-link {
+    font-weight: 700;
+    color: $black-color!important;
+  }
+  i {
+    font-weight: 900;
+  }
 }
 .main-banner-boxes {
   .container-fluid {

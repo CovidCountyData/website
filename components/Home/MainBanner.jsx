@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 import Particles from "react-particles-js";
+import Link from "../../utils/ActiveLink";
+
+
 
 // Jess thinks maybe make this blue
 const particleOpt = {
@@ -49,6 +52,8 @@ class MainBanner extends Component {
     this.setState({ isOpen: true });
   };
 
+
+
   render() {
     return (
       <React.Fragment>
@@ -63,6 +68,16 @@ class MainBanner extends Component {
                         Access free, up-to-date county-level COVID data to
                         inform local policies
                       </h1>
+                      <div className="row">
+                        <div className="navbar navbar-light">
+                          <ul className="navbar-nav">
+                            <li className="nav-item">
+                              <Link href="/data"><a className="nav-link">See our data <i className="pe-7s-angle-right" /></a></Link>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+
                     </div>
                   </div>
                   <div className="col-md-6">

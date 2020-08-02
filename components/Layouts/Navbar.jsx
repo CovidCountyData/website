@@ -83,12 +83,12 @@ class Navbar extends Component {
 
                     <ul className="dropdown-menu">
                       <li className="nav-item">
-                        <Link href="/download" activeClassName="active">
+                        <Link href="/data/download" activeClassName="active">
                           <a className="nav-link">Download Data</a>
                         </Link>
                       </li>
                       <li className="nav-item">
-                        <Link href="/data-api" activeClassName="active">
+                        <Link href="/data/api" activeClassName="active">
                           <a className="nav-link">Use Data API</a>
                         </Link>
                       </li>

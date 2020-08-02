@@ -8,12 +8,12 @@ const DownloadCTA = (props) => {
     "Our data is updated continuously. You can download the data as a csv or use one of our API interfaces.";
   const buttons = [
     {
-      target: "/download",
+      target: "/data/download",
       text: "Download data",
       event: "click download data",
     },
     {
-      target: "/data-api",
+      target: "/data/api",
       text: "Use data API",
       event: "click use api",
     },

@@ -4,12 +4,12 @@ import CTATitleButtons from "../Common/CTATitleButtons";
 const DataDownloadCTA = () => {
   const buttons = [
     {
-      target: "/download",
+      target: "/data/download",
       text: "Download data",
       event: "click download data",
     },
     {
-      target: "/data-api",
+      target: "/data/api",
       text: "Use data API",
       event: "click use api",
     },
