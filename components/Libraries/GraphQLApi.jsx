@@ -1,5 +1,5 @@
 import React from "react";
-import GraphQLDocs from "./GraphQLDocs"
+import GraphQLDocs from "./GraphQLDocs";
 
 const GraphQLApi = () => {
   return (

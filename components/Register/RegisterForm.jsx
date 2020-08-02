@@ -13,7 +13,6 @@ const RegisterForm = (props) => {
   });
 
   return (
-
     <div className="contact-form pb-50">
       <div className="container">
         <div className="row d-flex justify-content-center align-items-center">
@@ -40,7 +39,7 @@ const RegisterForm = (props) => {
                   onClick={(x) => console.log("submitting", x)}
                 >
                   Register
-              </button>
+                </button>
               </form>
             </div>
           </a>

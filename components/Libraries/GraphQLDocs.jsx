@@ -143,7 +143,7 @@ To add your apikey, click the "Headers" button, which will open a panel on the r
 
 Enjoy! And please [get in touch](https://covidcountydata.org/contact) if you have questions or need assistance.
 
-`
+`;
 
   return (
     <div className="container">
