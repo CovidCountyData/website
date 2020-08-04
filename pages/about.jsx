@@ -11,7 +11,7 @@ class PrivacyPolicy extends Component {
 
         <div className="text-container pt-100">
           <div className="container">
-            <h3>CMDC: COVID-19 Modeling Data Collaborative</h3>
+            <h3>CCD: COVID County Data</h3>
             <p>
               The COVID-19 pandemic has pushed many researchers and policy
               advisors to seek to understand and evaluate the costs and risks
@@ -21,10 +21,10 @@ class PrivacyPolicy extends Component {
               in reliable data.
             </p>
             <p>
-              The COVID Modeling Data Collaborative is an initiative with the
-              mandate to aggregate, collect, and distribute{" "}
-              <strong>reliable</strong> data to anyone interested in evaluating
-              these policies. Our core values are summarized by:
+              The COVID County Data project is an initiative with the mandate to
+              aggregate, collect, and distribute <strong>reliable</strong> data
+              to anyone interested in evaluating these policies. Our core values
+              are summarized by:
             </p>
             <ul>
               <li>

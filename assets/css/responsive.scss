@@ -832,7 +832,7 @@ $transition: .5s;
         overflow: hidden;
         padding: {
             top: 150px;
-            bottom: 85px;
+            bottom: 60px;
         }
         h2 {
             font-size: 24px;
@@ -2109,7 +2109,7 @@ $transition: .5s;
         }
         padding: {
             top: 150px;
-            bottom: 90px;
+            bottom: 65px;
         }
     }
 
@@ -3216,9 +3216,6 @@ $transition: .5s;
 }
 
 @media only screen and (min-width : 1800px) {
-    .main-banner {
-        height: 800px;
-    }
     .navbar-style-2 {
         .container-fluid {
             padding: 15px 40px 0;
@@ -3228,11 +3225,6 @@ $transition: .5s;
                 padding: 5px 20px;
             }
         }
-    }
-
-    .page-title-area {
-        padding-top: 300px;
-        padding-bottom: 230px;
     }
 }
 

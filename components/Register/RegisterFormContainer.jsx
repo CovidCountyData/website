@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import RegisterForm from "./RegisterForm";
 import Instructions from "./Instructions";
 import axios from "axios";
+import classNames from "classnames";
 import { useMixpanel } from "../Common/mixpanel";
 
-const RegisterFormContainer = () => {
+const RegisterFormContainer = (props) => {
+  const { className } = props;
   const [key, setKey] = useState("");
   const [fetchedKey, setFetchedKey] = useState(false);
   const [existingKey, setExistingKey] = useState(false);
@@ -46,15 +48,19 @@ const RegisterFormContainer = () => {
   };
 
   return (
-    <div className="pt-100">
+    <div className={classNames("ptb-100", className)}>
       <RegisterForm onSubmit={submit} title="Get your free API key" />
-      <div className="text-content">
+      <div className="text-content pt-15">
         <div className="container">
-          <Instructions
-            hasKey={fetchedKey}
-            apiKey={key}
-            existingKey={existingKey}
-          />
+          <div className="row justify-content-center d-flex">
+            <div className="col-auto">
+              <Instructions
+                hasKey={fetchedKey}
+                apiKey={key}
+                existingKey={existingKey}
+              />
+            </div>
+          </div>
         </div>
       </div>
     </div>

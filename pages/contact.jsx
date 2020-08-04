@@ -47,7 +47,7 @@ const Contact = () => {
         <ContactForm onSubmit={contactSubmit} title="Send us a Message" />
       </div>
 
-      <div className="pt-100">
+      <div className="ptb-100">
         <Newsletter onSubmit={newsletterSubmit} />
       </div>
     </React.Fragment>

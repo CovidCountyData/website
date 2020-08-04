@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUniversity } from "@fortawesome/free-solid-svg-icons";
 import Link from "../../utils/ActiveLink";
 
 class Navbar extends Component {
@@ -13,6 +15,7 @@ class Navbar extends Component {
       collapsed: !this.state.collapsed,
     });
   };
+
   componentDidMount() {
     let elementId = document.getElementById("navbar");
     document.addEventListener("scroll", () => {
@@ -24,6 +27,7 @@ class Navbar extends Component {
     });
     window.scrollTo(0, 0);
   }
+
   componentWillUnmount() {
     this._isMounted = false;
   }
@@ -45,9 +49,9 @@ class Navbar extends Component {
               <Link href="/">
                 <a className="navbar-brand">
                   <img
-                    src={require("../../images/valorumdata-2.png")}
-                    className="white-logo"
+                    src={require("../../images/ccd_logo.svg")}
                     alt="logo"
+                    style={{ height: "3em" }}
                   />
                 </a>
               </Link>
@@ -71,78 +75,40 @@ class Navbar extends Component {
               <div className={classOne} id="navbarSupportedContent">
                 <ul className="navbar-nav">
                   <li className="nav-item">
-                    <Link href="/" activeClassName="active">
-                      <a className="nav-link">Home</a>
+                    <Link href="/data">
+                      <a className="nav-link">
+                        Our Data <i className="icofont-thin-down" />
+                      </a>
                     </Link>
+
+                    <ul className="dropdown-menu">
+                      <li className="nav-item">
+                        <Link href="/data/download" activeClassName="active">
+                          <a className="nav-link">Download Data</a>
+                        </Link>
+                      </li>
+                      <li className="nav-item">
+                        <Link href="/data/api" activeClassName="active">
+                          <a className="nav-link">Use Data API</a>
+                        </Link>
+                      </li>
+                    </ul>
                   </li>
 
                   <li className="nav-item">
                     <Link href="/about" activeClassName="active">
-                      <a className="nav-link">About</a>
-                    </Link>
-                  </li>
-
-                  <li className="nav-item">
-                    <Link href="#">
-                      <a className="nav-link">
-                        Client Libraries <i className="icofont-thin-down" />
-                      </a>
-                    </Link>
-
-                    <ul className="dropdown-menu">
-                      <li className="nav-item">
-                        <Link href="/julia" activeClassName="active">
-                          <a className="nav-link">Julia</a>
-                        </Link>
-                      </li>
-                      <li className="nav-item">
-                        <Link href="/python" activeClassName="active">
-                          <a className="nav-link">Python</a>
-                        </Link>
-                      </li>
-
-                      <li className="nav-item">
-                        <Link href="/R" activeClassName="active">
-                          <a className="nav-link">R</a>
-                        </Link>
-                      </li>
-                    </ul>
-                  </li>
-
-                  <li className="nav-item">
-                    <Link href="#">
-                      <a className="nav-link">
-                        API <i className="icofont-thin-down" />
-                      </a>
-                    </Link>
-                    <ul className="dropdown-menu">
-                      <li className="nav-item">
-                        <Link href="/register" activeClassName="active">
-                          <a className="nav-link">Registration</a>
-                        </Link>
-                      </li>
-                      <li className="nav-item">
-                        <Link href="/rest-api" activeClassName="active">
-                          <a className="nav-link">REST API</a>
-                        </Link>
-                      </li>
-                      <li className="nav-item">
-                        <Link href="/graphql-api" activeClassName="active">
-                          <a className="nav-link">GraphQL API</a>
-                        </Link>
-                      </li>
-                    </ul>
-                  </li>
-
-                  <li className="nav-item">
-                    <Link href="/contact" activeClassName="active">
-                      <a className="nav-link">Contact Us</a>
+                      <a className="nav-link">About us</a>
                     </Link>
                   </li>
 
                   <li className="nav-item">
                     <Link href="/faq" activeClassName="active">
-                      <a className="nav-link">FAQ</a>
+                      <a className="nav-link">FAQs</a>
+                    </Link>
+                  </li>
+                  <li className="nav-item">
+                    <Link href="/contact" activeClassName="active">
+                      <a className="nav-link">Contact Us</a>
                     </Link>
                   </li>
                 </ul>
