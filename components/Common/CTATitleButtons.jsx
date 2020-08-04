@@ -8,9 +8,9 @@ const CTATitleButtons = (props) => {
 
   const buttonComponents = buttons.map((x) => {
     return (
-      <MixButton event={x.event}>
+      <MixButton event={x.event} key={x.target}>
         <Link key={x.target} href={x.target}>
-          <span>{x.text}</span>
+          <a>{x.text}</a>
         </Link>
       </MixButton>
     );
