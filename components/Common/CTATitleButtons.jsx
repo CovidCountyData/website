@@ -1,18 +1,21 @@
 import React from "react";
 import Link from "../../utils/ActiveLink";
 import { useMixpanel } from "./mixpanel";
-import MixButton from "./MixButton";
 
 const CTATitleButtons = (props) => {
   const { title, buttons } = props;
+  const mixpanel = useMixpanel();
 
   const buttonComponents = buttons.map((x) => {
+    const onClick = () => {
+      mixpanel.track(x.event);
+    };
     return (
-      <MixButton event={x.event} key={x.target}>
-        <Link key={x.target} href={x.target}>
-          <a>{x.text}</a>
-        </Link>
-      </MixButton>
+      <Link key={x.target} href={x.target}>
+        <a className="btn btn-primary" onClick={onClick}>
+          {x.text}
+        </a>
+      </Link>
     );
   });
 

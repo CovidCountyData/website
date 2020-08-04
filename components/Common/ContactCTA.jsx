@@ -1,11 +1,12 @@
-import React, { Component } from "react";
+import React from "react";
 import Link from "next/link";
 import classNames from "classnames";
-import MixButton from "./MixButton";
+import { useMixpanel } from "./mixpanel";
 
 const ContactCTA = (props) => {
   const { className } = props;
   const cn = classNames("contact-cta-area", "ptb-100", className);
+  const mixpanel = useMixpanel();
   return (
     <section className={cn}>
       <div className="container">
@@ -22,9 +23,14 @@ const ContactCTA = (props) => {
 
         <div className="row d-flex justify-content-center">
           <div className="col-auto">
-            <MixButton event="contact button click">
-              <Link href="/contact">Contact Us</Link>
-            </MixButton>
+            <Link href="/contact">
+              <a
+                onClick={mixpanel.track("contact button click")}
+                className="btn btn-primary"
+              >
+                Contact Us
+              </a>
+            </Link>
           </div>
         </div>
       </div>

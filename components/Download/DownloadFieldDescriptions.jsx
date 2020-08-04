@@ -56,7 +56,7 @@ const DownloadFieldDescriptions = () => {
         "Total number of hospital beds in use by any patient (not necessarily COVID)",
     },
     {
-      name: "Total ICU Beds In Use (COVID)",
+      name: "Total Hospital Beds In Use (COVID)",
       type: "int",
       description:
         "Total number of hospital beds in use by patients with COVID-19",

@@ -1,20 +1,21 @@
 import React from "react";
 import ReactTooltip from "react-tooltip";
-import MixButton from "../Common/MixButton";
+import { useMixpanel } from "../Common/mixpanel";
 
 const DownloadButton = (props) => {
   const { name, url, description } = props;
   const tipName = name + "-tooltip";
+  const mixpanel = useMixpanel();
+
+  const onClick = () => mixpanel.track(name + " download");
 
   return (
     <div className="download-button row data-download-button">
       <div className="col d-flex mr-auto">
-        <MixButton event={name + " download"}>
-          <a href={url} download>
-            <i className="pe-7s-download" />
-            {name}
-          </a>
-        </MixButton>
+        <a className="btn btn-primary" href={url} download onClick={onClick}>
+          <i className="pe-7s-download" />
+          {name}
+        </a>
         <div className="col align-self-center">
           <i
             data-tip
