@@ -59,7 +59,7 @@ function DownloadBanner() {
   );
   const title = `
   These files contain the most up-to-date county-level COVID
-  stats. All dates and times are UTC. The data
+  stats. All dates are local to the county being reported. The data
   can be downloaded in CSV format.`;
   return <TwoColumnBanner title={title} right={right} />;
 }

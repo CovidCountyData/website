@@ -18,6 +18,7 @@ import App from "next/app";
 import { DefaultSeo } from "next-seo";
 import GoTop from "../components/Shared/GoTop";
 import MixpanelProvider from "../components/Common/mixpanel";
+import Head from "next/head";
 
 ReactGA.initialize("UA-112477777-3");
 
@@ -58,6 +59,12 @@ export default class MyApp extends App {
             cardType: "summary_large_image",
           }}
         />
+       <Head>
+                  <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, shrink-to-fit=no"
+          />
+       </Head>
 
         <Component {...pageProps} />
 

@@ -12,7 +12,10 @@ const Newsletter = ({ onSubmit }) => {
       <div className="container">
         <div className="newsletter-inner-area">
           <div className="newsletter-content">
-            <h2>Sign up for our newsletter to receive updates about our increasing data coverage</h2>
+            <h2>
+              Sign up for our newsletter to receive updates about our increasing
+              data coverage
+            </h2>
 
             <form
               className="newsletter-form"
