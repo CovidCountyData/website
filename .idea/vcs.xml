@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="VcsDirectoryMappings">
+    <mapping directory="" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../CMDC_private" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../CovidCountyData.jl" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../cmdc-auth" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../cmdc-tools" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../covidcountydata.py" vcs="Git" />
+  </component>
+</project>

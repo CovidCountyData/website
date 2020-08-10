@@ -7,6 +7,12 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module" module-name="cmdcR" />
+    <orderEntry type="module" module-name="covidcountydata.py" />
+    <orderEntry type="module" module-name="CovidCountyData.jl" />
+    <orderEntry type="module" module-name="CMDC_private" />
+    <orderEntry type="module" module-name="cmdc-tools" />
+    <orderEntry type="module" module-name="cmdc-auth" />
   </component>
   <component name="TemplatesService">
     <option name="TEMPLATE_FOLDERS">

@@ -2,7 +2,13 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/website.iml" filepath="$PROJECT_DIR$/.idea/website.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../CMDC_private/.idea/CMDC_private.iml" filepath="$PROJECT_DIR$/../CMDC_private/.idea/CMDC_private.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../CovidCountyData.jl/.idea/CovidCountyData.jl.iml" filepath="$PROJECT_DIR$/../CovidCountyData.jl/.idea/CovidCountyData.jl.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/ccd.iml" filepath="$PROJECT_DIR$/.idea/ccd.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../cmdc-auth/.idea/cmdc-auth.iml" filepath="$PROJECT_DIR$/../cmdc-auth/.idea/cmdc-auth.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../cmdc-tools/.idea/cmdc-tools.iml" filepath="$PROJECT_DIR$/../cmdc-tools/.idea/cmdc-tools.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../covidcountydataR/.idea/cmdcR.iml" filepath="$PROJECT_DIR$/../covidcountydataR/.idea/cmdcR.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../covidcountydata.py/.idea/covidcountydata.py.iml" filepath="$PROJECT_DIR$/../covidcountydata.py/.idea/covidcountydata.py.iml" />
     </modules>
   </component>
 </project>

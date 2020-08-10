@@ -18,7 +18,7 @@ class MyDocument extends Document {
           <link
             rel="icon"
             type="image/svg"
-            href={require("../images/valorum_circles.svg")}
+            href={require("../images/ccd_favicon.png")}
           />
           <meta
             name="twitter:image"
