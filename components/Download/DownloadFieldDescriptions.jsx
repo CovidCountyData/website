@@ -27,6 +27,22 @@ const DownloadFieldDescriptions = () => {
   ];
   const momentInTime = [
     {
+      name: "dt",
+      type: "date",
+      description:
+        "Date for which data applies in YYYY-MM-DD format. All dates are reported local to the county for which the data applies",
+    },
+    {
+      name: "county_fips",
+      type: "string",
+      description: "Five digit US county fips code for the county",
+    },
+    {
+      name: "county_name",
+      type: "string",
+      description: "The human-readable name for the county",
+    },
+    {
       name: "Total ICU Capacity",
       type: "int",
       description:
@@ -66,6 +82,7 @@ const DownloadFieldDescriptions = () => {
     <section className="download-field-descriptions ptb-100">
       <div className="container">
         <h2>Field Descriptions</h2>
+
         <div className="row justify-content-around">
           <div className="col-sm-12 col-md-5 col-lg-5">
             <strong>Cumulative</strong>

@@ -12,6 +12,12 @@ const Download = () => {
       <NavbarThree />
       <DataSubNav title="Download data" backref={backref} />
       <DownloadBanner />
+      <div className="container pt-50">
+        <div className="col-lg-8 col-xs-10 mx-auto alert alert-danger" role="alert">
+          These files contain only county level data and do not aggregate to
+          state or national totals
+        </div>
+      </div>
       <DownloadFieldDescriptions />
       <hr />
       <DownloadMoreAPI />
