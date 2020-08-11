@@ -13,7 +13,7 @@ class GraphQL extends Component {
           <div className="row">
             <div className="col-lg-12">
               <iframe
-                src="https://api.covid.valorum.ai/graphiql"
+                src="https://api.covidcountydata.org/graphiql"
                 height="800px"
                 width="100%"
               />

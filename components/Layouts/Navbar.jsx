@@ -51,7 +51,7 @@ class Navbar extends Component {
                   <img
                     src={require("../../images/ccd_logo.svg")}
                     alt="logo"
-                    style={{ height: "3em" }}
+                    style={{ height: "3em", width: "9.42em"}}
                   />
                 </a>
               </Link>

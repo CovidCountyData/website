@@ -27,7 +27,7 @@ const RegisterFormContainer = (props) => {
     return false;
   };
   const submit = (data) => {
-    const url = "https://api.covid.valorum.ai/auth";
+    const url = "https://api.covidcountydata.org/auth";
     mixpanel.track("User register", data);
     return axios
       .post(url, data)

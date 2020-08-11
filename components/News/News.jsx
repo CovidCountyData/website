@@ -4,7 +4,7 @@ import NewsComponent from "./NewsComponent";
 import WIP from "../Common/WIP";
 
 const News = () => {
-  const url = "https://api.covid.valorum.ai/reports";
+  const url = "https://api.covidcountydata.org/reports";
   const { data, error, loading } = useRequest(url);
   if (data) {
     const news = data.map((item) => {
