@@ -12,9 +12,9 @@ const CTATitleButtons = (props) => {
     };
     return (
       <Link key={x.target} href={x.target}>
-        <a className="btn btn-primary" onClick={onClick}>
+        <button className="btn btn-primary" onClick={onClick}>
           {x.text}
-        </a>
+        </button>
       </Link>
     );
   });

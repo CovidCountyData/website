@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useForm } from "react-hook-form";
 
 const RegisterForm = (props) => {
@@ -22,7 +22,7 @@ const RegisterForm = (props) => {
           <a name="register">
             <div className="col-auto">
               <form id="registerForm" onSubmit={submit} className="form-inline">
-                <div className="form-group">
+                <div className="form-group no-margin">
                   <input
                     type="text"
                     name="email"

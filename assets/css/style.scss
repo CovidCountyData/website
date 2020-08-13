@@ -200,6 +200,11 @@ button {
   padding-bottom: 50px;
 }
 
+.ps-15 {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
 .pt-50 {
   padding-top: 50px;
 }
@@ -303,7 +308,6 @@ a {
       width: 100%;
       background: $hover-gradient-color;
     }
-
   }
 }
 .btn-secondary {
@@ -540,7 +544,7 @@ Navbar CSS
 }
 .navbar-area {
   background: $white-color;
-  position: absolute;
+  // position: absolute;
   top: 0;
   left: 0;
   padding-top: 15px;
@@ -549,7 +553,8 @@ Navbar CSS
   height: auto;
 }
 
-.navbar-area, .data-subnav {
+.navbar-area,
+.data-subnav {
   nav {
     padding: 0;
     padding-bottom: 10px;
@@ -912,7 +917,9 @@ Main Banner CSS
 .main-banner {
   position: relative;
   z-index: 1;
-  height: 600px;
+  // height: 600px;
+  padding-top: 25px;
+  padding-bottom: 25px;
   background: {
     position: bottom center;
     size: cover;
@@ -971,6 +978,8 @@ Main Banner CSS
   &.startup-agency {
     .container {
       max-width: 1365px;
+      padding-left: 25px;
+      padding-right: 25px;
     }
 
     .main-banner-content {
@@ -989,7 +998,7 @@ Main Banner CSS
   }
   a.nav-link {
     font-weight: 700;
-    color: $black-color!important;
+    color: $black-color !important;
   }
   i {
     font-weight: 900;
@@ -4060,7 +4069,7 @@ Subscribe CSS
     left: 0;
     top: 0;
     background: $gradient-color;
-    opacity: 1.0;
+    opacity: 1;
   }
 
   .newsletter-content {
@@ -6196,7 +6205,10 @@ Audit CSS
 /*================================================
 Mission CSS
 =================================================*/
-.mission-area, .download-area, .data-purpose, .data-sources {
+.mission-area,
+.download-area,
+.data-purpose,
+.data-sources {
   & p {
     text-align: center;
     font-size: 1.4em;
@@ -6216,7 +6228,6 @@ DownloadCTA CSS
   }
 }
 
-
 /*================================================
 Data CSS
 =================================================*/
@@ -6226,7 +6237,7 @@ Data CSS
 
 .data-sources {
   & img {
-    padding: 10px
+    padding: 10px;
   }
 }
 
@@ -6236,12 +6247,14 @@ Data CSS
     text-align: center;
   }
   & button {
-    margin: 2rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    margin-top: 2rem;
   }
 }
 
 .data-subnav {
-  padding-top: 150px;
+  padding-top: 50px;
 }
 
 /*================================================
@@ -6262,7 +6275,7 @@ Download Page CSS
     margin: 10px;
   }
   & a {
-    width: 100%
+    width: 100%;
   }
   & i {
     font-size: 24px;
@@ -6298,7 +6311,8 @@ Download Page CSS
     font-size: 1rem;
   }
 
-  .dataset-field-type, .dataset-field-desc {
+  .dataset-field-type,
+  .dataset-field-desc {
     padding-left: 2rem;
   }
   .dataset-field-type {
@@ -6309,7 +6323,6 @@ Download Page CSS
   .dataset-field-desc p {
     font-size: 0.9rem;
   }
-
 }
 
 .download-button {
@@ -6327,6 +6340,9 @@ Data API CSS
   }
 
   & a {
-
   }
+}
+
+.no-margin {
+  margin: 0 !important;
 }

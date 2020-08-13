@@ -6,7 +6,7 @@ const Purpose = () => {
       <div className="ptb-100">
         <div className="container">
           <div className="row justify-content-center">
-            <div className="col-6">
+            <div className="col-lg-6 col-8-xs">
               <p>
                 Our main focus is to provide you with free{" "}
                 <span className="emph">county-level</span> COVID stats on{" "}

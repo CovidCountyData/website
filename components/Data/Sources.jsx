@@ -6,7 +6,7 @@ const Sources = () => {
       <div className="container">
         <div className="row d-flex justify-content-center pb-50">
           <div className="col-auto">
-            <div className="row pb-50">
+            <div className="row pb-50 ps-15">
               <h2>Aggregated from a growing list of sources</h2>
             </div>
           </div>

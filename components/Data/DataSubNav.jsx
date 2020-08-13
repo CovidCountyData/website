@@ -24,7 +24,7 @@ const DataSubNav = (props) => {
       <div className="container">
         {backref ? (
           <div className="row">
-            <nav className="navbar navbar-expand-md navbar-light">
+            <nav className="navbar navbar-expand-md navbar-light navbar-style-3">
               <div className="collapse navbar-collapse show">
                 <ul className="navbar-nav">
                   <li className="nav-item">
