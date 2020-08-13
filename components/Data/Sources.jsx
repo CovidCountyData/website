@@ -10,14 +10,12 @@ const Sources = () => {
               <h2>Aggregated from a growing list of sources</h2>
             </div>
           </div>
-          <div className="row justify-content-center">
-            <div className="col-md-6 col-sm-12">
-              <p>
-                We scrape state dashboards, state databases, and county
-                dashboards for county-level data. We also aggregate information
-                from these reputable COVID data sources:
-              </p>
-            </div>
+          <div className="row justify-content-center col-md-6 col-sm-12">
+            <p>
+              We scrape state dashboards, state databases, and county dashboards
+              for county-level data. We also aggregate information from these
+              reputable COVID data sources:
+            </p>
           </div>
         </div>
         <div className="row d-flex justify-content-center">

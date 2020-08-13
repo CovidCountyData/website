@@ -21,14 +21,14 @@ const CTATitleButtons = (props) => {
 
   return (
     <section className="cta-title-buttons ptb-100">
-      <div className="container">
+      <div className="container flex">
         <div className="row d-flex justify-content-center">
           <div className="col-lg-8 col-sm-10">
-            <p>{title}</p>
+            <h2>{title}</h2>
           </div>
         </div>
-        <div className="row d-flex justify-content-center">
-          <div className="col-auto">{buttonComponents}</div>
+        <div className="row d-flex justify-content-center buttons">
+          {buttonComponents}
         </div>
       </div>
     </section>

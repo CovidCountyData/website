@@ -17,7 +17,7 @@ const RegisterForm = (props) => {
       <div className="container">
         <div className="row d-flex justify-content-center align-items-center">
           <div className="col-auto">
-            <h2>{title}</h2>
+            <h2 className="center-align">{title}</h2>
           </div>
           <a name="register">
             <div className="col-auto">

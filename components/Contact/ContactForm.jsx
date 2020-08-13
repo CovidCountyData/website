@@ -11,7 +11,9 @@ const ContactForm = (props) => {
 
   return (
     <div className="contact-form">
-      <h2>{title}</h2>
+      <div className="container">
+        <h2>{title}</h2>
+      </div>
 
       <form id="contactForm" onSubmit={submit}>
         <div className="container">

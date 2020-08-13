@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUniversity } from "@fortawesome/free-solid-svg-icons";
 import Link from "../../utils/ActiveLink";
 
 class Navbar extends Component {
@@ -51,7 +49,7 @@ class Navbar extends Component {
                   <img
                     src={require("../../images/ccd_logo.svg")}
                     alt="logo"
-                    style={{ height: "3em", width: "9.42em"}}
+                    style={{ height: "2em", width: "6.28em" }}
                   />
                 </a>
               </Link>

@@ -26,6 +26,31 @@ $transition: 0.5s;
 
 /* Max width 767px */
 @media only #{$media} and ($feature_max : $value_two) {
+  .data-subnav {
+    padding-top: 100px !important;
+  }
+  .main-banner {
+    padding-top: 131px !important;
+    padding-bottom: 75px !important;
+  }
+  .cta-title-buttons {
+    .buttons {
+      padding-left: 15px;
+      padding-right: 15px;
+      padding-top: 15px;
+      justify-content: space-between !important;
+      button {
+        margin: 0 !important;
+      }
+    }
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  p {
+    text-align: left !important;
+  }
   body {
     font-size: $font-size;
   }
@@ -70,7 +95,7 @@ $transition: 0.5s;
     nav {
       .navbar-brand {
         margin-left: 15px;
-        font-size: 25px;
+        font-size: 20px !important;
       }
       .navbar-nav {
         .nav-item {
@@ -112,6 +137,12 @@ $transition: 0.5s;
     }
   }
   .main-banner {
+    &.startup-agency {
+      h1 {
+        font-size: 30px !important;
+        text-align: left;
+      }
+    }
     height: 100%;
     padding: {
       top: 130px;
@@ -856,7 +887,7 @@ $transition: 0.5s;
       bottom: 60px;
     }
     h2 {
-      font-size: 24px;
+      font-size: 24px !important;
     }
   }
 
@@ -1607,6 +1638,12 @@ $transition: 0.5s;
       max-width: 50%;
     }
   }
+
+  .main-banner-content {
+    h1 {
+      font-size: 35px;
+    }
+  }
 }
 
 /* Min width 768px to Max width 991px */
@@ -1706,7 +1743,7 @@ $transition: 0.5s;
       font-size: 15px;
     }
     h1 {
-      font-size: 36px;
+      font-size: 3px;
       margin: 12px 0 15px;
     }
     p {
