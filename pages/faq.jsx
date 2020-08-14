@@ -1,8 +1,8 @@
 import React from "react";
-import NavbarThree from "../components/Layouts/Navbar";
 import PageBanner from "../components/Common/PageBanner";
-import FaqContent from "../components/Faq/FaqContent";
 import ContactForm from "../components/Contact/ContactForm";
+import FaqContent from "../components/Faq/FaqContent";
+import NavbarThree from "../components/Layouts/Navbar";
 import firebaseDB from "../utils/fire";
 
 const Faq = () => {
@@ -15,7 +15,7 @@ const Faq = () => {
   return (
     <React.Fragment>
       <NavbarThree />
-      <PageBanner pageTitle="Frequently Asked Questions" />
+      <PageBanner pageTitle="Frequently asked questions" />
       <FaqContent />
 
       <div className="pb-100">

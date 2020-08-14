@@ -9,7 +9,7 @@ class PageBanner extends Component {
         <div className="d-table">
           <div className="d-table-cell">
             <div className="container">
-              <h2>{pageTitle}</h2>
+              <h1>{pageTitle}</h1>
             </div>
           </div>
         </div>

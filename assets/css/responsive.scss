@@ -26,6 +26,45 @@ $transition: 0.5s;
 
 /* Max width 767px */
 @media only #{$media} and ($feature_max : $value_two) {
+  input {
+    width: 100%;
+  }
+
+  .form-group {
+    width: 100%;
+  }
+  #registerForm {
+    button {
+      margin-left: 0 !important;
+    }
+  }
+
+  .sm-no-padding {
+    padding: 0 !important;
+  }
+
+  .pb-sm-0 {
+    padding-bottom: 0 !important;
+  }
+
+  .pt-sm-0 {
+    padding-top: 0 !important;
+  }
+
+  .pt-sm-5 {
+    padding-top: 5px !important;
+  }
+
+  .pb-sm-10 {
+    padding-bottom: 10px !important;
+  }
+
+  .logos {
+    .col-auto {
+      padding: 10px;
+    }
+  }
+
   .data-subnav {
     padding-top: 100px !important;
   }
@@ -42,6 +81,9 @@ $transition: 0.5s;
       button {
         margin: 0 !important;
       }
+    }
+
+    .row-sm-none {
     }
   }
   h1,

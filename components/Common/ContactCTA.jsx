@@ -1,6 +1,6 @@
-import React from "react";
-import Link from "next/link";
 import classNames from "classnames";
+import Link from "next/link";
+import React from "react";
 import { useMixpanel } from "./mixpanel";
 
 const ContactCTA = (props) => {
@@ -22,7 +22,7 @@ const ContactCTA = (props) => {
         </div>
 
         <div className="row d-flex justify-content-center">
-          <div className="col-auto">
+          <div className="col-md-auto col-sm-12">
             <Link href="/contact">
               <a
                 onClick={mixpanel.track("contact button click")}

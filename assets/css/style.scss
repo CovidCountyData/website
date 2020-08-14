@@ -73,18 +73,28 @@ $transparent-bg: rgba(24, 24, 27, 0.05);
 
 .custom-headers {
   h1 {
-    font-size: 28px !important;
-    font-weight: normal !important;
+    font-size: 36px !important;
+    font-weight: 700 !important;
   }
 
   h2 {
-    font-size: 24px !important;
-    font-weight: 550 !important;
+    font-size: 36px !important;
+    line-height: 50px;
+    font-weight: 500 !important;
+    &.centered {
+      text-align: center;
+    }
   }
 
   h3 {
     font-size: 18px !important;
     font-weight: 600 !important;
+  }
+}
+
+.logos {
+  img {
+    max-height: 70px;
   }
 }
 
@@ -1021,8 +1031,9 @@ Main Banner CSS
     background-color: #fbfbfb;
   }
   a.nav-link {
-    font-weight: 700;
-    color: $black-color !important;
+    font-weight: 600;
+    font-size: 15px;
+    color: #18181b !important;
   }
   i {
     font-weight: 900;
@@ -6261,8 +6272,7 @@ Data CSS
 .data-banner {
   height: auto;
 }
-
-.data-sources {
+b .data-sources {
   & img {
     padding: 10px;
   }

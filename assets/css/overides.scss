@@ -1,7 +1,12 @@
 .rapidoc {
-  h1 {
-    font-weight: 1200 !important;
-    color: red;
-    background-color: red !important;
+  rapi-doc {
+    margin-left: -26px;
   }
+}
+
+#api-docs-tab-panel-tabpane-graphql,
+#api-docs-tab-panel-tabpane-python,
+#api-docs-tab-panel-tabpane-r,
+#api-docs-tab-panel-tabpane-julia {
+  margin-top: 75px;
 }

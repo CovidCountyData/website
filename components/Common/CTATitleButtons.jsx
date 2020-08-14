@@ -24,10 +24,10 @@ const CTATitleButtons = (props) => {
       <div className="container flex">
         <div className="row d-flex justify-content-center">
           <div className="col-lg-8 col-sm-10">
-            <h2>{title}</h2>
+            <h1>{title}</h1>
           </div>
         </div>
-        <div className="row d-flex justify-content-center buttons">
+        <div className="row justify-content-center buttons row-sm-none">
           {buttonComponents}
         </div>
       </div>
