@@ -14,6 +14,7 @@ import "../assets/css/overides.scss";
 import "../assets/css/pe-icon-7-stroke.css";
 import "../assets/css/responsive.scss";
 import "../assets/css/style.scss";
+import "../assets/css/swagger-docs.scss";
 import MixpanelProvider from "../components/Common/mixpanel";
 import GoTop from "../components/Shared/GoTop";
 import "../node_modules/react-modal-video/css/modal-video.min.css";

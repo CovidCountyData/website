@@ -90,6 +90,14 @@ class Navbar extends Component {
                           <a className="nav-link">Use Data API</a>
                         </Link>
                       </li>
+                      <li className="nav-item">
+                        <Link
+                          href="/data/documentation"
+                          activeClassName="active"
+                        >
+                          <a className="nav-link">Documentation</a>
+                        </Link>
+                      </li>
                     </ul>
                   </li>
 

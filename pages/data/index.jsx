@@ -1,12 +1,12 @@
 import React from "react";
-import NavbarThree from "../../components/Layouts/Navbar";
+import ContactCTA from "../../components/Common/ContactCTA";
 import Banner from "../../components/Data/Banner";
-import News from "../../components/News/News";
+import DataSubNav from "../../components/Data/DataSubNav";
+import DataDownloadCTA from "../../components/Data/DownloadCTA";
 import Purpose from "../../components/Data/Purpose";
 import Sources from "../../components/Data/Sources";
-import DataDownloadCTA from "../../components/Data/DownloadCTA";
-import DataSubNav from "../../components/Data/DataSubNav";
-import ContactCTA from "../../components/Common/ContactCTA";
+import NavbarThree from "../../components/Layouts/Navbar";
+import News from "../../components/News/News";
 
 const Data = () => {
   const navlinks = [
@@ -17,6 +17,10 @@ const Data = () => {
     {
       title: "Use data API",
       href: "/data/api",
+    },
+    {
+      title: "Documentation",
+      href: "/data/documentation",
     },
   ];
 

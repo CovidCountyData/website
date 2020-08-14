@@ -1,0 +1,81 @@
+.swagger-docs {
+  .path-desc {
+    border: none;
+    margin: 15px 0 15px 0;
+    margin-top: 15px;
+
+    .row {
+      margin-left: 0;
+      margin-right: 0;
+    }
+  }
+  .header {
+    margin: 0;
+
+    div {
+      font-weight: 700;
+      padding-left: 0;
+    }
+  }
+
+  .toggle {
+    min-height: 75px;
+    width: 100%;
+    background: #f5f9ff;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border: none;
+
+    &:hover {
+      cursor: pointer;
+      background-color: #f0a216;
+      div {
+        color: white;
+      }
+    }
+  }
+
+  .description {
+    background: white;
+    border: 1px solid #eee;
+    padding: 10px !important;
+  }
+}
+/*General style */
+
+#accordion {
+  padding: 30px 150px;
+}
+.panel-title a {
+  font-size: 14px;
+  text-transform: uppercase;
+  font-weight: 600;
+  padding-right: 20px;
+}
+.panel-default > .panel-heading {
+  text-align: left;
+}
+.panel-heading {
+  padding: 15px 15px;
+}
+
+/* Code for animation -- to change direction of chevron just change -40px to 40px and vice versa */
+.glyphicon-chevron-down-custom span,
+.glyphicon-chevron-up-custom span {
+  width: 10px;
+  height: 5px;
+  background-color: rgb(99, 99, 99);
+  display: inline-block;
+  transition: all 0.1s linear;
+}
+.glyphicon-chevron-down-custom .sp-1,
+.glyphicon-chevron-up-custom .sp-2 {
+  transform: skewY(-40deg);
+}
+.glyphicon-chevron-up-custom .sp-1,
+.glyphicon-chevron-down-custom .sp-2 {
+  transform: skewY(40deg);
+}
+.glyphicon {
+  top: -2px;
+}
