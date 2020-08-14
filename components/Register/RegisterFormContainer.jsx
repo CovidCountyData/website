@@ -48,8 +48,18 @@ const RegisterFormContainer = (props) => {
   };
 
   return (
-    <div className={classNames("ptb-100", className)}>
-      <RegisterForm onSubmit={submit} title="Get your free API key" />
+    <div
+      className={
+        props.mini
+          ? classNames(className, "mini")
+          : classNames("ptb-100", className)
+      }
+    >
+      <RegisterForm
+        onSubmit={submit}
+        title="Get your free API key"
+        mini={props.mini}
+      />
       <div className="text-content pt-15 pt-sm-0">
         <div className="container">
           <div className="row justify-content-center d-flex">

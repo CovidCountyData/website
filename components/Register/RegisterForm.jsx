@@ -13,7 +13,13 @@ const RegisterForm = (props) => {
   });
 
   return (
-    <div className="contact-form pb-50 pb-sm-0">
+    <div
+      className={
+        props.mini
+          ? "contact-form pb-50 pb-sm-0 pb-md-50 mini"
+          : "contact-form pb-50 pb-sm-0"
+      }
+    >
       <div className="container">
         <div className="row d-flex justify-content-center align-items-center">
           <a name="register">

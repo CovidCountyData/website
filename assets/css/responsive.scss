@@ -1586,6 +1586,9 @@ $transition: 0.5s;
 
 /* Min width 576px to Max width 767px */
 @media only #{$media} and ($feature_min : $value_one) and ($feature_max : $value_two) {
+  .pb-md-50 {
+    padding-bottom: 50px !important;
+  }
   .tab {
     .tabs {
       li {
