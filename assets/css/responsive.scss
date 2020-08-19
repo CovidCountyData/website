@@ -28,6 +28,33 @@ $transition: 0.5s;
   text-align: center;
 }
 
+@media only #{media} and ($feature_max : $value_one) {
+  .cta-title-buttons {
+    .buttons {
+      padding-left: 15px;
+      padding-right: 15px;
+      padding-top: 15px;
+      // justify-content: space-around !important;
+
+      &.justify-content-left-xs {
+        justify-content: left !important;
+      }
+      button {
+        margin: 10px 0px 10px 0px !important;
+        width: 100% !important;
+        &.left-aligned {
+          justify-self: left !important;
+
+        }
+        &.normal-size {
+          width: unset !important;
+        }
+      }
+    }
+  } 
+}
+
+
 /* Max width 767px */
 @media only #{$media} and ($feature_max : $value_two) {
   .left-align-sm {
@@ -85,9 +112,23 @@ $transition: 0.5s;
       padding-right: 15px;
       padding-top: 15px;
       // justify-content: space-around !important;
+
+    &.justify-content-left-sm {
+      justify-content: left !important;
+    }
+    &.justify-content-left-xs {
+      justify-content: left !important;
+    }
       button {
         margin: 10px 0px 10px 0px !important;
         width: 100% !important;
+        &.left-aligned {
+          justify-self: left !important;
+
+        }
+        &.normal-size {
+          width: unset !important;
+        }
       }
     }
   }

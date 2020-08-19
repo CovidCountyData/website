@@ -12,7 +12,7 @@ const CTATitleButtons = (props) => {
     };
     return (
       <Link key={x.target} href={x.target}>
-        <button className="btn btn-primary" onClick={onClick}>
+        <button className={x.className ? "btn btn-primary " + x.className : "btn btn-primary"} onClick={onClick}>
           {x.text}
         </button>
       </Link>
@@ -30,7 +30,7 @@ const CTATitleButtons = (props) => {
             }
           </div>
         </div>
-        <div className="row justify-content-center buttons row-sm-none">
+        <div className={props.buttonsContainerClassName ? props.buttonsContainerClassName : "row justify-content-center buttons row-sm-none"}>
           {buttonComponents}
         </div>
       </div>
