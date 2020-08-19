@@ -4,13 +4,9 @@ const Sources = () => {
   return (
     <section className="data-sources bg-grey ptb-100">
       <div className="container">
-        <div className="row d-flex justify-content-center pb-50">
-          <div className="col-auto">
-            <div className="row pb-50 ps-15 pb-sm-10">
-              <h2>Aggregated from a growing list of sources</h2>
-            </div>
-          </div>
-          <div className="row justify-content-center col-md-6 col-sm-12">
+        <div className="row d-flex justify-content-center">
+          <div className="col section-title">
+            <h2>Aggregated from a growing list of sources</h2>
             <p>
               We scrape state dashboards, state databases, and county dashboards
               for county-level data. We also aggregate information from these

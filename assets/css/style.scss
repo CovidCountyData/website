@@ -63,6 +63,10 @@ $white-color: #ffffff;
 $transition: all 0.6s ease;
 $transparent-bg: rgba(24, 24, 27, 0.05);
 
+$h2-font-size: 36px !important;
+$h2-line-height: 50px;
+$h2-font-weight: 500 !important;
+
 .register-container.mini {
   padding-top: 25px;
   padding-bottom: 25px;
@@ -90,9 +94,9 @@ $transparent-bg: rgba(24, 24, 27, 0.05);
   }
 
   h2 {
-    font-size: 36px !important;
-    line-height: 50px;
-    font-weight: 500 !important;
+    font-size: $h2-font-size;
+    line-height: $h2-line-height;
+    font-weight: $h2-font-weight;
     &.centered {
       text-align: center;
     }
@@ -6417,4 +6421,35 @@ Data API CSS
 
 .no-pad {
   padding: 0 !important;
+}
+
+.properties {
+  table {
+
+    tr.property {
+      td.title {
+        font-weight: 800 !important;
+      }
+    }
+  }
+}
+
+// .data-api-description  *{
+//   font-weight: $h2-font-weight;
+//   font-size: $h2-font-size;
+//   line-height: $h2-line-height;
+// }
+
+.bio {
+  padding-top: 30px;
+  padding-bottom: 30px;;
+  img {
+    margin-top: 10px;
+    height: 200px;
+    width: 200px;
+  }
+
+  .name {
+    font-weight: 650 !important;
+  }
 }

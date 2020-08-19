@@ -24,8 +24,15 @@ $paragraph-color: #646464;
 $white-color: #ffffff;
 $transition: 0.5s;
 
+.text-centered {
+  text-align: center;
+}
+
 /* Max width 767px */
 @media only #{$media} and ($feature_max : $value_two) {
+  .left-align-sm {
+    text-align: left !important;
+  }
   input {
     width: 100%;
   }
@@ -1584,6 +1591,7 @@ $transition: 0.5s;
 
 /* Min width 576px to Max width 767px */
 @media only #{$media} and ($feature_min : $value_one) and ($feature_max : $value_two) {
+  
   .pb-md-50 {
     padding-bottom: 50px !important;
   }

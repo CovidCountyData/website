@@ -15,7 +15,7 @@ const DataDownloadCTA = () => {
     },
   ];
   const title = "Easily accessible by csv download or our data API";
-  return <CTATitleButtons title={title} buttons={buttons} />;
+  return <CTATitleButtons title={title} buttons={buttons} use={"h2"} />;
 };
 
 export default DataDownloadCTA;

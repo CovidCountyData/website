@@ -37,7 +37,12 @@ const SwaggerDocs = () => {
       {data &&
         Object.keys(data.paths).map((key, i) => {
           const obj = data.paths[key];
-
+          const definition = data.definitions[key.substring(1)];
+          if (!definition) {
+            return (<div></div>)
+          }
+          console.log(key, " description: ", definition)
+          const properties = definition['properties']
           return (
             <Accordion className="path-desc">
               <CustomToggle eventKey={i + 1}>
@@ -46,7 +51,32 @@ const SwaggerDocs = () => {
                 <div className="summary col-6">{obj.get.summary}</div>
               </CustomToggle>
               <AccordionCollapse eventKey={i + 1} className="description">
-                <ReactMarkdown source={obj.get.description} />
+                <div>
+
+                  <ReactMarkdown source={obj.get.description} />
+                  {/* <div className="proprties">
+                    <h3>Properites</h3>
+                    <table className="container">
+                      {Object.keys(properties).map(propkey => {
+
+                        return (
+                          <tr className="property row">
+                            <td className="title col-3">{propkey}</td>
+                            <td className="description col-7">
+                              {properties[propkey].description}
+                            </td>
+                            <td className="formal col-1">
+                              {properties[propkey].format}
+                            </td>
+                            <td className="datatype col-1">
+                              {properties[propkey].type}
+                            </td>
+                          </tr>
+                        )
+                      })}
+                    </table>
+                  </div> */}
+                </div>
               </AccordionCollapse>
             </Accordion>
           );
