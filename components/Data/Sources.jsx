@@ -16,11 +16,11 @@ const Sources = () => {
         </div>
         <div className="row d-flex justify-content-center logos">
           <div className="col-auto">
-            <img src={require("../../images/nyt.svg")} alt="new york times" />
+            <img src={require("../../images/nyt_logo_fixed.svg")} alt="new york times" />
           </div>
           <div className="col-auto">
             <img
-              src={require("../../images/ctp.svg")}
+              src={require("../../images/ctp_logo.svg")}
               alt="COVID Tracking Project"
             />
           </div>
@@ -31,7 +31,7 @@ const Sources = () => {
             />
           </div>
           <div className="col-auto">
-            <img src={require("../../images/usa_facts.svg")} alt="USAFacts" />
+            <img src={require("../../images/usafacts_logo.svg")} alt="USAFacts" />
           </div>
         </div>
       </div>
