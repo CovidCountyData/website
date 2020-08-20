@@ -46,7 +46,7 @@ const SwaggerDocs = () => {
           return (
             <Accordion className="path-desc">
               <CustomToggle eventKey={i + 1}>
-                <div className="col-3">need name!</div>
+                <div className="col-3">{data['definitions'][key.substring(1)]['name']}</div>
                 <div className="path col-3">{key}</div>
                 <div className="summary col-6">{obj.get.summary}</div>
               </CustomToggle>
