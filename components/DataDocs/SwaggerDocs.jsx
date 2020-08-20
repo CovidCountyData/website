@@ -30,9 +30,9 @@ const SwaggerDocs = () => {
   // console.log("Swagger:\n", data);
   const order = ["covid_us",
     "covid_historical",
-    "economics",
     "demographics",
     "economic_snapshots",
+    "economics",
     "mobility_devices",
     "mobility_locations",
     "hhs",
