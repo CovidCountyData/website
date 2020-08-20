@@ -27,7 +27,7 @@ const SwaggerDocs = () => {
   );
   console.log("Swagger:\n", data);
   return (
-    <div className="swagger-docs container">
+    <div className="swagger-docs container pb-100">
       <h2>Datasets</h2>
       <div className="row header">
         <div className="col-3">Dataset</div>
