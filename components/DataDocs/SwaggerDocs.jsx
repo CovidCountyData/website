@@ -45,7 +45,7 @@ const SwaggerDocs = () => {
     "usafacts_covid"]
 
   return (
-    <div className="swagger-docs container pb-100">
+    <div className="swagger-docs container pb-100 pt-50">
       <h2>Datasets</h2>
       <div className="row header">
         <div className="col-md-3 col-12 dataset">Dataset</div>
