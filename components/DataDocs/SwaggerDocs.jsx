@@ -48,9 +48,9 @@ const SwaggerDocs = () => {
     <div className="swagger-docs container pb-100">
       <h2>Datasets</h2>
       <div className="row header">
-        <div className="col-3">Dataset</div>
-        <div className="col-3">Table name</div>
-        <div className="col-6">Description</div>
+        <div className="col-md-3 col-12 dataset">Dataset</div>
+        <div className="col-md-3 col-12 table-name">Table name</div>
+        <div className="col-md-6 col-12 summary">Summary</div>
       </div>
       {data &&
         Object.keys(data.definitions).map((k, i) => {
@@ -65,9 +65,9 @@ const SwaggerDocs = () => {
           return (
             <Accordion className="path-desc">
               <CustomToggle eventKey={i + 1}>
-                <div className="col-3">{definition['name']}</div>
-                <div className="path col-3">{key}</div>
-                <div className="summary col-6">{obj.get.summary}</div>
+                <div className="col-md-3 col-12 dataset">{definition['name']}</div>
+                <div className="table-name col-md-3 col-12">{key}</div>
+                <div className="summary col-md-6 col-12">{obj.get.summary}</div>
               </CustomToggle>
               <AccordionCollapse eventKey={i + 1} className="description">
                 <div>

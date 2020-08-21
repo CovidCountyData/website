@@ -57,6 +57,20 @@ $transition: 0.5s;
 
 /* Max width 767px */
 @media only #{$media} and ($feature_max : $value_two) {
+
+  .dataset {
+    font-weight: 650 !important;
+  }
+
+  .table-name {
+    font-weight: 450 !important;
+    font-style: italic;
+  }
+
+  .summary {
+    font-weight: 500 !important;
+  }
+
   .left-align-sm {
     text-align: left !important;
   }
