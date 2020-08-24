@@ -71,6 +71,12 @@ $transition: 0.5s;
     font-weight: 500 !important;
   }
 
+  .swagger-docs {
+    .row.header {
+      display: none
+    }
+  }
+
   .left-align-sm {
     text-align: left !important;
   }
