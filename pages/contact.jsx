@@ -26,7 +26,7 @@ const Contact = () => {
         subject: `Message from ${name} at ${ts}`,
         replyTo: email,
       },
-      to: "spencer.lyon@valorumdata.com",
+      to: ["kristin.stannard@valorumdata.com", "spencer.lyon@valorumdata.com"],
     });
     mixpanel.track("Contact Submit", payload);
   };
