@@ -6294,8 +6294,6 @@ Mission CSS
     color: $main-color;
   }
 
-  h2 {
-  }
 }
 
 /*================================================
@@ -6313,7 +6311,7 @@ Data CSS
 .data-banner {
   height: auto;
 }
-b .data-sources {
+.data-sources {
   & img {
     padding: 10px;
   }

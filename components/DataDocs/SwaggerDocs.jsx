@@ -53,8 +53,7 @@ const SwaggerDocs = () => {
         <div className="col-md-6 col-12 summary">Summary</div>
       </div>
       {data &&
-        Object.keys(data.definitions).map((k, i) => {
-          const key = order[i];
+        order.map((key, i) => {
           const obj = data.paths["/" + key];
           const definition = data.definitions[key];
           if (!definition) {
