@@ -28,7 +28,7 @@ const RegisterForm = (props) => {
             </div>
             <div className="col-md-auto col-sm-12">
               <form id="registerForm" onSubmit={submit} className="form-inline">
-                <div className="form-group no-margin">
+                <div className="form-group">
                   <input
                     type="text"
                     name="email"
