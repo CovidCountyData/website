@@ -148,7 +148,7 @@ Enjoy! And please [get in touch](https://covidcountydata.org/contact) if you hav
   return (
     <div className="container">
       <div className="row">
-        <div className="col-lg-12">
+        <div className="col-lg-12 custom-markdown">
           <Markdown source={md} />
         </div>
       </div>

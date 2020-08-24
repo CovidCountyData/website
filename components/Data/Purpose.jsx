@@ -6,8 +6,8 @@ const Purpose = () => {
       <div className="ptb-100">
         <div className="container">
           <div className="row justify-content-center">
-            <div className="col-6">
-              <p>
+            <div className="col-lg-7 col-8-xs">
+              <h2 className="centered">
                 Our main focus is to provide you with free{" "}
                 <span className="emph">county-level</span> COVID stats on{" "}
                 <span className="emph">testing</span>,{" "}
@@ -15,7 +15,7 @@ const Purpose = () => {
                 <span className="emph">cases</span>, and{" "}
                 <span className="emph">deaths</span>, and we’re expanding our
                 data coverage daily.
-              </p>
+              </h2>
             </div>
           </div>
         </div>

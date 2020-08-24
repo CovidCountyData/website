@@ -1,10 +1,12 @@
 import React from "react";
+import RegisterFormContainer from "../Register/RegisterFormContainer";
 import GraphQLDocs from "./GraphQLDocs";
-
 const GraphQLApi = () => {
   return (
     <React.Fragment>
       <GraphQLDocs />
+      {/* Add register form here */}
+      <RegisterFormContainer mini={true} className="register-container" />
       <div className="container">
         <div className="row">
           <div className="col-lg-12">

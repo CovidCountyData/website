@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import {
   Accordion,
   AccordionItem,
+  AccordionItemButton,
   AccordionItemHeading,
   AccordionItemPanel,
-  AccordionItemButton,
 } from "react-accessible-accordion";
 
 class FaqContent extends Component {
@@ -111,11 +111,20 @@ class FaqContent extends Component {
 
                       <ol>
                         <li>
+                          You can download the data as a csv. We currently
+                          provide 6 csv download options: all county-level covid
+                          stats (current date), all county-level covid stats
+                          (historical), county-level testing stats, county-level
+                          hospitalizations stats, county-level cases stats, and
+                          county-level deaths stats.
+                        </li>
+                        <li>
                           You can interact with the data using our{" "}
                           <a href="/python">Python client</a>/
-                          <a href="/R">R client</a>. This route will hide much
-                          of the behind-the-scenes work and get you working with
-                          the data quickly.
+                          <a href="/R">R client</a>/
+                          <a href="/julia">Julia client</a>. This route will
+                          hide much of the behind-the-scenes work and get you
+                          working with the data quickly.
                         </li>
                         <li>
                           You can directly query our{" "}
@@ -132,9 +141,9 @@ class FaqContent extends Component {
                       </ol>
 
                       <p>
-                        We think the Python and R libraries will be enough for
-                        most people, but we wanted to make sure to expose the
-                        other options as well.
+                        We think the Python, R, and Julia libraries will be
+                        enough for most people, but we wanted to make sure to
+                        expose the other options as well.
                       </p>
                     </AccordionItemPanel>
                   </AccordionItem>

@@ -1,10 +1,10 @@
 import React from "react";
-import Navbar from "../components/Layouts/Navbar";
+import { useMixpanel } from "../components/Common/mixpanel";
+import Newsletter from "../components/Common/Newsletter";
 import PageBanner from "../components/Common/PageBanner";
 import ContactForm from "../components/Contact/ContactForm";
-import Newsletter from "../components/Common/Newsletter";
+import Navbar from "../components/Layouts/Navbar";
 import firebaseDB from "../utils/fire";
-import { useMixpanel } from "../components/Common/mixpanel";
 
 const Contact = () => {
   const db = firebaseDB();
@@ -42,9 +42,9 @@ const Contact = () => {
   return (
     <React.Fragment>
       <Navbar />
-      <PageBanner pageTitle="Keep In Touch" />
+      <PageBanner pageTitle="Keep in touch" />
       <div className="pt-100">
-        <ContactForm onSubmit={contactSubmit} title="Send us a Message" />
+        <ContactForm onSubmit={contactSubmit} title="Send us a message" />
       </div>
 
       <div className="ptb-100">

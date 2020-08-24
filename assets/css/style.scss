@@ -63,11 +63,56 @@ $white-color: #ffffff;
 $transition: all 0.6s ease;
 $transparent-bg: rgba(24, 24, 27, 0.05);
 
+$h2-font-size: 36px !important;
+$h2-line-height: 50px;
+$h2-font-weight: 500 !important;
+
+
+
+.register-container.mini {
+  padding-top: 25px;
+  padding-bottom: 25px;
+  h2 {
+    margin: 0 !important;
+  }
+  button {
+    margin: 5px !important;
+    margin-left: 2rem !important;
+  }
+}
+
 .bg-grey {
   background-color: $transparent-bg;
 
   & .form-control {
     background: $white-color;
+  }
+}
+
+.custom-headers {
+  h1 {
+    font-size: 36px !important;
+    font-weight: 700 !important;
+  }
+
+  h2 {
+    font-size: $h2-font-size;
+    line-height: $h2-line-height;
+    font-weight: $h2-font-weight;
+    &.centered {
+      text-align: center;
+    }
+  }
+
+  h3 {
+    font-size: 18px !important;
+    font-weight: 600 !important;
+  }
+}
+
+.logos {
+  img {
+    max-height: 70px;
   }
 }
 
@@ -163,6 +208,12 @@ button {
     bottom: 100px;
   }
 }
+.ptb-50 {
+  padding: {
+    top: 50px;
+    bottom: 50px;
+  }
+}
 .pt-100 {
   padding: {
     top: 100px;
@@ -198,6 +249,11 @@ button {
 
 .pb-50 {
   padding-bottom: 50px;
+}
+
+.ps-15 {
+  padding-left: 15px;
+  padding-right: 15px;
 }
 
 .pt-50 {
@@ -303,7 +359,6 @@ a {
       width: 100%;
       background: $hover-gradient-color;
     }
-
   }
 }
 .btn-secondary {
@@ -436,7 +491,7 @@ a {
   h2 {
     margin-bottom: 15px;
     font: {
-      size: 50px;
+      size: 35px;
     }
   }
   p {
@@ -549,7 +604,8 @@ Navbar CSS
   height: auto;
 }
 
-.navbar-area, .data-subnav {
+.navbar-area,
+.data-subnav {
   nav {
     padding: 0;
     padding-bottom: 10px;
@@ -568,8 +624,8 @@ Navbar CSS
       .nav-item {
         position: relative;
         padding: {
-          left: 12px;
-          right: 12px;
+          left: 15px;
+          right: 15px;
           top: 15px;
           bottom: 15px;
         }
@@ -866,6 +922,7 @@ Navbar CSS
   border: none;
   background: #eee !important;
   padding: 10px;
+  margin-right: 15px;
   border-radius: 0;
 
   .icon-bar {
@@ -912,7 +969,9 @@ Main Banner CSS
 .main-banner {
   position: relative;
   z-index: 1;
-  height: 600px;
+  // height: 600px;
+  padding-top: 241px;
+  padding-bottom: 150px;
   background: {
     position: bottom center;
     size: cover;
@@ -971,6 +1030,8 @@ Main Banner CSS
   &.startup-agency {
     .container {
       max-width: 1365px;
+      padding-left: 25px;
+      padding-right: 25px;
     }
 
     .main-banner-content {
@@ -988,8 +1049,9 @@ Main Banner CSS
     background-color: #fbfbfb;
   }
   a.nav-link {
-    font-weight: 700;
-    color: $black-color!important;
+    font-weight: 600;
+    font-size: 15px;
+    color: #18181b !important;
   }
   i {
     font-weight: 900;
@@ -3933,6 +3995,22 @@ Fun Facts CSS
     margin-top: -5px;
   }
 }
+
+.contact-form {
+  &>.container>div{
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+  ul {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    li {
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
+  }
+}
+
 .contact-cta-box {
   margin: 80px auto 0;
   max-width: 800px;
@@ -4060,7 +4138,7 @@ Subscribe CSS
     left: 0;
     top: 0;
     background: $gradient-color;
-    opacity: 1.0;
+    opacity: 1;
   }
 
   .newsletter-content {
@@ -4952,10 +5030,10 @@ Page Title CSS
 .page-title-area {
   position: relative;
   padding: {
-    top: 160px;
-    bottom: 70px;
+    top: 191px;
+    bottom: 100px;
   }
-  text-align: center;
+  text-align: left;
 
   h2 {
     margin: 0;
@@ -5187,11 +5265,18 @@ Contact CSS
   }
 }
 .contact-form {
-  text-align: center;
+  text-align: left;
 
   h2 {
     font: {
-      size: 36px;
+      size: 35px;
+    }
+  }
+
+  &.mini {
+    h2 {
+      font-size: 26px !important;
+      text-align: center;
     }
   }
 }
@@ -6196,15 +6281,19 @@ Audit CSS
 /*================================================
 Mission CSS
 =================================================*/
-.mission-area, .download-area, .data-purpose, .data-sources {
+.mission-area,
+.download-area,
+.data-purpose,
+.data-sources {
   & p {
     text-align: center;
-    font-size: 1.4em;
+    font-size: 1.2rem;
   }
 
   & .emph {
     color: $main-color;
   }
+
 }
 
 /*================================================
@@ -6216,17 +6305,15 @@ DownloadCTA CSS
   }
 }
 
-
 /*================================================
 Data CSS
 =================================================*/
 .data-banner {
   height: auto;
 }
-
 .data-sources {
   & img {
-    padding: 10px
+    padding: 10px;
   }
 }
 
@@ -6236,12 +6323,22 @@ Data CSS
     text-align: center;
   }
   & button {
-    margin: 2rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    margin-top: 2rem;
+  }
+
+  h2 {
+    text-align: center;
   }
 }
 
 .data-subnav {
-  padding-top: 150px;
+  padding-top: 136px;
+  h1 {
+    font-weight: 400;
+    font-size: 36px;
+  }
 }
 
 /*================================================
@@ -6262,7 +6359,7 @@ Download Page CSS
     margin: 10px;
   }
   & a {
-    width: 100%
+    width: 100%;
   }
   & i {
     font-size: 24px;
@@ -6298,7 +6395,8 @@ Download Page CSS
     font-size: 1rem;
   }
 
-  .dataset-field-type, .dataset-field-desc {
+  .dataset-field-type,
+  .dataset-field-desc {
     padding-left: 2rem;
   }
   .dataset-field-type {
@@ -6309,7 +6407,6 @@ Download Page CSS
   .dataset-field-desc p {
     font-size: 0.9rem;
   }
-
 }
 
 .download-button {
@@ -6325,8 +6422,42 @@ Data API CSS
   nav {
     margin-bottom: 50px;
   }
+}
+.flex-grow {
+  flex-grow: 1;
+}
 
-  & a {
+.no-pad {
+  padding: 0 !important;
+}
 
+.properties {
+  table {
+
+    tr.property {
+      td.title {
+        font-weight: 800 !important;
+      }
+    }
+  }
+}
+
+// .data-api-description  *{
+//   font-weight: $h2-font-weight;
+//   font-size: $h2-font-size;
+//   line-height: $h2-line-height;
+// }
+
+.bio {
+  padding-top: 30px;
+  padding-bottom: 30px;;
+  img {
+    margin-top: 10px;
+    height: 200px;
+    width: 200px;
+  }
+
+  .name {
+    font-weight: 650 !important;
   }
 }

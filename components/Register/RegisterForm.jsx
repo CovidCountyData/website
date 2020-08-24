@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useForm } from "react-hook-form";
 
 const RegisterForm = (props) => {
@@ -13,14 +13,20 @@ const RegisterForm = (props) => {
   });
 
   return (
-    <div className="contact-form pb-50">
+    <div
+      className={
+        props.mini
+          ? "contact-form pb-50 pb-sm-0 pb-md-50 mini"
+          : "contact-form pb-50 pb-sm-0"
+      }
+    >
       <div className="container">
         <div className="row d-flex justify-content-center align-items-center">
-          <div className="col-auto">
-            <h2>{title}</h2>
-          </div>
           <a name="register">
             <div className="col-auto">
+              <h2 className="center-align">{title}</h2>
+            </div>
+            <div className="col-md-auto col-sm-12">
               <form id="registerForm" onSubmit={submit} className="form-inline">
                 <div className="form-group">
                   <input

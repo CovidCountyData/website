@@ -1,4 +1,4 @@
-import Document, { Html, Head, Main, NextScript } from "next/document";
+import Document, { Head, Html, Main, NextScript } from "next/document";
 import Footer from "../components/Layouts/Footer";
 
 class MyDocument extends Document {
@@ -27,7 +27,7 @@ class MyDocument extends Document {
             src="https://plausible.io/js/plausible.js"
           />
         </Head>
-        <body>
+        <body className="custom-headers">
           <div className="wrapper">
             <Main />
             <div className="push" />

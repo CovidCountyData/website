@@ -85,7 +85,7 @@ const DownloadFieldDescriptions = () => {
 
         <div className="row justify-content-around">
           <div className="col-sm-12 col-md-5 col-lg-5">
-            <strong>Cumulative</strong>
+            <h3>Cumulative</h3>
             <ul className="variable-list">
               {cumulative.map((x) => {
                 return (
@@ -97,7 +97,7 @@ const DownloadFieldDescriptions = () => {
             </ul>
           </div>
           <div className="col-sm-12 col-md-6 col-lg-6">
-            <strong>Moment in Time</strong>
+            <h3>Moment in Time</h3>
             <ul className="variable-list">
               {momentInTime.map((x) => {
                 return (

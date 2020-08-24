@@ -11,7 +11,23 @@ const ContactForm = (props) => {
 
   return (
     <div className="contact-form">
-      <h2>{title}</h2>
+      <div className="container">
+        <h2>{title}</h2>
+
+        <div> We'd love to hear from you. Please reach out if:</div>
+        <ul>
+          <li>
+            You’d like to collaborate. We’re powering Covid Act Now’s models and Community Data Platform’s Nantucket Covid dashboard and would love to power any other critical local modeling or policy making that needs to be done.
+          </li>
+          <li>
+            You know of an official source for county-level data that we do not yet have showing up in our own dataset. Please let us know - our goal is to get to full county-level coverage of the US population.
+          </li>
+          <li>
+
+            You see an error in our data. We can’t fix what we don’t know is broken, so please tell us if you see something that looks off.
+          </li>
+        </ul>
+      </div>
 
       <form id="contactForm" onSubmit={submit}>
         <div className="container">
