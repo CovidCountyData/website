@@ -7,8 +7,6 @@ import ReactMarkdown from "react-markdown";
 import useRequest from "../../utils/useRequest";
 
 function CustomToggle({ children, eventKey }) {
-
-
   const decoratedOnClick = useAccordionToggle(eventKey, () =>
     console.log("totally custom!")
   );
@@ -16,7 +14,7 @@ function CustomToggle({ children, eventKey }) {
   return (
     <div
       className="row toggle align-items-center"
-      type="button"
+      type="div"
       onClick={decoratedOnClick}
     >
       {children}
@@ -28,7 +26,8 @@ const SwaggerDocs = () => {
     "https://clean-swagger-inunbrtacq-uk.a.run.app"
   );
   // console.log("Swagger:\n", data);
-  const order = ["covid_us",
+  const order = [
+    "covid_us",
     "covid_historical",
     "demographics",
     "economic_snapshots",
@@ -42,11 +41,12 @@ const SwaggerDocs = () => {
     "covid_global",
     "covidtrackingproject",
     "nytimes_covid",
-    "usafacts_covid"]
+    "usafacts_covid",
+  ];
 
   return (
-    <div className="swagger-docs container pb-100 pt-50">
-      <h2>Datasets</h2>
+    <div className="swagger-docs container pb-100">
+      <h2 className="pt-50">Datasets</h2>
       <div className="row header">
         <div className="col-md-3 col-12 dataset">Dataset</div>
         <div className="col-md-3 col-12 table-name">Table name</div>
@@ -54,24 +54,25 @@ const SwaggerDocs = () => {
       </div>
       {data &&
         Object.keys(data.definitions).map((k, i) => {
-          const key = order[i]
+          const key = order[i];
           const obj = data.paths["/" + key];
           const definition = data.definitions[key];
           if (!definition) {
-            return (<div></div>)
+            return <div></div>;
           }
-          console.log(key, " description: ", definition)
+          console.log(key, " description: ", definition);
           // const properties = definition['properties']
           return (
             <Accordion className="path-desc">
               <CustomToggle eventKey={i + 1}>
-                <div className="col-md-3 col-12 dataset">{definition['name']}</div>
+                <div className="col-md-3 col-12 dataset">
+                  {definition["name"]}
+                </div>
                 <div className="table-name col-md-3 col-12">{key}</div>
                 <div className="summary col-md-6 col-12">{obj.get.summary}</div>
               </CustomToggle>
               <AccordionCollapse eventKey={i + 1} className="description">
                 <div>
-
                   <ReactMarkdown source={obj.get.description} />
                   {/* <div className="proprties">
                     <h3>Properites</h3>
