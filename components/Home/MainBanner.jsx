@@ -61,7 +61,7 @@ class MainBanner extends Component {
                   <div className="col-md-6">
                     <div className="main-banner-content">
                       <h1>
-                        Access free, up-to-date county-level COVID data to
+                        Access free, up-to-date, county-level COVID data to
                         inform local policies
                       </h1>
                       <div className="row">
