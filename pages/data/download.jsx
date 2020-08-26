@@ -4,7 +4,7 @@ import DownloadBanner from "../../components/Download/DownloadBanner";
 import DataSubNav from "../../components/Data/DataSubNav";
 import DownloadFieldDescriptions from "../../components/Download/DownloadFieldDescriptions";
 import DownloadMoreAPI from "../../components/Download/DownloadMoreInApi";
-
+import CustomDownloads from "../../components/Download/CustomizeDownload";
 const Download = () => {
   const backref = { title: "Our data", href: "/data" };
   return (
@@ -20,6 +20,7 @@ const Download = () => {
       </div>
       <DownloadFieldDescriptions />
       <hr />
+      <CustomDownloads />
       <DownloadMoreAPI />
     </React.Fragment>
   );
