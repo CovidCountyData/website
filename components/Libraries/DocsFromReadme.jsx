@@ -13,9 +13,10 @@ const ReadmeDocs = (props) => {
       return <WIP imgname="undraw_code_thinking_1jeh.svg" />;
     } else if (data) {
       const split = data.split("## Data\n");
+
       return (
         <React.Fragment>
-          <Markdown source={split[0]} />
+          <Markdown source={split[0].replace("[on our website](https://covidcountydata.org#register)", "below")} />
           <RegisterFormContainer mini={true} className="register-container" />
           <Markdown source={"## Data\n" + split[1]} />
         </React.Fragment>
