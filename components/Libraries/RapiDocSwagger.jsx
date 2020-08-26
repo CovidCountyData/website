@@ -146,7 +146,10 @@ We use the following open source technologies to build this API.
 
 We are grateful to all of these projects for simplifying the task of building, deploying, and
 documenting our API. We are also grateful to Google Cloud for helping us host and distribute our
-data.`
+data.
+
+## API Endpoints
+`
   ]
   const rd = () => {
     const result = (<rapi-doc
@@ -172,7 +175,9 @@ data.`
           <RegisterFormContainer mini={true} className="register-container" />
 
           <Markdown source={info[1]} />
-          {rd()}
+          <div>
+            {rd()}
+          </div>
         </div>
       </div>
     </div>
