@@ -47,8 +47,9 @@ class Navbar extends Component {
               <Link href="/">
                 <a className="navbar-brand">
                   <img
+                    meta
                     src={require("../../images/ccd_logo.svg")}
-                    alt="logo"
+                    alt="covid county data logo"
                     style={{ height: "2em", width: "6.28em" }}
                   />
                 </a>
