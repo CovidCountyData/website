@@ -1,15 +1,18 @@
-import React from "react"
+import React, { useEffect } from "react"
 
-function CustomDownloads(props) {
+function CustomDownloads() {
     const [selected, setNewSelected] = React.useState({})
     console.log("selected", selected, setNewSelected)
+
     const onDatasetClick = (dataset) => {
-        const newSelected = selected
-        newSelected[dataset] = selected[dataset] ? false : true
-        setNewSelected(newSelected).then(() => {
-            console.log("clicked on select: ", dataset, selected)
+        console.debug("[CustomizeDownload] (onDatasetClick) - clicked on dataset, setNewSelected: ", dataset, selected, setNewSelected)
+
+        setNewSelected({
+            ...selected,
+            [dataset]: selected[dataset] ? false : true
         })
     }
+
     const datasets = [
         "County-level covid data",
         "Vintage county-level covid data",
@@ -39,10 +42,10 @@ function CustomDownloads(props) {
                             Choose dataset(s)
                         </span>
                         <div className="row">
-                            {datasets.map(dataset => {
+                            {datasets.map((dataset, k) => {
 
                                 return (
-                                    <div className={selected[dataset] ? "col-2 dataset selected" : "col-2 dataset"} onClick={() => {
+                                    <div key={k} className={selected[dataset] ? "col-12 col-md-2 dataset selected" : "col-10 col-md-2 dataset"} onClick={() => {
                                         onDatasetClick(dataset)
                                     }}>
                                         <p>
