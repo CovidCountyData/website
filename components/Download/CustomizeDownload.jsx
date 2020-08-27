@@ -2,15 +2,43 @@ import React, { useEffect } from "react"
 
 function CustomDownloads() {
     const [selected, setNewSelected] = React.useState({})
-    console.log("selected", selected, setNewSelected)
-
+    // TODO: Remove initial state
+    const [datasetVariables, setDatasetVariables] = React.useState({
+        "Demographics": ["dt", "fips", "ethnicity"]
+    })
+    const [selectedVariables, setSelectedVariables] = React.useState({})
+    React.useEffect(() => {
+        // TODO: Check if we have list of variables for each true dataset
+        // TODO: If not, request list of variables
+        // TODO: Set variables state
+    }, [selected])
     const onDatasetClick = (dataset) => {
-        console.debug("[CustomizeDownload] (onDatasetClick) - clicked on dataset, setNewSelected: ", dataset, selected, setNewSelected)
-
+        // toggle selection of dataset
         setNewSelected({
             ...selected,
             [dataset]: selected[dataset] ? false : true
         })
+    }
+
+    const onSelectVar = (dataset, variable) => {
+        // If the user hasn't selected a variable from this dataset before
+        if (!selectedVariables[dataset]) {
+            setSelectedVariables({
+                ...selectedVariables,
+                [dataset]: {
+                    [variable]: true
+                }
+            })
+        } else { // else toggle the selection of the variable
+            setSelectedVariables({
+                ...selectedVariables,
+                [dataset]: {
+                    ...selectedVariables[dataset],
+                    [variable]: selectedVariables[dataset][variable] ? false : true
+                }
+            })
+        }
+
     }
 
     const datasets = [
@@ -45,9 +73,15 @@ function CustomDownloads() {
                             {datasets.map((dataset, k) => {
 
                                 return (
-                                    <div key={k} className={selected[dataset] ? "col-12 col-md-2 dataset selected" : "col-10 col-md-2 dataset"} onClick={() => {
-                                        onDatasetClick(dataset)
-                                    }}>
+                                    <div
+                                        key={k}
+                                        className={
+                                            selected[dataset]
+                                                ? "col-12 col-md-2 dataset selected"
+                                                : "col-10 col-md-2 dataset"}
+                                        onClick={() => {
+                                            onDatasetClick(dataset)
+                                        }}>
                                         <p>
                                             {dataset}
                                         </p>
@@ -56,6 +90,41 @@ function CustomDownloads() {
                             })}
 
                         </div>
+                    </li>
+                    <li>
+                        <span>
+                            Choose variable(s)
+                        </span>
+
+                        {Object.keys(selected).map((dataset, k) => {
+                            if (selected[dataset]) {
+
+                                return (
+                                    <div className="variable-selection" key={k}>
+                                        <span>Variables for <em>{dataset}</em></span>
+                                        {datasetVariables[dataset] ? (
+                                            <div className="variable-list">
+                                                {datasetVariables[dataset].map((variable, i) => {
+                                                    return <div
+                                                        key={i}
+                                                        className={(
+                                                            selectedVariables[dataset]
+                                                            && selectedVariables[dataset][variable])
+                                                            ? "selected"
+                                                            : ""}
+                                                        onClick={() => {
+                                                            onSelectVar(dataset, variable)
+                                                        }}>
+                                                        {variable}
+                                                    </div>
+                                                })}
+                                            </div>
+                                        )
+                                            : <div><em>Loading...</em></div>}
+                                    </div>
+                                )
+                            }
+                        })}
                     </li>
                 </ol>
             </div>
