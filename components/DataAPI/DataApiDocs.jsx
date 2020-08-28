@@ -20,15 +20,15 @@ const DataApiDocs = () => {
     mixpanel.track("api doc click", { from: page });
     setPage(newPage);
     const newUrl = router.pathname + "#" + newPage
-    router.push(newUrl, newUrl,{shallow: true});
+    router.push(newUrl, newUrl, { shallow: true });
   };
   useEffect(() => {
-      const parts = router.asPath.split("#")
-      if (parts.length !== 2) {
-        return
-      }
-      const hashPart = parts[1];
-      updatePage(["rest", "graphql", "python", "r", "julia"].includes(hashPart) ? hashPart : "rest")
+    const parts = router.asPath.split("#")
+    if (parts.length !== 2) {
+      return
+    }
+    const hashPart = parts[1];
+    updatePage(["rest", "graphql", "python", "r", "julia"].includes(hashPart) ? hashPart : "rest")
   }, [])
 
   return (
