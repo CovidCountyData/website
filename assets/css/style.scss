@@ -6461,3 +6461,55 @@ Data API CSS
     font-weight: 650 !important;
   }
 }
+
+.custom-downloads {
+  .dataset {
+
+    display: table;
+    text-align: center;
+    vertical-align: middle;
+    border: 1px solid black;
+    height: 100px;
+    border-radius: 2px;
+    margin: 10px;
+
+    &:hover,&.selected {
+      cursor: pointer;
+      border: 1px solid white;
+      background-color: $main-color;
+      p {
+        color: white;
+      }
+    }
+
+    p {
+      user-select: none;
+      display: table-cell;
+      line-height: 25px;
+      vertical-align: middle;
+    }
+  }
+
+  li > div {
+    padding-top: 10px;;
+  }
+}
+
+.variable-selection {
+  .variable-list {
+    div {
+      border: 1px solid black;
+      border-radius: 2px;
+      padding: 5px 10px 5px 10px;
+      margin: 10px;
+      min-width: 50px;
+      text-align: center;
+      &:hover,&.selected {
+        cursor: pointer;
+        border: 1px solid white;
+        background-color: $main-color;
+        color: white;
+      }
+    }
+  }
+}
