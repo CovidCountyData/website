@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import ReactGA from "react-ga";
 import Tabs from "react-bootstrap/Tabs";
 import Tab from "react-bootstrap/Tab";
 import { PyDocs, RDocs, JlDocs } from "../Libraries";
@@ -18,18 +19,23 @@ const DataApiDocs = () => {
   const router = useRouter();
   const updatePage = (newPage) => {
     mixpanel.track("api doc click", { from: page });
+    ReactGA.event({ category: "docs", action: "nav", label: page });
     setPage(newPage);
-    const newUrl = router.pathname + "#" + newPage
-    router.push(newUrl, newUrl,{shallow: true});
+    const newUrl = router.pathname + "#" + newPage;
+    router.push(newUrl, newUrl, { shallow: true });
   };
   useEffect(() => {
-      const parts = router.asPath.split("#")
-      if (parts.length !== 2) {
-        return
-      }
-      const hashPart = parts[1];
-      updatePage(["rest", "graphql", "python", "r", "julia"].includes(hashPart) ? hashPart : "rest")
-  }, [])
+    const parts = router.asPath.split("#");
+    if (parts.length !== 2) {
+      return;
+    }
+    const hashPart = parts[1];
+    updatePage(
+      ["rest", "graphql", "python", "r", "julia"].includes(hashPart)
+        ? hashPart
+        : "rest"
+    );
+  }, []);
 
   return (
     <Container className="pb-100 pt-50 api-docs-tab-panel">
