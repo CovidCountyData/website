@@ -1,4 +1,5 @@
 import React from "react";
+import ReactGA from "react-ga";
 import ReactTooltip from "react-tooltip";
 import { useMixpanel } from "../Common/mixpanel";
 
@@ -7,7 +8,10 @@ const DownloadButton = (props) => {
   const tipName = name + "-tooltip";
   const mixpanel = useMixpanel();
 
-  const onClick = () => mixpanel.track(name + " download");
+  const onClick = () => {
+    ReactGA.event({ category: "download", action: "csv", label: name });
+    mixpanel.track(name + " download");
+  };
 
   return (
     <div className="download-button row data-download-button">
