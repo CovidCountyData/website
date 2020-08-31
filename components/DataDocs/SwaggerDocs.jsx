@@ -29,6 +29,7 @@ const SwaggerDocs = () => {
   const order = [
     "covid_us",
     "covid_historical",
+    "covid_sources",
     "demographics",
     "economic_snapshots",
     "economics",
