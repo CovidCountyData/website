@@ -5,7 +5,6 @@ const GraphQLApi = () => {
   return (
     <React.Fragment>
       <GraphQLDocs />
-      {/* Add register form here */}
       <RegisterFormContainer mini={true} className="register-container" />
       <div className="container">
         <div className="row">
