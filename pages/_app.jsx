@@ -47,7 +47,7 @@ export default class MyApp extends App {
     return (
       <MixpanelProvider>
         <DefaultSeo
-          title="CCD"
+          title="COVID County Data"
           description="CCD - COVID County Data"
           openGraph={{
             type: "website",
