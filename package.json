@@ -50,6 +50,7 @@
         "react-moment": "^0.9.7",
         "react-owl-carousel3": "^2.2.5",
         "react-particles-js": "^2.7.1",
+        "react-select": "^3.1.0",
         "react-tooltip": "^4.2.7",
         "react-visibility-sensor": "^5.1.1",
         "react-wow": "^1.0.0",

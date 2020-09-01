@@ -1,13 +1,17 @@
 import Axios from "axios";
-import React, { useEffect } from "react"
+import React from "react"
 import Datepicker from 'react-datepicker'
+import Select from 'react-select'
+
 function CustomDownloads() {
     // STATE -----------------------------------------------------
     const [datasetVariables, setDatasetVariables] = React.useState({})
     const [datasets, setDatasets] = React.useState({})
+    // TODO: Update default state to use actual list
+    const [stateFips, setStateFips] = React.useState([{ value: 45, label: "Arizona" }, { value: 53, label: "Alabama" }])
 
     const reducer = (state, action) => {
-        console.log("Reducing: ", action, state)
+        console.debug("Reducing: ", action, state)
 
         switch (action.type) {
             case 'select-dataset':
@@ -22,7 +26,7 @@ function CustomDownloads() {
                         [action.dataset]: {}
                     }
                 }
-                console.log("new state: ", newState)
+                console.debug("new state: ", newState)
                 return newState
             case 'select-variable':
                 const newVariableState = {
@@ -36,7 +40,7 @@ function CustomDownloads() {
                     }
                 }
 
-                console.log("new state: ", newVariableState)
+                console.debug("new state: ", newVariableState)
                 return newVariableState
 
             case 'set-start-date':
@@ -57,6 +61,11 @@ function CustomDownloads() {
                     }
                 }
                 return newEDate
+            case 'select-fips':
+                return {
+                    ...state,
+                    fipsCodes: action.selected
+                }
             default:
                 return state
         }
@@ -65,7 +74,8 @@ function CustomDownloads() {
     const [state, dispatch] = React.useReducer(reducer, {
         selectedVariables: {},
         selectedDatasets: {},
-        filters: {}
+        filters: {},
+        fipsCodes: []
     })
 
     // EFFECTS -------------------------------------------------------------
@@ -210,7 +220,17 @@ function CustomDownloads() {
                                 </div>
                                 <div className="row">
                                     <span className='col-12 col-md-2'>FIPS Code(s)</span>
-                                    <input type="text" />
+                                    <Select
+                                        isMulti={true}
+                                        value={state.fipsCodes}
+                                        className="react-select"
+                                        options={stateFips}
+                                        onChange={(selected) => {
+                                            dispatch({
+                                                type: "select-fips",
+                                                selected
+                                            })
+                                        }} />
                                 </div>
                             </form>
                         </li>

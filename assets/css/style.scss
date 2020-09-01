@@ -6463,6 +6463,10 @@ Data API CSS
 }
 
 .custom-downloads {
+  input {
+    border: 1px solid hsl(0, 0%, 60%);
+    width: 250px;
+  }
   .dataset {
 
     display: table;
@@ -6523,4 +6527,9 @@ form.filter {
       }
     }
   }
+}
+
+
+.react-select {
+  width: 250px;
 }
