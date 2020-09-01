@@ -18,6 +18,7 @@ import "../assets/css/swagger-docs.scss";
 import MixpanelProvider from "../components/Common/mixpanel";
 import GoTop from "../components/Shared/GoTop";
 import "../node_modules/react-modal-video/css/modal-video.min.css";
+import "react-datepicker/dist/react-datepicker.css";
 
 config.autoAddCss = false; // Tell Font Awesome to skip adding the CSS aut
 

@@ -1,35 +1,73 @@
 import Axios from "axios";
 import React, { useEffect } from "react"
-import { Toast } from "react-bootstrap";
-
+import Datepicker from 'react-datepicker'
 function CustomDownloads() {
-    const [showErrorToast, setShowErrorToast] = React.useState(false)
     // STATE -----------------------------------------------------
-    const [selected, setNewSelected] = React.useState({})
-    // TODO: Remove initial state
-    const [datasetVariables, setDatasetVariables] = React.useState({
-        "Demographics": ["dt", "fips", "ethnicity"]
-    })
+    const [datasetVariables, setDatasetVariables] = React.useState({})
     const [datasets, setDatasets] = React.useState({})
-    const [selectedVariables, setSelectedVariables] = React.useState({})
 
-    // const datasets = {
-    //     "County-level covid data": "covid_variables",
-    //     "Vintage county-level covid data": "covid_variables",
-    //     "Demographics": "acs_variables",
-    //     "Industry specific GPD": "bea_variables",
-    //     "Economic Data": "bea_variables",
-    //     "Mobility Devices": "mobility_dex_variables",
-    //     "Mobility Locations": "", // TODO: No variables table for this?
-    //     "HHS Data": "covid_variables",
-    //     "US Counties": "us_fips", // TODO: This returns all fips codes. Just want column names
-    //     "US States": "us_states", // TODO: This is returning all fips codes. I just want the column names (state name, abbreviation, fips)
-    //     "Nonpharmaceutical interventions data": "npi_variables",
-    //     "Redistributing: Our World in Data covid data": "", // TODO: Can't find this one
-    //     "Redistributing: Covid Tracking Project Data": "", // TODO: Can't find this one,
-    //     "Redistributing: New York Times covid data": "", // TODO: Can't find this one,
-    //     "Redistributing: USA Facts covid data": "" // TODO: Can't find this one
-    // }
+    const reducer = (state, action) => {
+        console.log("Reducing: ", action, state)
+
+        switch (action.type) {
+            case 'select-dataset':
+                const newState = {
+                    ...state,
+                    selectedDatasets: {
+                        ...state.selectedDatasets,
+                        [action.dataset]: !state.selectedDatasets[action.dataset]
+                    },
+                    selectedVariables: {
+                        ...state.selectedVariables,
+                        [action.dataset]: {}
+                    }
+                }
+                console.log("new state: ", newState)
+                return newState
+            case 'select-variable':
+                const newVariableState = {
+                    ...state,
+                    selectedVariables: {
+                        ...state.selectedVariables,
+                        [action.dataset]: {
+                            ...state.selectedVariables[action.dataset],
+                            [action.variable]: !state.selectedVariables[action.dataset][action.variable]
+                        }
+                    }
+                }
+
+                console.log("new state: ", newVariableState)
+                return newVariableState
+
+            case 'set-start-date':
+                const newSDate = {
+                    ...state,
+                    filters: {
+                        ...state.filters,
+                        startDate: action.date
+                    }
+                }
+                return newSDate
+            case 'set-end-date':
+                const newEDate = {
+                    ...state,
+                    filters: {
+                        ...state.filters,
+                        endDate: action.date
+                    }
+                }
+                return newEDate
+            default:
+                return state
+        }
+    }
+
+    const [state, dispatch] = React.useReducer(reducer, {
+        selectedVariables: {},
+        selectedDatasets: {},
+        filters: {}
+    })
+
     // EFFECTS -------------------------------------------------------------
     React.useEffect(() => {
 
@@ -37,42 +75,18 @@ function CustomDownloads() {
             console.log("swagger:", resp.data)
             setDatasets(resp.data.definitions)
         })
+        Axios.get("https://api.covidcountydata.org/variable_names").then(resp => {
+            const datasetVariables = {}
+            resp.data.forEach(d => {
+                datasetVariables[d.name] = d.variables
+            });
+            setDatasetVariables(datasetVariables)
+        })
     }, [])
-
-
-    // React.useEffect(() => {
-    //     // TODO: Check if we have list of variables for each true dataset
-    //     console.debug("get variables for ", selected)
-
-
-    //     // TODO: If not, request list of variables
-    //     // TODO: Set variables state
-    // }, [selected])
 
     // CALLBACKS --------------------------------------------------------------
     const onDatasetClick = (selectedDataset) => {
         console.debug("Selected ", selectedDataset, datasetVariables, selected)
-
-        // // Request list of dataset variables if we don't have them
-        // if (!datasetVariables[selectedDataset] && !selected[selectedDataset]) {
-        //     console.log("Getting variables for ", selectedDataset)
-        //     Axios.get(`https://api.covidcountydata.org/${datasets[selectedDataset]}`, {
-        //         headers: {
-        //             "Accept-profile": "meta"
-        //         }
-        //     }).then(resp => {
-        //         console.debug(`Variables for ${selectedDataset}: ${resp.data}`)
-        //         // TODO: set the datasetVariables state
-        //         const vars = resp.data.map(variable => variable.name)
-        //         setDatasetVariables({
-        //             ...datasetVariables,
-        //             [selectedDataset]: vars
-        //         })
-        //     }).catch(error => {
-        //         setShowErrorToast(true)
-        //     })
-        // }
-
         // toggle selection of dataset
         setNewSelected({
             ...selected,
@@ -101,34 +115,15 @@ function CustomDownloads() {
 
     }
 
-    const downloadData = (ev) => {
-        ev.ignoreDefault()
+    const downloadData = () => {
+        console.log(state)
         alert("Downloading data")
+        // TODO: Make requests and compile data
     }
     // RENDER ---------------------------------------------------------------------
     return (
         <React.Fragment>
-            {/* <div
-                aria-live="polite"
-                aria-atomic="true"
-                style={{
-                    position: 'relative',
-                    minHeight: '200px',
-                }}
-            >
-                <div
-                    style={{
-                        position: 'absolute',
-                        top: 0,
-                        right: 0,
-                    }}
-                >
 
-                    <Toast error onClose={() => setShowErrorToast(false)} show={showErrorToast} delay={3000} autohide>
-                        <Toast.Body>An error occurred requesting the dataset variables</Toast.Body>
-                    </Toast>
-                </div>
-            </div> */}
             {datasets && datasets !== {} &&
                 <div className="custom-downloads container">
                     <h2>Custom Data Downloads</h2>
@@ -144,11 +139,11 @@ function CustomDownloads() {
                                         <div
                                             key={k}
                                             className={
-                                                selected[dataset]
+                                                state.selectedDatasets[dataset]
                                                     ? "col-12 col-md-2 dataset selected"
                                                     : "col-10 col-md-2 dataset"}
                                             onClick={() => {
-                                                onDatasetClick(dataset)
+                                                dispatch({ type: 'select-dataset', dataset })
                                             }}>
                                             <p>
                                                 {datasets[dataset].name}
@@ -164,41 +159,29 @@ function CustomDownloads() {
                                 Choose variable(s)
                         </span>
 
-                            {Object.keys(selected).map((datasetName, k) => {
-                                if (selected[datasetName]) {
+                            {Object.keys(state.selectedDatasets).map((datasetName, k) => {
+                                if (state.selectedDatasets[datasetName]) {
 
                                     return (
                                         <div className="variable-selection" key={k}>
                                             <span>Variables for <em>{datasets[datasetName].name}</em></span>
                                             <div className="variable-list row">
-                                                {Object.keys(datasets[datasetName].properties).map((prop, i) => {
+                                                {Object.keys(datasetVariables[datasetName]).map((prop, i) => {
+                                                    const variable = datasetVariables[datasetName][prop]
                                                     return <div
                                                         key={i}
                                                         className={(
-                                                            selectedVariables[datasetName]
-                                                            && selectedVariables[datasetName][prop])
+                                                            state.selectedVariables[datasetName]
+                                                            && state.selectedVariables[datasetName][variable])
                                                             ? "selected col-auto"
                                                             : "col-auto"}
                                                         onClick={() => {
-                                                            onSelectVar(datasetName, prop)
+                                                            dispatch({ type: "select-variable", dataset: datasetName, variable })
                                                         }}>
-                                                        {prop}
+                                                        {variable}
                                                     </div>
                                                 })}
-                                                {/* {datasetVariables[datasetName].map((variable, i) => {
-                                                        return <div
-                                                            key={i}
-                                                            className={(
-                                                                selectedVariables[datasetName]
-                                                                && selectedVariables[datasetName][variable])
-                                                                ? "selected col-auto"
-                                                                : "col-auto"}
-                                                            onClick={() => {
-                                                                onSelectVar(datasetName, variable)
-                                                            }}>
-                                                            {variable}
-                                                        </div>
-                                                    })} */}
+
                                             </div>
                                         </div>
                                     )
@@ -208,6 +191,24 @@ function CustomDownloads() {
                         <li>
                             <span>Choose filter(s)</span>
                             {/** TODO: List possible filters*/}
+                            <form className="filter">
+                                <div>
+                                    <span>Start date:</span>
+                                    <Datepicker onChange={(date) => {
+                                        dispatch({ type: 'set-start-date', date })
+                                    }}
+                                        selected={state.filters.startDate}
+                                    />
+                                </div>
+                                <div>
+                                    <span>End date:</span>
+                                    <Datepicker onChange={(date) => {
+                                        dispatch({ type: 'set-end-date', date })
+                                    }}
+                                        selected={state.filters.endDate}
+                                    />
+                                </div>
+                            </form>
                         </li>
                         <li>
                             <span>Download</span>
