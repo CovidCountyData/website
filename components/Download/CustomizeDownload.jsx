@@ -161,13 +161,13 @@ function CustomDownloads() {
 
                             {Object.keys(state.selectedDatasets).map((datasetName, k) => {
                                 if (state.selectedDatasets[datasetName]) {
-
+                                    const variables = datasetVariables[datasetName] ?? datasets[datasetName].properties
                                     return (
                                         <div className="variable-selection" key={k}>
                                             <span>Variables for <em>{datasets[datasetName].name}</em></span>
                                             <div className="variable-list row">
-                                                {Object.keys(datasetVariables[datasetName]).map((prop, i) => {
-                                                    const variable = datasetVariables[datasetName][prop]
+                                                {Object.keys(variables).map((prop, i) => {
+                                                    const variable = datasetVariables[datasetName] ? datasetVariables[datasetName][prop] : Object.keys(datasets[datasetName].properties)[i]
                                                     return <div
                                                         key={i}
                                                         className={(
@@ -192,21 +192,25 @@ function CustomDownloads() {
                             <span>Choose filter(s)</span>
                             {/** TODO: List possible filters*/}
                             <form className="filter">
-                                <div>
-                                    <span>Start date:</span>
+                                <div className='row'>
+                                    <span className='col-12 col-md-2'>Start date:</span>
                                     <Datepicker onChange={(date) => {
                                         dispatch({ type: 'set-start-date', date })
                                     }}
                                         selected={state.filters.startDate}
                                     />
                                 </div>
-                                <div>
-                                    <span>End date:</span>
+                                <div className='row'>
+                                    <span className='col-12 col-md-2'>End date:</span>
                                     <Datepicker onChange={(date) => {
                                         dispatch({ type: 'set-end-date', date })
                                     }}
                                         selected={state.filters.endDate}
                                     />
+                                </div>
+                                <div className="row">
+                                    <span className='col-12 col-md-2'>FIPS Code(s)</span>
+                                    <input type="text" />
                                 </div>
                             </form>
                         </li>

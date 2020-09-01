@@ -6490,8 +6490,12 @@ Data API CSS
     }
   }
 
+  li {
+    padding: 10px 0px 10px 0px;
+  }
   li > div {
-    padding-top: 10px;;
+    padding-top: 10px;
+
   }
 }
 form.filter {
