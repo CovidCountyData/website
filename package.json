@@ -22,6 +22,7 @@
         "classnames": "^2.2.6",
         "express": "^4.17.1",
         "firebase": "^7.14.3",
+        "globby": "^11.0.1",
         "imagemin-mozjpeg": "^8.0.0",
         "imagemin-optipng": "^7.1.0",
         "imagemin-svgo": "^7.1.0",
@@ -53,6 +54,7 @@
         "react-visibility-sensor": "^5.1.1",
         "react-wow": "^1.0.0",
         "sass": "^1.26.5",
+        "sitemap": "^6.2.0",
         "swr": "^0.2.2"
     },
     "devDependencies": {

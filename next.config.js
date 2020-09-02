@@ -22,6 +22,13 @@ const nextJsConfig = {
   //         '/error': { page: '/error' },
   //     }
   // }
+  webpack: (config, { isServer }) => {
+    if (isServer) {
+      require('./sitemap-generator')
+    }
+
+    return config
+  }
 };
 
 module.exports = withPlugins([
@@ -51,9 +58,9 @@ module.exports = withPlugins([
       },
     },
   ],
-//   [withCSS],
+  //   [withCSS],
   [withFonts],
-//   [withSass],
+  //   [withSass],
   [withVideos],
   nextJsConfig,
 ]);

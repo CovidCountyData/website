@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+      <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+          
+                      <url>
+                          <loc>https://covidcountydata.org/R</loc>
+                      </url>
+                  
+                      <url>
+                          <loc>https://covidcountydata.org/_app</loc>
+                      </url>
+                  
+                      <url>
+                          <loc>https://covidcountydata.org/_document</loc>
+                      </url>
+                  
+                      <url>
+                          <loc>https://covidcountydata.org/about</loc>
+                      </url>
+                  
+                      <url>
+                          <loc>https://covidcountydata.org/audit</loc>
+                      </url>
+                  
+                      <url>
+                          <loc>https://covidcountydata.org/contact</loc>
+                      </url>
+                  
+                      <url>
+                          <loc>https://covidcountydata.org/error</loc>
+                      </url>
+                  
+                      <url>
+                          <loc>https://covidcountydata.org/faq</loc>
+                      </url>
+                  
+                      <url>
+                          <loc>https://covidcountydata.org/graphql-api</loc>
+                      </url>
+                  
+                      <url>
+                          <loc>https://covidcountydata.org</loc>
+                      </url>
+                  
+                      <url>
+                          <loc>https://covidcountydata.org/julia</loc>
+                      </url>
+                  
+                      <url>
+                          <loc>https://covidcountydata.org/privacy-policy</loc>
+                      </url>
+                  
+                      <url>
+                          <loc>https://covidcountydata.org/python</loc>
+                      </url>
+                  
+                      <url>
+                          <loc>https://covidcountydata.org/register</loc>
+                      </url>
+                  
+                      <url>
+                          <loc>https://covidcountydata.org/rest-api</loc>
+                      </url>
+                  
+                      <url>
+                          <loc>https://covidcountydata.org/data/api</loc>
+                      </url>
+                  
+                      <url>
+                          <loc>https://covidcountydata.org/data/documentation</loc>
+                      </url>
+                  
+                      <url>
+                          <loc>https://covidcountydata.org/data/download</loc>
+                      </url>
+                  
+                      <url>
+                          <loc>https://covidcountydata.org/data/index</loc>
+                      </url>
+                  
+      </urlset>
+  
