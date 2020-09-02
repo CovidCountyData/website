@@ -82,7 +82,6 @@ function CustomDownloads() {
     React.useEffect(() => {
 
         Axios.get("https://clean-swagger-inunbrtacq-uk.a.run.app").then(resp => {
-            console.log("swagger:", resp.data)
             setDatasets(resp.data.definitions)
         })
         Axios.get("https://api.covidcountydata.org/variable_names").then(resp => {
@@ -91,6 +90,21 @@ function CustomDownloads() {
                 datasetVariables[d.name] = d.variables
             });
             setDatasetVariables(datasetVariables)
+        })
+        Axios.get("https://api.covidcountydata.org/us_states").then(resp => {
+            setStateFips(resp.data.map(state => {
+                return JSON.stringify({ // turn into string to facilitate removing duplicates
+                    label: state.name,
+                    value: state.location
+                })
+            })
+                .filter((value, index, self) => { // Remove duplicates
+                    return self.indexOf(value) === index;
+                })
+                .map(val => JSON.parse(val)) // Convert back to object
+                .sort((a, b) => a.label > b.label) // Sort alphabetically
+            )
+
         })
     }, [])
 
