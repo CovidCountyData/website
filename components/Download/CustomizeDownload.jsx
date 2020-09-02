@@ -121,18 +121,18 @@ function CustomDownloads() {
                     return key
                 }
             })
-            const start = moment(state.filters.startDate).format("YYYY-MM-DD")
-            const end = moment(state.filters.endDate).format("YYYY-MM-DD")
-
+            const start = state.filters.startDate ? moment(state.filters.startDate).format("YYYY-MM-DD") : null
+            const end = state.filters.endDate ? moment(state.filters.endDate).format("YYYY-MM-DD") : null
+            // TODO: Requesting data with both a startDate and an endDate filter fails
             const queryParams = {
                 variable: variablesToReq.length ? `in.(${variablesToReq.join(',')})` : "",
-                dt: `${start ? "gt." + start : ""}` + ((start && end) ? "&" : "") + `${end ? 'lt.' + end : ""}`,
+                dt: (start || end) ? `${start ? "gt." + start : ""}` + ((start && end) ? "&" : "") + `${end ? 'lt.' + end : ""}` : null,
                 fips: `in.(${state.fipsCodes.map(fips => fips.value).join(',')})`
             }
 
             const query = qs.stringify(queryParams)
-            console.log(`Making request to: https://covidcountydata.org/${datasetName}?${query}`)
-            Axios.get(`https://covidcountydata.org/${datasetName}?${query}`).then(resp => {
+            console.log(`Making request to: https://api.covidcountydata.org/${datasetName}?${query}`)
+            Axios.get(`https://api.covidcountydata.org/${datasetName}?${query}`).then(resp => {
                 console.log(resp)
             }).catch(err => {
                 console.error(err)
