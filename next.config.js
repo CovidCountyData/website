@@ -22,13 +22,13 @@ const nextJsConfig = {
   //         '/error': { page: '/error' },
   //     }
   // }
-  webpack: (config, { isServer }) => {
-    if (isServer) {
-      require('./sitemap-generator')
-    }
+  // webpack: (config, { isServer }) => {
+  //   if (isServer) {
+  //     require('./sitemap-generator')
+  //   }
 
-    return config
-  }
+  //   return config
+  // }
 };
 
 module.exports = withPlugins([
