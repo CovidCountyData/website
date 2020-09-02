@@ -8,7 +8,7 @@ function CustomDownloads() {
     const [datasetVariables, setDatasetVariables] = React.useState({})
     const [datasets, setDatasets] = React.useState({})
     // TODO: Update default state to use actual list
-    const [stateFips, setStateFips] = React.useState([{ value: 45, label: "Arizona" }, { value: 53, label: "Alabama" }])
+    const [stateFips, setStateFips] = React.useState([])
 
     const reducer = (state, action) => {
         console.debug("Reducing: ", action, state)
