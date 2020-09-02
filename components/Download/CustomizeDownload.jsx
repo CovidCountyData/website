@@ -2,6 +2,8 @@ import Axios from "axios";
 import React from "react"
 import Datepicker from 'react-datepicker'
 import Select from 'react-select'
+import qs from 'query-string'
+import moment from 'moment'
 
 function CustomDownloads() {
     // STATE -----------------------------------------------------
@@ -108,41 +110,34 @@ function CustomDownloads() {
         })
     }, [])
 
-    // CALLBACKS --------------------------------------------------------------
-    const onDatasetClick = (selectedDataset) => {
-        console.debug("Selected ", selectedDataset, datasetVariables, selected)
-        // toggle selection of dataset
-        setNewSelected({
-            ...selected,
-            [selectedDataset]: selected[selectedDataset] ? false : true
-        })
-    }
-
-    const onSelectVar = (dataset, variable) => {
-        // If the user hasn't selected a variable from this dataset before
-        if (!selectedVariables[dataset]) {
-            setSelectedVariables({
-                ...selectedVariables,
-                [dataset]: {
-                    [variable]: true
-                }
-            })
-        } else { // else toggle the selection of the variable
-            setSelectedVariables({
-                ...selectedVariables,
-                [dataset]: {
-                    ...selectedVariables[dataset],
-                    [variable]: selectedVariables[dataset][variable] ? false : true
-                }
-            })
-        }
-
-    }
-
     const downloadData = () => {
         console.log(state)
-        alert("Downloading data")
         // TODO: Make requests and compile data
+
+        // Make api request for each dataset
+        Object.keys(state.selectedDatasets).forEach(datasetName => {
+            const variablesToReq = Object.keys(state.selectedVariables[datasetName]).map(key => {
+                if (state.selectedVariables[datasetName][key]) {
+                    return key
+                }
+            })
+            const start = moment(state.filters.startDate).format("YYYY-MM-DD")
+            const end = moment(state.filters.endDate).format("YYYY-MM-DD")
+
+            const queryParams = {
+                variable: variablesToReq.length ? `in.(${variablesToReq.join(',')})` : "",
+                dt: `${start ? "gt." + start : ""}` + ((start && end) ? "&" : "") + `${end ? 'lt.' + end : ""}`,
+                fips: `in.(${state.fipsCodes.map(fips => fips.value).join(',')})`
+            }
+
+            const query = qs.stringify(queryParams)
+            console.log(`Making request to: https://covidcountydata.org/${datasetName}?${query}`)
+            Axios.get(`https://covidcountydata.org/${datasetName}?${query}`).then(resp => {
+                console.log(resp)
+            }).catch(err => {
+                console.error(err)
+            })
+        })
     }
     // RENDER ---------------------------------------------------------------------
     return (

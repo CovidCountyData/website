@@ -34,6 +34,7 @@
         "next-seo": "^4.4.0",
         "next-videos": "^1.1.4",
         "node-sass": "^4.14.1",
+        "query-string": "^6.13.1",
         "rapidoc": "^8.0.0",
         "rc-slider": "^9.3.1",
         "react": "^16.13.1",
