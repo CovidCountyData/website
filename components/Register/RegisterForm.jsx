@@ -22,7 +22,7 @@ const RegisterForm = (props) => {
     >
       <div className="container">
         <div className="row d-flex justify-content-center align-items-center">
-          <a name="register">
+          <div name="register">
             <div className="col-auto">
               <h2 className="center-align">{title}</h2>
             </div>
@@ -48,7 +48,7 @@ const RegisterForm = (props) => {
                 </button>
               </form>
             </div>
-          </a>
+          </div>
         </div>
       </div>
     </div>
