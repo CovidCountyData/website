@@ -134,10 +134,32 @@ function CustomDownloads() {
             console.log(`Making request to: https://api.covidcountydata.org/${datasetName}?${query}`)
             Axios.get(`https://api.covidcountydata.org/${datasetName}?${query}`).then(resp => {
                 console.log(resp)
+                downloadDataBlob(resp.data, "data.json")
             }).catch(err => {
                 console.error(err)
             })
         })
+    }
+
+    const downloadDataBlob = (json, filename) => {
+        console.log("Download data blob, ", json, filename)
+        // Create binary data url
+        const blob = new Blob([JSON.stringify(json, null, 2)], { type: "aplication/json" })
+        const data = URL.createObjectURL(blob)
+        // Download data
+        const a = document.createElement('a')
+        a.href = data
+        a.download = filename || 'data.json'
+        const clickHandler = () => {
+            setTimeout(() => {
+                console.log("Timeout exceeded")
+                URL.revokeObjectURL(data)
+                a.removeEventListener("click", clickHandler)
+            }, 150)
+        }
+
+        a.addEventListener("click", clickHandler, false)
+        a.click()
     }
     // RENDER ---------------------------------------------------------------------
     return (
