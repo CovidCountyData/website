@@ -5,7 +5,7 @@ import {
 } from "react-bootstrap";
 import ReactMarkdown from "react-markdown";
 import useRequest from "../../utils/useRequest";
-
+import { order } from '../datasets'
 function CustomToggle({ children, eventKey }) {
   const decoratedOnClick = useAccordionToggle(eventKey, () =>
     console.log("totally custom!")
@@ -26,24 +26,7 @@ const SwaggerDocs = () => {
     "https://clean-swagger-inunbrtacq-uk.a.run.app"
   );
   // console.log("Swagger:\n", data);
-  const order = [
-    "covid_us",
-    "covid_historical",
-    "demographics",
-    "economic_snapshots",
-    "economics",
-    "mobility_devices",
-    "mobility_locations",
-    "hhs",
-    "us_counties",
-    "us_states",
-    "npi_us",
-    "covid_global",
-    "covidtrackingproject",
-    "nytimes_covid",
-    "usafacts_covid",
-    'covid_sources'
-  ];
+
 
   return (
     <div className="swagger-docs container pb-100">

@@ -5,26 +5,9 @@ import Select from 'react-select'
 import qs from 'query-string'
 import moment from 'moment'
 import { Card } from "react-bootstrap";
-
+import { order } from '../datasets'
 function CustomDownloads() {
-    const order = [
-        "covid_us",
-        "covid_historical",
-        "demographics",
-        "economic_snapshots",
-        "economics",
-        "mobility_devices",
-        "mobility_locations",
-        "hhs",
-        "us_counties",
-        "us_states",
-        "npi_us",
-        "covid_global",
-        "covidtrackingproject",
-        "nytimes_covid",
-        "usafacts_covid",
-        'covid_sources'
-    ];
+
     // STATE -----------------------------------------------------
     const [datasetVariables, setDatasetVariables] = React.useState({})
     const [datasets, setDatasets] = React.useState({})
