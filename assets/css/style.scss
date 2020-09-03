@@ -6477,7 +6477,16 @@ Data API CSS
     border-radius: 2px;
     margin: 10px;
 
-    &:hover,&.selected {
+    &:hover {
+      cursor: pointer;
+      border: 1px solid white;
+      background-color: #f5c269;
+      p {
+        color: white;
+      }
+    }
+    
+    &.selected {
       cursor: pointer;
       border: 1px solid white;
       background-color: $main-color;
@@ -6519,7 +6528,14 @@ form.filter {
       margin: 10px;
       min-width: 50px;
       text-align: center;
-      &:hover,&.selected {
+      user-select: none;
+      &:hover {
+        cursor: pointer;
+        border: 1px solid white;
+        background-color: #f5c269;
+        color: white;
+      }
+      &.selected {
         cursor: pointer;
         border: 1px solid white;
         background-color: $main-color;
