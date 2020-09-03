@@ -6,6 +6,24 @@ import qs from 'query-string'
 import moment from 'moment'
 
 function CustomDownloads() {
+    const order = [
+        "covid_us",
+        "covid_historical",
+        "demographics",
+        "economic_snapshots",
+        "economics",
+        "mobility_devices",
+        "mobility_locations",
+        "hhs",
+        "us_counties",
+        "us_states",
+        "npi_us",
+        "covid_global",
+        "covidtrackingproject",
+        "nytimes_covid",
+        "usafacts_covid",
+        'covid_sources'
+    ];
     // STATE -----------------------------------------------------
     const [datasetVariables, setDatasetVariables] = React.useState({})
     const [datasets, setDatasets] = React.useState({})
@@ -13,7 +31,6 @@ function CustomDownloads() {
     const [stateFips, setStateFips] = React.useState([])
 
     const reducer = (state, action) => {
-        console.debug("Reducing: ", action, state)
 
         switch (action.type) {
             case 'select-dataset':
@@ -28,7 +45,6 @@ function CustomDownloads() {
                         [action.dataset]: {}
                     }
                 }
-                console.debug("new state: ", newState)
                 return newState
             case 'select-variable':
                 const newVariableState = {
@@ -42,7 +58,6 @@ function CustomDownloads() {
                     }
                 }
 
-                console.debug("new state: ", newVariableState)
                 return newVariableState
 
             case 'set-start-date':
@@ -112,7 +127,6 @@ function CustomDownloads() {
 
     const downloadData = () => {
         console.log(state)
-        // TODO: Make requests and compile data
 
         // Make api request for each dataset
         Object.keys(state.selectedDatasets).forEach(datasetName => {
@@ -131,9 +145,8 @@ function CustomDownloads() {
             }
 
             const query = qs.stringify(queryParams)
-            console.log(`Making request to: https://api.covidcountydata.org/${datasetName}?${query}`)
+            // TODO: Make request to python microservice
             Axios.get(`https://api.covidcountydata.org/${datasetName}?${query}`).then(resp => {
-                console.log(resp)
                 downloadDataBlob(resp.data, "data.json")
             }).catch(err => {
                 console.error(err)
@@ -142,7 +155,6 @@ function CustomDownloads() {
     }
 
     const downloadDataBlob = (json, filename) => {
-        console.log("Download data blob, ", json, filename)
         // Create binary data url
         const blob = new Blob([JSON.stringify(json, null, 2)], { type: "aplication/json" })
         const data = URL.createObjectURL(blob)
@@ -174,7 +186,7 @@ function CustomDownloads() {
                                 Choose dataset(s)
                         </span>
                             <div className="row">
-                                {Object.keys(datasets).map((dataset, k) => {
+                                {order.map((dataset, k) => {
 
                                     return (
                                         <div

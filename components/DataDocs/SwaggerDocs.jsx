@@ -42,6 +42,7 @@ const SwaggerDocs = () => {
     "covidtrackingproject",
     "nytimes_covid",
     "usafacts_covid",
+    'covid_sources'
   ];
 
   return (
