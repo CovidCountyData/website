@@ -208,9 +208,7 @@ function CustomDownloads() {
                                                 onClick={() => {
                                                     dispatch({ type: 'select-dataset', dataset })
                                                 }}>
-                                                <Card.Header>
-                                                    {'/' + dataset}
-                                                </Card.Header>
+
                                                 <Card.Body>
                                                     {datasets[dataset].name}
                                                 </Card.Body>
