@@ -111,41 +111,66 @@ function CustomDownloads() {
 
     const downloadData = () => {
         console.log(state)
-
         // Make api request for each dataset
-        Object.keys(state.selectedDatasets).forEach(datasetName => {
-            const variablesToReq = Object.keys(state.selectedVariables[datasetName]).map(key => {
-                if (state.selectedVariables[datasetName][key]) {
-                    return key
-                }
-            })
-            const start = state.filters.startDate ? moment(state.filters.startDate).format("YYYY-MM-DD") : null
-            const end = state.filters.endDate ? moment(state.filters.endDate).format("YYYY-MM-DD") : null
-            // TODO: Requesting data with both a startDate and an endDate filter fails
-            const queryParams = {
-                variable: variablesToReq.length ? `in.(${variablesToReq.join(',')})` : "",
-                dt: (start || end) ? `${start ? "gt." + start : ""}` + ((start && end) ? "&" : "") + `${end ? 'lt.' + end : ""}` : null,
-                fips: `in.(${state.fipsCodes.map(fips => fips.value).join(',')})`
-            }
+        const variablesToReq = []
+        const start = state.filters.startDate ? moment(state.filters.startDate).format("YYYY-MM-DD") : null
+        const end = state.filters.endDate ? moment(state.filters.endDate).format("YYYY-MM-DD") : null
+        // const queryParams = {
+        //     variable: variablesToReq.length ? `in.(${variablesToReq.join(',')})` : "",
+        //     dt: (start || end) ? `${start ? "gt." + start : ""}` + ((start && end) ? "&" : "") + `${end ? 'lt.' + end : ""}` : null,
+        //     fips: `in.(${state.fipsCodes.map(fips => fips.value).join(',')})`
+        // }
+        // const query = qs.stringify(queryParams)
 
-            const query = qs.stringify(queryParams)
-            // TODO: Make request to python microservice
-            Axios.get(`https://api.covidcountydata.org/${datasetName}?${query}`).then(resp => {
-                downloadDataBlob(resp.data, "data.json")
-            }).catch(err => {
-                console.error(err)
-            })
+        // Axios.get(`https://api.covidcountydata.org/${datasetName}?${query}`).then(resp => {
+        //     downloadDataBlob(resp.data, "data.json")
+        // }).catch(err => {
+        //     console.error(err)
+        // })
+        // TODO: Get apikey out of local storage
+        var reqParams = {
+            parameters: {}
+        }
+
+        Object.keys(state.selectedDatasets).forEach(dataset => {
+            if (state.selectedDatasets[dataset]) {
+                const vars = []
+                Object.keys(state.selectedVariables[dataset]).forEach(varName => {
+                    if (state.selectedVariables[dataset][varName]) {
+                        vars.push(varName)
+                    }
+                })
+                // Build parameters for dataset
+                const params = {
+                    variable: vars,
+                    location: state.fipsCodes.map(fips => fips.value)
+                }
+
+                reqParams = {
+                    ...reqParams,
+                    parameters: {
+                        ...reqParams.parameters,
+                        [dataset]: params
+                    }
+                }
+            }
+        })
+
+        console.log(reqParams)
+
+        Axios.post("https://api.covidcountydata.org/apiclient", reqParams).then(resp => {
+            downloadDataBlob(resp.data)
         })
     }
 
-    const downloadDataBlob = (json, filename) => {
+    const downloadDataBlob = (csv, filename) => {
         // Create binary data url
-        const blob = new Blob([JSON.stringify(json, null, 2)], { type: "aplication/json" })
+        const blob = new Blob([csv], { type: "text/csv" })
         const data = URL.createObjectURL(blob)
         // Download data
         const a = document.createElement('a')
         a.href = data
-        a.download = filename || 'data.json'
+        a.download = filename || 'data.csv'
         const clickHandler = () => {
             setTimeout(() => {
                 console.log("Timeout exceeded")
