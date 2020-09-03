@@ -4,6 +4,7 @@ import Datepicker from 'react-datepicker'
 import Select from 'react-select'
 import qs from 'query-string'
 import moment from 'moment'
+import { Card } from "react-bootstrap";
 
 function CustomDownloads() {
     const order = [
@@ -187,22 +188,27 @@ function CustomDownloads() {
                         </span>
                             <div className="row">
                                 {order.map((dataset, k) => {
+                                    if (datasets[dataset]) {
 
-                                    return (
-                                        <div
-                                            key={k}
-                                            className={
-                                                state.selectedDatasets[dataset]
-                                                    ? "col-12 col-md-2 dataset selected"
-                                                    : "col-10 col-md-2 dataset"}
-                                            onClick={() => {
-                                                dispatch({ type: 'select-dataset', dataset })
-                                            }}>
-                                            <p>
-                                                {datasets[dataset].name}
-                                            </p>
-                                        </div>
-                                    )
+                                        return (
+                                            <Card
+                                                key={k}
+                                                className={
+                                                    state.selectedDatasets[dataset]
+                                                        ? "col-12 col-md-2 dataset selected"
+                                                        : "col-10 col-md-2 dataset"}
+                                                onClick={() => {
+                                                    dispatch({ type: 'select-dataset', dataset })
+                                                }}>
+                                                <Card.Header>
+                                                    {'/' + dataset}
+                                                </Card.Header>
+                                                <Card.Body>
+                                                    {datasets[dataset].name}
+                                                </Card.Body>
+                                            </Card>
+                                        )
+                                    }
                                 })}
 
                             </div>
