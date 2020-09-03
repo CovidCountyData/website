@@ -58,7 +58,7 @@ function DownloadBanner() {
     </div>
   );
   const title = `
-  These CSV files contain the most up-to-date county-level COVID stats. All dates are local to the county being reported.`;
+  Download all county-level covid data or merge with other datasets to customize your downloads. All dates are local to the county being reported.`;
   return <TwoColumnBanner title={title} right={right} />;
 }
 
