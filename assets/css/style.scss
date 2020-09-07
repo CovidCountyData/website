@@ -6530,8 +6530,6 @@ form.filter {
 .variable-selection {
   .variable-list {
     div {
-      border: 1px solid #04026C;
-      border-radius: 2px;
       margin: 8px;
       min-width: 50px;
       text-align: center;
@@ -6540,14 +6538,10 @@ form.filter {
       padding: 10px;
       &:hover {
         cursor: pointer;
-        border: 3px solid #04026C;
-        margin: 6px;
       }
       &.selected {
         background-color: #e8e8fa;
         cursor: pointer;
-        border: 3px solid #04026C;
-        margin: 6px;
       }
      
     }

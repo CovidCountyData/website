@@ -37,6 +37,19 @@ function CustomDownloads() {
                     }
                 }
                 return newState
+            case 'restore-all':
+                const vars = {}
+                datasetVariables[action.dataset].forEach(variable => {
+                    vars[variable] = true
+                })
+
+                return {
+                    ...state,
+                    selectedVariables: {
+                        ...state.selectedVariables,
+                        [action.dataset]: vars
+                    }
+                }
             case 'select-variable':
                 const newVariableState = {
                     ...state,
@@ -100,11 +113,12 @@ function CustomDownloads() {
             setDatasetVariables(datasetVariables)
             dispatch({ type: 'select-dataset', dataset: 'covid_us' })
         })
-        Axios.get("https://api.covidcountydata.org/us_states").then(resp => {
-            setStateFips(resp.data.map(state => {
+        Axios.get("https://api.covidcountydata.org/us_counties").then(resp => {
+            console.debug("counties resp: ", resp.data)
+            setStateFips(resp.data.map(county => {
                 return JSON.stringify({ // turn into string to facilitate removing duplicates
-                    label: state.name,
-                    value: state.location
+                    label: `${county.county_name}, ${county.state_name} (${county.location})`,
+                    value: county.location
                 })
             })
                 .filter((value, index, self) => { // Remove duplicates
@@ -113,7 +127,6 @@ function CustomDownloads() {
                 .map(val => JSON.parse(val)) // Convert back to object
                 .sort((a, b) => a.label > b.label) // Sort alphabetically
             )
-
         })
     }, [])
 
@@ -254,8 +267,13 @@ function CustomDownloads() {
                                                         {variable}
                                                     </div>
                                                 })}
-
+                                                <div className="restore" onClick={() => {
+                                                    dispatch({ type: 'restore-all', dataset: datasetName })
+                                                }}>
+                                                    Restore all
+                                                </div>
                                             </div>
+
                                         </div>
                                     )
                                 }
@@ -263,26 +281,24 @@ function CustomDownloads() {
                         </li>
                         <li>
                             <span>Choose filter(s)</span>
+                            <div className="add-filter">
+                                Add filter
+                            </div>
                             {/** TODO: List possible filters*/}
                             <form className="filter">
-                                <div className='row'>
-                                    <span className='col-12 col-md-2'>Start date:</span>
-                                    <Datepicker onChange={(date) => {
+                                <DateFilter
+                                    className="row"
+                                    onChangee={(date) => {
                                         dispatch({ type: 'set-start-date', date })
-                                    }}
-                                        selected={state.filters.startDate}
-                                    />
-                                </div>
-                                <div className='row'>
-                                    <span className='col-12 col-md-2'>End date:</span>
-                                    <Datepicker onChange={(date) => {
+                                    }} title="Start date:" selected={state.filters.startDate} />
+                                <DateFilter
+                                    className="row"
+                                    onChangee={(date) => {
                                         dispatch({ type: 'set-end-date', date })
-                                    }}
-                                        selected={state.filters.endDate}
-                                    />
-                                </div>
+                                    }} title="Start date:" selected={state.filters.endDate} />
+
                                 <div className="row">
-                                    <span className='col-12 col-md-2'>FIPS Code(s)</span>
+                                    <span className='col-12 col-md-2'>Location(s)</span>
                                     <Select
                                         isMulti={true}
                                         value={state.fipsCodes}
@@ -310,6 +326,18 @@ function CustomDownloads() {
 
         </React.Fragment >
 
+    )
+}
+
+const DateFilter = (props) => {
+
+    return (
+        <div className={props.className}>
+            <span className='col-12 col-md-2'>{props.title}</span>
+            <Datepicker onChange={props.onChange}
+                selected={props.selected}
+            />
+        </div>
     )
 }
 export default CustomDownloads

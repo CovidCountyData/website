@@ -55,10 +55,10 @@
         "react-tooltip": "^4.2.7",
         "react-visibility-sensor": "^5.1.1",
         "react-wow": "^1.0.0",
-        "sass": "^1.26.5",
         "swr": "^0.2.2"
     },
     "devDependencies": {
-        "prettier": "^2.0.5"
+        "prettier": "^2.0.5",
+        "sass": "^1.26.10"
     }
 }
