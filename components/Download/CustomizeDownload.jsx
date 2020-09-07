@@ -18,6 +18,13 @@ function CustomDownloads() {
 
         switch (action.type) {
             case 'select-dataset':
+                const newSelectedVariables = {}
+                if (!state.selectedDatasets[action.dataset]) {
+
+                    datasetVariables[action.dataset].forEach(variable => {
+                        newSelectedVariables[variable] = true
+                    })
+                }
                 const newState = {
                     ...state,
                     selectedDatasets: {
@@ -26,7 +33,7 @@ function CustomDownloads() {
                     },
                     selectedVariables: {
                         ...state.selectedVariables,
-                        [action.dataset]: {}
+                        [action.dataset]: newSelectedVariables
                     }
                 }
                 return newState
@@ -91,6 +98,7 @@ function CustomDownloads() {
                 datasetVariables[d.name] = d.variables
             });
             setDatasetVariables(datasetVariables)
+            dispatch({ type: 'select-dataset', dataset: 'covid_us' })
         })
         Axios.get("https://api.covidcountydata.org/us_states").then(resp => {
             setStateFips(resp.data.map(state => {
@@ -133,7 +141,7 @@ function CustomDownloads() {
         }
 
         Object.keys(state.selectedDatasets).forEach(dataset => {
-            if (state.selectedDatasets[dataset]) {
+            if (state.selectedDatasets[dataset] && datasets) {
                 const vars = []
                 Object.keys(state.selectedVariables[dataset]).forEach(varName => {
                     if (state.selectedVariables[dataset][varName]) {
@@ -188,7 +196,7 @@ function CustomDownloads() {
 
             {datasets && datasets !== {} &&
                 <div className="custom-downloads container">
-                    <h2>Custom Data Downloads</h2>
+                    <h2>Customize data downloads</h2>
                     <ol>
                         <li>
                             <span>
@@ -225,7 +233,7 @@ function CustomDownloads() {
                         </span>
 
                             {Object.keys(state.selectedDatasets).map((datasetName, k) => {
-                                if (state.selectedDatasets[datasetName]) {
+                                if (state.selectedDatasets[datasetName] && datasets[datasetName]) {
                                     const variables = datasetVariables[datasetName] ?? datasets[datasetName].properties
                                     return (
                                         <div className="variable-selection" key={k}>

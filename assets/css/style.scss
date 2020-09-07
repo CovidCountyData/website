@@ -6468,31 +6468,40 @@ Data API CSS
     width: 250px;
   }
   .dataset {
+    display: table;
+    div.card-body {
+      display: table-cell;
+      text-align: center;
+      vertical-align: middle;
+
+    }
     padding-right: 0px;
     padding-left: 0px;
-    display: table;
-    text-align: center;
-    vertical-align: middle;
     height: 100px;
     border-radius: 2px;
-    margin: 10px;
+    margin: 13px;
     .card-header {
       font-family: monospace;
     }
+    color: #04026C;
+
     &:hover {
       cursor: pointer;
-      border: 1px solid white;
-      background-color: #f5c269;
-      color: white;
-      
+      border: 3px solid #04026C;
+    }
+    &.selected {
+      background-color: #e8e8fa;
+      cursor: pointer;
+      border: 3px solid #04026C;
     }
     
-    &.selected {
-      cursor: pointer;
-      border: 1px solid white;
-      background-color: $main-color;
-      color: white
-    }
+    
+    // &.selected {
+    //   cursor: pointer;
+    //   border: 1px solid white;
+    //   background-color: $main-color;
+    //   color: white
+    // }
 
     p {
       user-select: none;
@@ -6521,24 +6530,26 @@ form.filter {
 .variable-selection {
   .variable-list {
     div {
-      border: 1px solid black;
+      border: 1px solid #04026C;
       border-radius: 2px;
-      margin: 10px;
+      margin: 8px;
       min-width: 50px;
       text-align: center;
       user-select: none;
+      color: #04026C;
+      padding: 10px;
       &:hover {
         cursor: pointer;
-        border: 1px solid white;
-        background-color: #f5c269;
-        color: white;
+        border: 3px solid #04026C;
+        margin: 6px;
       }
       &.selected {
+        background-color: #e8e8fa;
         cursor: pointer;
-        border: 1px solid white;
-        background-color: $main-color;
-        color: white;
+        border: 3px solid #04026C;
+        margin: 6px;
       }
+     
     }
   }
 }
