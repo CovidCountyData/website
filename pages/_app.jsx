@@ -19,7 +19,7 @@ import MixpanelProvider from "../components/Common/mixpanel";
 import GoTop from "../components/Shared/GoTop";
 import "../node_modules/react-modal-video/css/modal-video.min.css";
 import "react-datepicker/dist/react-datepicker.css";
-
+import '@progress/kendo-theme-default/dist/all.css';
 config.autoAddCss = false; // Tell Font Awesome to skip adding the CSS aut
 
 ReactGA.initialize("UA-112477777-3");

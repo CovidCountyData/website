@@ -1,12 +1,14 @@
 import Axios from "axios";
 import React from "react"
 import Datepicker from 'react-datepicker'
-import Select from 'react-select'
+import Select from 'react-virtualized-select'
 import Link from 'next/link'
 import moment from 'moment'
 import { Card } from "react-bootstrap";
 import { order } from '../datasets'
 import { useRouter } from "next/router";
+import { MultiSelect } from '@progress/kendo-react-dropdowns'
+import { filterBy } from '@progress/kendo-data-query'
 function CustomDownloads() {
     const router = useRouter()
     // STATE -----------------------------------------------------
@@ -14,6 +16,7 @@ function CustomDownloads() {
     const [datasets, setDatasets] = React.useState({})
     // TODO: Update default state to use actual list
     const [stateFips, setStateFips] = React.useState([])
+    const [filteredStateFips, setFiltered] = React.useState([])
 
     const reducer = (state, action) => {
 
@@ -126,7 +129,7 @@ function CustomDownloads() {
         })
         Axios.get("https://api.covidcountydata.org/us_counties").then(resp => {
             console.debug("counties resp: ", resp.data)
-            setStateFips(resp.data.map(county => {
+            const sf = resp.data.map(county => {
                 return JSON.stringify({ // turn into string to facilitate removing duplicates
                     label: `${county.county_name}, ${county.state_name} (${county.location})`,
                     value: county.location
@@ -137,7 +140,8 @@ function CustomDownloads() {
                 })
                 .map(val => JSON.parse(val)) // Convert back to object
                 .sort((a, b) => a.label > b.label) // Sort alphabetically
-            )
+            setStateFips(sf)
+            setFiltered(sf)
         })
     }, [])
 
@@ -215,9 +219,13 @@ function CustomDownloads() {
         a.click()
     }
 
-    const handleLinkClick = (link) => {
+    const onFilterChange = (event) => {
+        clearTimeout(timeout);
+        const timeout = setTimeout(() => {
+            setFiltered(filterBy(stateFips.slice(), event.filter))
 
-        router.push(link)
+        }, 500);
+
     }
     // RENDER ---------------------------------------------------------------------
     return (
@@ -335,8 +343,8 @@ function CustomDownloads() {
 
                                 <div className="row">
                                     <span className='col-12 col-md-2'>Location(s)</span>
-                                    <Select
-                                        isMulti={true}
+                                    {/* <Select
+                                        multi={true}
                                         value={state.fipsCodes}
                                         className="react-select"
                                         options={stateFips}
@@ -345,7 +353,14 @@ function CustomDownloads() {
                                                 type: "select-fips",
                                                 selected
                                             })
-                                        }} />
+                                        }} /> */}
+                                    <MultiSelect
+                                        className="react-select"
+                                        data={filteredStateFips}
+                                        filterable={true}
+                                        onFilterChange={onFilterChange}
+                                        textField={'label'}
+                                        dataItemKey={'value'} />
                                 </div>
                             </form>
                         </li>
