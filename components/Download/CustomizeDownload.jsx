@@ -51,6 +51,16 @@ function CustomDownloads() {
                         [action.dataset]: vars
                     }
                 }
+            case 'clear-all':
+
+
+                return {
+                    ...state,
+                    selectedVariables: {
+                        ...state.selectedVariables,
+                        [action.dataset]: {}
+                    }
+                }
             case 'select-variable':
                 const newVariableState = {
                     ...state,
@@ -282,6 +292,11 @@ function CustomDownloads() {
                                                     dispatch({ type: 'restore-all', dataset: datasetName })
                                                 }}>
                                                     Restore all
+                                                </div>
+                                                <div className="restore" onClick={() => {
+                                                    dispatch({ type: 'clear-all', dataset: datasetName })
+                                                }}>
+                                                    Clear all
                                                 </div>
                                             </div>
 
