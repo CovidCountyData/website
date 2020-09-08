@@ -6536,6 +6536,10 @@ form.filter {
   }
 }
 .variable-selection {
+  color: black;
+  em {
+    font-weight: 650;
+  }
   .variable-list {
     div {
       margin: 8px;

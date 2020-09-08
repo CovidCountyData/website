@@ -20,7 +20,7 @@ function CustomDownloads() {
         switch (action.type) {
             case 'select-dataset':
                 const newSelectedVariables = {}
-                if (!state.selectedDatasets[action.dataset]) {
+                if (!state.selectedDatasets[action.dataset] && datasetVariables[action.dataset]) {
 
                     datasetVariables[action.dataset].forEach(variable => {
                         newSelectedVariables[variable] = true
@@ -268,40 +268,50 @@ function CustomDownloads() {
 
                             {Object.keys(state.selectedDatasets).map((datasetName, k) => {
                                 if (state.selectedDatasets[datasetName] && datasets[datasetName]) {
-                                    const variables = datasetVariables[datasetName] ?? datasets[datasetName].properties
-                                    return (
-                                        <div className="variable-selection" key={k}>
-                                            <span>Variables for <em>{datasets[datasetName].name}</em></span>
-                                            <div className="variable-list row">
-                                                {Object.keys(variables).map((prop, i) => {
-                                                    const variable = datasetVariables[datasetName] ? datasetVariables[datasetName][prop] : Object.keys(datasets[datasetName].properties)[i]
-                                                    return <div
-                                                        key={i}
-                                                        className={(
-                                                            state.selectedVariables[datasetName]
-                                                            && state.selectedVariables[datasetName][variable])
-                                                            ? "selected col-auto"
-                                                            : "col-auto"}
-                                                        onClick={() => {
-                                                            dispatch({ type: "select-variable", dataset: datasetName, variable })
-                                                        }}>
-                                                        {variable}
-                                                    </div>
-                                                })}
-                                                <div className="restore" onClick={() => {
-                                                    dispatch({ type: 'restore-all', dataset: datasetName })
-                                                }}>
-                                                    Restore all
-                                                </div>
-                                                <div className="restore" onClick={() => {
-                                                    dispatch({ type: 'clear-all', dataset: datasetName })
-                                                }}>
-                                                    Clear all
-                                                </div>
-                                            </div>
+                                    if (datasetVariables[datasetName]) {
 
-                                        </div>
-                                    )
+
+                                        const variables = datasetVariables[datasetName] ?? datasets[datasetName].properties
+                                        return (
+                                            <div className="variable-selection" key={k}>
+                                                <span>Variables for <em>{datasets[datasetName].name}</em></span>
+                                                <div className="variable-list row">
+                                                    {Object.keys(variables).map((prop, i) => {
+                                                        const variable = datasetVariables[datasetName] ? datasetVariables[datasetName][prop] : Object.keys(datasets[datasetName].properties)[i]
+                                                        return <div
+                                                            key={i}
+                                                            className={(
+                                                                state.selectedVariables[datasetName]
+                                                                && state.selectedVariables[datasetName][variable])
+                                                                ? "selected col-auto"
+                                                                : "col-auto"}
+                                                            onClick={() => {
+                                                                dispatch({ type: "select-variable", dataset: datasetName, variable })
+                                                            }}>
+                                                            {variable}
+                                                        </div>
+                                                    })}
+                                                    <div className="restore" onClick={() => {
+                                                        dispatch({ type: 'restore-all', dataset: datasetName })
+                                                    }}>
+                                                        Restore all
+                                                </div>
+                                                    <div className="restore" onClick={() => {
+                                                        dispatch({ type: 'clear-all', dataset: datasetName })
+                                                    }}>
+                                                        Clear all
+                                                </div>
+                                                </div>
+
+                                            </div>
+                                        )
+                                    } else {
+                                        return (
+                                            <div className="variable-selection">
+                                                <div>No variable filters are available for <em>{datasets[datasetName].name}</em>. All variables available will be included in the download</div>
+                                            </div>
+                                        )
+                                    }
                                 }
                             })}
                         </li>
