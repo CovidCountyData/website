@@ -2,12 +2,11 @@ import Axios from "axios";
 import React from "react"
 import Datepicker from 'react-datepicker'
 import Select from 'react-select'
-import qs from 'query-string'
+import Link from 'next/link'
 import moment from 'moment'
 import { Card } from "react-bootstrap";
 import { order } from '../datasets'
 function CustomDownloads() {
-
     // STATE -----------------------------------------------------
     const [datasetVariables, setDatasetVariables] = React.useState({})
     const [datasets, setDatasets] = React.useState({})
@@ -232,9 +231,9 @@ function CustomDownloads() {
 
                                                 <Card.Body>
                                                     {datasets[dataset].name}
-                                                    <a href={`/data/documentation#` + dataset}>
+                                                    <Link href={`/data/documentation#` + dataset}>
                                                         <i className="pe-7s-next-2" />
-                                                    </a>
+                                                    </Link>
                                                 </Card.Body>
                                             </Card>
                                         )

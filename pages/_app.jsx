@@ -19,7 +19,6 @@ import MixpanelProvider from "../components/Common/mixpanel";
 import GoTop from "../components/Shared/GoTop";
 import "../node_modules/react-modal-video/css/modal-video.min.css";
 import "react-datepicker/dist/react-datepicker.css";
-import HashLinkObserver from 'react-hash-link'
 
 config.autoAddCss = false; // Tell Font Awesome to skip adding the CSS aut
 
@@ -48,7 +47,6 @@ export default class MyApp extends App {
 
     return (
       <MixpanelProvider>
-        <HashLinkObserver />
         <DefaultSeo
           title="CCD"
           description="CCD - COVID County Data"
