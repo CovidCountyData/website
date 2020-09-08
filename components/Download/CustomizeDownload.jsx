@@ -127,19 +127,30 @@ function CustomDownloads() {
             setDatasetVariables(datasetVariables)
             dispatch({ type: 'select-dataset', dataset: 'covid_us' })
         })
-        Axios.get("https://api.covidcountydata.org/us_counties").then(resp => {
-            console.debug("counties resp: ", resp.data)
-            const sf = resp.data.map(county => {
-                return JSON.stringify({ // turn into string to facilitate removing duplicates
-                    label: `${county.county_name}, ${county.state_name} (${county.location})`,
-                    value: county.location
-                })
+
+        Promise.all([Axios.get("https://api.covidcountydata.org/us_counties"), Axios.get("https://api.covidcountydata.org/us_states")]).then(resp => {
+            console.debug("counties resp: ", resp)
+
+
+            const sf = [...resp[0].data, ...resp[1].data].map(county => {
+                if (county.county_name) {
+
+                    return JSON.stringify({ // turn into string to facilitate removing duplicates
+                        label: `${county.county_name}, ${county.state_name} (${county.location})`,
+                        value: county.location
+                    })
+                } else {
+                    return JSON.stringify({
+                        label: `${county.name}, Statewide (${county.location})`
+                    })
+                }
             })
                 .filter((value, index, self) => { // Remove duplicates
                     return self.indexOf(value) === index;
                 })
                 .map(val => JSON.parse(val)) // Convert back to object
                 .sort((a, b) => a.label > b.label) // Sort alphabetically
+            console.log("sf", sf)
             setStateFips(sf)
             setFiltered(sf)
         })
