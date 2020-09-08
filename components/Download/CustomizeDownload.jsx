@@ -6,7 +6,9 @@ import Link from 'next/link'
 import moment from 'moment'
 import { Card } from "react-bootstrap";
 import { order } from '../datasets'
+import { useRouter } from "next/router";
 function CustomDownloads() {
+    const router = useRouter()
     // STATE -----------------------------------------------------
     const [datasetVariables, setDatasetVariables] = React.useState({})
     const [datasets, setDatasets] = React.useState({})
@@ -202,6 +204,11 @@ function CustomDownloads() {
         a.addEventListener("click", clickHandler, false)
         a.click()
     }
+
+    const handleLinkClick = (link) => {
+
+        router.push(link)
+    }
     // RENDER ---------------------------------------------------------------------
     return (
         <React.Fragment>
@@ -231,9 +238,11 @@ function CustomDownloads() {
 
                                                 <Card.Body>
                                                     {datasets[dataset].name}
-                                                    <Link href={`/data/documentation#` + dataset}>
+                                                    <a href={`/data/documentation#${dataset}`} target="_blank" onClick={(ev) => {
+                                                        ev.stopPropagation()
+                                                    }}>
                                                         <i className="pe-7s-next-2" />
-                                                    </Link>
+                                                    </a>
                                                 </Card.Body>
                                             </Card>
                                         )
