@@ -46,7 +46,7 @@ const SwaggerDocs = () => {
           console.log(key, " description: ", definition);
           // const properties = definition['properties']
           return (
-            <Accordion className="path-desc">
+            <Accordion className="path-desc" id={key}>
               <CustomToggle eventKey={i + 1}>
                 <div className="col-md-3 col-12 dataset">
                   {definition["name"]}

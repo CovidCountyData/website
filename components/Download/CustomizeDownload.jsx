@@ -232,6 +232,9 @@ function CustomDownloads() {
 
                                                 <Card.Body>
                                                     {datasets[dataset].name}
+                                                    <a href={`/data/documentation#` + dataset}>
+                                                        <i className="pe-7s-next-2" />
+                                                    </a>
                                                 </Card.Body>
                                             </Card>
                                         )

@@ -6468,6 +6468,14 @@ Data API CSS
     width: 250px;
   }
   .dataset {
+    i {
+      position: absolute;
+      bottom: 5px;
+      right: 5px;
+      &:hover {
+        background-color: lightgray;
+      }
+    }
     display: table;
     div.card-body {
       display: table-cell;
