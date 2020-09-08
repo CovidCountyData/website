@@ -144,7 +144,6 @@ function CustomDownloads() {
     const downloadData = () => {
         console.log(state)
         // Make api request for each dataset
-        const variablesToReq = []
         const start = state.filters.startDate ? moment(state.filters.startDate).format("YYYY-MM-DD") : null
         const end = state.filters.endDate ? moment(state.filters.endDate).format("YYYY-MM-DD") : null
         // const queryParams = {
@@ -175,7 +174,8 @@ function CustomDownloads() {
                 // Build parameters for dataset
                 const params = {
                     variable: vars,
-                    location: state.fipsCodes.map(fips => fips.value)
+                    location: state.fipsCodes.map(fips => fips.value),
+                    dt: start ? (end ? `${start}>=${end}` : `>=${start}`) : `<=${end}`
                 }
 
                 reqParams = {
@@ -324,14 +324,14 @@ function CustomDownloads() {
                             <form className="filter">
                                 <DateFilter
                                     className="row"
-                                    onChangee={(date) => {
+                                    onChange={(date) => {
                                         dispatch({ type: 'set-start-date', date })
                                     }} title="Start date:" selected={state.filters.startDate} />
                                 <DateFilter
                                     className="row"
-                                    onChangee={(date) => {
+                                    onChange={(date) => {
                                         dispatch({ type: 'set-end-date', date })
-                                    }} title="Start date:" selected={state.filters.endDate} />
+                                    }} title="End date:" selected={state.filters.endDate} />
 
                                 <div className="row">
                                     <span className='col-12 col-md-2'>Location(s)</span>
