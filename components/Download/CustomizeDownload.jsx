@@ -189,7 +189,7 @@ function CustomDownloads() {
                 // Build parameters for dataset
                 const params = {
                     variable: vars,
-                    location: state.fipsCodes.map(fips => fips.value),
+                    location: state.fipsCodes,
                     dt: start ? (end ? `${start}>=${end}` : `>=${start}`) : `<=${end}`
                 }
 
@@ -210,6 +210,18 @@ function CustomDownloads() {
         })
     }
 
+    const onSelectChange = (ev) => {
+        console.log("on select change: ", ev)
+        const fipsCodes = ev.value.map(val => {
+            console.log("val: ", val)
+            return val.label.match(/\(([^)]+)\)/)[1]
+        })
+
+        dispatch({
+            type: "select-fips",
+            selected: fipsCodes
+        })
+    }
     const downloadDataBlob = (csv, filename) => {
         // Create binary data url
         const blob = new Blob([csv], { type: "text/csv" })
@@ -366,6 +378,7 @@ function CustomDownloads() {
                                             })
                                         }} /> */}
                                     <MultiSelect
+                                        onChange={onSelectChange}
                                         className="react-select"
                                         data={filteredStateFips}
                                         filterable={true}
