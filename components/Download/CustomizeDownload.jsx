@@ -214,7 +214,7 @@ function CustomDownloads() {
         <React.Fragment>
 
             {datasets && datasets !== {} &&
-                <div className="custom-downloads container">
+                <div className="custom-downloads container" id="customize-downloads">
                     <h2>Customize data downloads</h2>
                     <ol>
                         <li>

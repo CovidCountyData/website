@@ -1,7 +1,7 @@
 import React from "react";
 import DownloadButton from "./DownloadButton";
 import TwoColumnBanner from "../Common/TwoColumnBanner";
-
+import Link from 'next/link'
 function DownloadBanner() {
   const datasets = [
     {
@@ -59,7 +59,16 @@ function DownloadBanner() {
   );
   const title = `
   Download all county-level covid data or merge with other datasets to customize your downloads. All dates are local to the county being reported.`;
-  return <TwoColumnBanner title={title} right={right} />;
+  return (<TwoColumnBanner
+    title={title}
+    right={right}
+    subtitle={
+      (<Link href="/data/download#customize-downloads">
+        <h3 className="link">
+          <span>Customize downloads</span>
+          {/* <i className="pe-7s-angle-right" style={{ fontSize: "30px", }} /> */}
+        </h3>
+      </Link>)}
+  />)
 }
-
 export default DownloadBanner;

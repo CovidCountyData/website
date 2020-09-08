@@ -9,6 +9,7 @@ function TwoColumnBanner(props) {
         <div className="row justify-content-between">
           <div className="col-md-5 col-sm-12">
             <h2>{title}</h2>
+            <span>{props.subtitle}</span>
           </div>
           <div className={rightColClass}>{right}</div>
         </div>
