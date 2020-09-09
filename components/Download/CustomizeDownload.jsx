@@ -1,8 +1,6 @@
 import Axios from "axios";
 import React from "react"
 import Datepicker from 'react-datepicker'
-import Select from 'react-virtualized-select'
-import Link from 'next/link'
 import moment from 'moment'
 import { Card } from "react-bootstrap";
 import { order } from '../datasets'
