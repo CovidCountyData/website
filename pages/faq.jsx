@@ -1,4 +1,5 @@
 import React from "react";
+import { useMixpanel } from "../components/Common/mixpanel";
 import PageBanner from "../components/Common/PageBanner";
 import ContactForm from "../components/Contact/ContactForm";
 import FaqContent from "../components/Faq/FaqContent";
