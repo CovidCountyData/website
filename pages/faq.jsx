@@ -27,7 +27,7 @@ const Faq = () => {
       },
       to: ["kristin.stannard@valorumdata.com", "spencer.lyon@valorumdata.com"],
     });
-    mixpanel.track("Contact Submit", payload);
+    mixpanel.track("Question Submit", payload);
   };
 
   return (
