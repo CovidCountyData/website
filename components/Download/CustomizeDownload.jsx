@@ -8,7 +8,7 @@ import { useRouter } from "next/router";
 import { MultiSelect } from '@progress/kendo-react-dropdowns'
 import { filterBy } from '@progress/kendo-data-query'
 import { FiX, FiPlus } from 'react-icons/fi'
-import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import Dropdown from 'react-bootstrap/Dropdown'
 
 function CustomDownloads() {
     const router = useRouter()
@@ -18,6 +18,10 @@ function CustomDownloads() {
     // TODO: Update default state to use actual list
     const [stateFips, setStateFips] = React.useState([])
     const [filteredStateFips, setFiltered] = React.useState([])
+    const [showEndDateFilter, setShowEndDateFitler] = React.useState(false)
+    const [showStartDateFilter, setShowStartDateFitler] = React.useState(false)
+    const [showLocationFilter, setShowLocationFilter] = React.useState(false)
+
 
     const reducer = (state, action) => {
 
@@ -365,39 +369,75 @@ function CustomDownloads() {
                             </div>
                             {/** TODO: List possible filters*/}
                             <form className="filter">
-                                <DateFilter
-                                    className="row"
-                                    onChange={(date) => {
-                                        dispatch({ type: 'set-start-date', date })
-                                    }} title="Start date:" selected={state.filters.startDate} />
-                                <DateFilter
-                                    className="row"
-                                    onChange={(date) => {
-                                        dispatch({ type: 'set-end-date', date })
-                                    }} title="End date:" selected={state.filters.endDate} />
+                                <Dropdown>
+                                    <Dropdown.Toggle>
+                                        Add filter
+                                    </Dropdown.Toggle>
+                                    <Dropdown.Menu>
+                                        {!showStartDateFilter && (
 
-                                <div className="row">
-                                    <span className='col-12 col-md-2'>Location(s)</span>
-                                    {/* <Select
-                                        multi={true}
-                                        value={state.fipsCodes}
-                                        className="react-select"
-                                        options={stateFips}
-                                        onChange={(selected) => {
+                                            <Dropdown.Item onClick={() => { setShowStartDateFitler(true) }}>
+                                                Start Date
+                                            </Dropdown.Item>
+                                        )}
+                                        {!showEndDateFilter && (
+                                            <Dropdown.Item onClick={() => { setShowEndDateFitler(true) }}>
+                                                End Date
+                                            </Dropdown.Item>
+                                        )}
+                                        {!showLocationFilter && (
+                                            <Dropdown.Item onClick={() => { setShowLocationFilter(true) }}>
+                                                Location
+                                            </Dropdown.Item>
+                                        )}
+
+                                    </Dropdown.Menu>
+                                </Dropdown>
+                                {showStartDateFilter &&
+                                    <DateFilter
+                                        className="row"
+                                        onChange={(date) => {
+                                            dispatch({ type: 'set-start-date', date })
+                                        }} title="Start date" selected={state.filters.startDate}
+                                        onClose={() => {
+                                            setShowStartDateFitler(false)
+                                            dispatch({ type: "set-start-date", date: null })
+
+                                        }}
+                                    />
+                                }
+                                {showEndDateFilter &&
+                                    <DateFilter
+                                        className="row"
+                                        onChange={(date) => {
+                                            dispatch({ type: 'set-end-date', date })
+                                        }} title="End date" selected={state.filters.endDate}
+                                        onClose={() => {
+                                            setShowEndDateFitler(false)
+                                            dispatch({ type: "set-end-date", date: null })
+                                        }}
+                                    />
+                                }
+                                {showLocationFilter &&
+                                    <div className="row">
+                                        <span className='col-12 col-md-2'>Location(s)</span>
+                                        <MultiSelect
+                                            onChange={onSelectChange}
+                                            className="react-select"
+                                            data={filteredStateFips}
+                                            filterable={true}
+                                            onFilterChange={onFilterChange}
+                                            textField={'label'}
+                                            dataItemKey={'value'} />
+                                        <FiX onClick={() => {
+                                            setShowLocationFilter(false)
                                             dispatch({
                                                 type: "select-fips",
-                                                selected
+                                                selected: []
                                             })
-                                        }} /> */}
-                                    <MultiSelect
-                                        onChange={onSelectChange}
-                                        className="react-select"
-                                        data={filteredStateFips}
-                                        filterable={true}
-                                        onFilterChange={onFilterChange}
-                                        textField={'label'}
-                                        dataItemKey={'value'} />
-                                </div>
+                                        }} size={25} style={{ marginLeft: "15px" }} />
+                                    </div>
+                                }
                             </form>
                         </li>
                         <li>
@@ -420,10 +460,11 @@ const DateFilter = (props) => {
 
     return (
         <div className={props.className}>
-            <span className='col-12 col-md-2'>{props.title}</span>
+            <span className='col-12 col-md-2'>{props.title} </span>
             <Datepicker onChange={props.onChange}
                 selected={props.selected}
             />
+            <FiX onClick={props.onClose} size={25} style={{ marginLeft: "15px" }} />
         </div>
     )
 }
