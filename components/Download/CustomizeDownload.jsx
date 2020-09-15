@@ -7,6 +7,9 @@ import { order } from '../datasets'
 import { useRouter } from "next/router";
 import { MultiSelect } from '@progress/kendo-react-dropdowns'
 import { filterBy } from '@progress/kendo-data-query'
+import { FiX, FiPlus } from 'react-icons/fi'
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
+
 function CustomDownloads() {
     const router = useRouter()
     // STATE -----------------------------------------------------
@@ -177,13 +180,19 @@ function CustomDownloads() {
         }
 
         Object.keys(state.selectedDatasets).forEach(dataset => {
-            if (state.selectedDatasets[dataset] && datasets) {
+            if (state.selectedDatasets[dataset]
+                && datasets
+            ) {
                 const vars = []
                 Object.keys(state.selectedVariables[dataset]).forEach(varName => {
                     if (state.selectedVariables[dataset][varName]) {
                         vars.push(varName)
                     }
                 })
+                // Don't add if no vars are selected
+                if (!vars.length) {
+                    return
+                }
                 // Build parameters for dataset
                 const params = {
                     variable: vars,
@@ -305,19 +314,24 @@ function CustomDownloads() {
                                             <div className="variable-selection" key={k}>
                                                 <span>Variables for <em>{datasets[datasetName].name}</em></span>
                                                 <div className="variable-list row">
-                                                    {Object.keys(variables).map((prop, i) => {
-                                                        const variable = datasetVariables[datasetName] ? datasetVariables[datasetName][prop] : Object.keys(datasets[datasetName].properties)[i]
+                                                    {variables.sort((a, b) => a > b).map((variable, i) => {
+                                                        const selected = state.selectedVariables[datasetName] && state.selectedVariables[datasetName][variable]
                                                         return <div
                                                             key={i}
-                                                            className={(
-                                                                state.selectedVariables[datasetName]
-                                                                && state.selectedVariables[datasetName][variable])
-                                                                ? "selected col-auto"
-                                                                : "col-auto"}
+                                                            className={
+                                                                selected
+                                                                    ? "selected col-auto"
+                                                                    : "col-auto"}
                                                             onClick={() => {
                                                                 dispatch({ type: "select-variable", dataset: datasetName, variable })
                                                             }}>
                                                             {variable}
+                                                            <span style={{ marginLeft: "10px" }}>
+
+                                                                {selected
+                                                                    ? (<FiX />)
+                                                                    : (<FiPlus />)}
+                                                            </span>
                                                         </div>
                                                     })}
                                                     <div className="restore" onClick={() => {

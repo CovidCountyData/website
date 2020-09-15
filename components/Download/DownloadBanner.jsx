@@ -65,7 +65,7 @@ function DownloadBanner() {
     subtitle={
       (<Link href="/data/download#customize-downloads">
         <h3 className="link">
-          <span>Customize downloads</span>
+          <span>Customize downloads ></span>
           {/* <i className="pe-7s-angle-right" style={{ fontSize: "30px", }} /> */}
         </h3>
       </Link>)}
