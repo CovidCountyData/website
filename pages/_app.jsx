@@ -20,6 +20,9 @@ import GoTop from "../components/Shared/GoTop";
 import "../node_modules/react-modal-video/css/modal-video.min.css";
 import "react-datepicker/dist/react-datepicker.css";
 import '@progress/kendo-theme-default/dist/all.css';
+import 'react-dropdown-tree-select/dist/styles.css'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
 config.autoAddCss = false; // Tell Font Awesome to skip adding the CSS aut
 
 ReactGA.initialize("UA-112477777-3");
@@ -67,6 +70,12 @@ export default class MyApp extends App {
             content="width=device-width, initial-scale=1, shrink-to-fit=no"
           />
         </Head>
+        <ToastContainer
+          position="top-center"
+          autoClose={3000}
+          closeOnClick
+          pauseOnHover
+        />
 
         <Component {...pageProps} />
 

@@ -5,24 +5,72 @@ import moment from 'moment'
 import { Card } from "react-bootstrap";
 import { order } from '../datasets'
 import { useRouter } from "next/router";
-import { MultiSelect } from '@progress/kendo-react-dropdowns'
+// import { MultiSelect } from '@progress/kendo-react-dropdowns'
 import { filterBy } from '@progress/kendo-data-query'
 import { FiX, FiPlus } from 'react-icons/fi'
 import Dropdown from 'react-bootstrap/Dropdown'
-
+import DropdownTreeSelect from 'react-dropdown-tree-select'
+import { ToastContainer, toast } from 'react-toastify'
+import TreeSelect from "./TreeSelect";
 function CustomDownloads() {
-    const router = useRouter()
     // STATE -----------------------------------------------------
     const [datasetVariables, setDatasetVariables] = React.useState({})
     const [datasets, setDatasets] = React.useState({})
     // TODO: Update default state to use actual list
-    const [stateFips, setStateFips] = React.useState([])
-    const [filteredStateFips, setFiltered] = React.useState([])
-    const [showEndDateFilter, setShowEndDateFitler] = React.useState(false)
-    const [showStartDateFilter, setShowStartDateFitler] = React.useState(false)
+    const [stateFips, setStateFips] = React.useState({})
+    const [showDateFilter, setShowDateFilter] = React.useState(false)
     const [showLocationFilter, setShowLocationFilter] = React.useState(false)
+    const [rawFipsCodes, setRawFips] = React.useState([])
 
 
+    const createData = (rawData, selected) => {
+        console.log("creating data with selected: ", selected)
+        const data = {}
+        rawData.forEach(county => {
+            const selectedCounty = selected ? selected.find(county => selected.label === county.label) : false
+            if (data[county.state_name]) {
+                data[county.state_name].children.push(
+                    JSON.stringify({
+                        label: `${county.county_name}, ${county.state_name}, ${county.location}`,
+                        value: county.location,
+                        selected: selectedCounty ? true : false
+                    }))
+            } else {
+                data[county.state_name] = {
+                    label: county.state_name,
+                    value: data[county.state_name],
+                    children: [
+                        JSON.stringify({
+                            label: `${county.county_name}, ${county.state_name}, ${county.location}`,
+                            value: county.location,
+                            selected: selectedCounty ? true : false
+                        })
+                    ]
+                }
+            }
+
+        })
+
+        Object.keys(data).forEach(statename => {
+
+            data[statename].children = data[statename].children.filter((value, index, self) => { // Remove duplicates
+                return self.indexOf(value) === index;
+            })
+                .map(val => JSON.parse(val)) // Convert back to object
+                .sort((a, b) => a.label > b.label) // Sort alphabetically
+
+
+        })
+        const result = Object.keys(data).map(statename => {
+            return {
+                label: statename,
+                value: data[statename].children.map(child => child.value),
+                children: data[statename].children
+            }
+        }).sort((a, b) => a.label > b.label)
+        console.log("returneding state fips tree data: ", result)
+        return result
+    }
     const reducer = (state, action) => {
 
         switch (action.type) {
@@ -102,6 +150,7 @@ function CustomDownloads() {
                 }
                 return newEDate
             case 'select-fips':
+                console.log("setting slected: ", action.selected)
                 return {
                     ...state,
                     fipsCodes: action.selected
@@ -123,6 +172,8 @@ function CustomDownloads() {
 
         Axios.get("https://clean-swagger-inunbrtacq-uk.a.run.app").then(resp => {
             setDatasets(resp.data.definitions)
+        }).catch(err => {
+            toast.error("Error requesting available datasets", { er })
         })
         Axios.get("https://api.covidcountydata.org/variable_names").then(resp => {
             const datasetVariables = {}
@@ -131,33 +182,55 @@ function CustomDownloads() {
             });
             setDatasetVariables(datasetVariables)
             dispatch({ type: 'select-dataset', dataset: 'covid_us' })
+        }).catch(err => {
+            toast.error("Error requesting available variables for datsests")
         })
 
         Promise.all([Axios.get("https://api.covidcountydata.org/us_counties"), Axios.get("https://api.covidcountydata.org/us_states")]).then(resp => {
             console.debug("counties resp: ", resp)
-
-
-            const sf = [...resp[0].data, ...resp[1].data].map(county => {
-                if (county.county_name) {
-
-                    return JSON.stringify({ // turn into string to facilitate removing duplicates
-                        label: `${county.county_name}, ${county.state_name} (${county.location})`,
-                        value: county.location
-                    })
+            setRawFips(resp[0].data)
+            const data = {}
+            resp[0].data.forEach(county => {
+                if (data[county.state_name]) {
+                    data[county.state_name].children.push(
+                        JSON.stringify({
+                            label: `${county.county_name}, ${county.state_name}, ${county.location}`,
+                            value: county.location
+                        }))
                 } else {
-                    return JSON.stringify({
-                        label: `${county.name}, Statewide (${county.location})`
-                    })
+                    data[county.state_name] = {
+                        label: county.state_name,
+                        value: data[county.state_name],
+                        children: [
+                            JSON.stringify({
+                                label: `${county.county_name}, ${county.state_name}, ${county.location}`,
+                                value: county.location
+                            })
+                        ]
+                    }
                 }
+
             })
-                .filter((value, index, self) => { // Remove duplicates
+            Object.keys(data).forEach(statename => {
+
+                data[statename].children = data[statename].children.filter((value, index, self) => { // Remove duplicates
                     return self.indexOf(value) === index;
                 })
-                .map(val => JSON.parse(val)) // Convert back to object
-                .sort((a, b) => a.label > b.label) // Sort alphabetically
-            console.log("sf", sf)
-            setStateFips(sf)
-            setFiltered(sf)
+                    .map(val => JSON.parse(val)) // Convert back to object
+                    .sort((a, b) => a.label > b.label) // Sort alphabetically
+
+
+            })
+
+
+            console.log("setting state fips")
+            setStateFips(Object.keys(data).map(statename => {
+                return {
+                    label: statename,
+                    value: data[statename].children.map(child => child.value),
+                    children: data[statename].children
+                }
+            }).sort((a, b) => a.label > b.label))
         })
     }, [])
 
@@ -261,15 +334,25 @@ function CustomDownloads() {
         }, 500);
 
     }
+
+    const onFipsChange = (currentNode, selectedNodes) => {
+        console.log("selected nodes", selectedNodes)
+
+        dispatch({
+            type: "select-fips",
+            selected: selectedNodes
+        })
+
+    }
     // RENDER ---------------------------------------------------------------------
+    // Prepare tree data with selected nodes
     return (
         <React.Fragment>
-
             {datasets && datasets !== {} &&
                 <div className="custom-downloads container" id="customize-downloads">
                     <h2>Customize data downloads</h2>
                     <ol>
-                        <li>
+                        <li className="step">
                             <span>
                                 Choose dataset(s)
                         </span>
@@ -303,7 +386,7 @@ function CustomDownloads() {
 
                             </div>
                         </li>
-                        <li>
+                        <li className="step">
                             <span>
                                 Choose variable(s)
                         </span>
@@ -362,27 +445,19 @@ function CustomDownloads() {
                                 }
                             })}
                         </li>
-                        <li>
+                        <li className="step">
                             <span>Choose filter(s)</span>
-                            <div className="add-filter">
-                                Add filter
-                            </div>
                             {/** TODO: List possible filters*/}
                             <form className="filter">
                                 <Dropdown>
-                                    <Dropdown.Toggle>
+                                    <Dropdown.Toggle disabled={showLocationFilter && showDateFilter}>
                                         Add filter
                                     </Dropdown.Toggle>
                                     <Dropdown.Menu>
-                                        {!showStartDateFilter && (
 
-                                            <Dropdown.Item onClick={() => { setShowStartDateFitler(true) }}>
-                                                Start Date
-                                            </Dropdown.Item>
-                                        )}
-                                        {!showEndDateFilter && (
-                                            <Dropdown.Item onClick={() => { setShowEndDateFitler(true) }}>
-                                                End Date
+                                        {!showDateFilter && (
+                                            <Dropdown.Item onClick={() => { setShowDateFilter(true) }}>
+                                                Date
                                             </Dropdown.Item>
                                         )}
                                         {!showLocationFilter && (
@@ -393,42 +468,49 @@ function CustomDownloads() {
 
                                     </Dropdown.Menu>
                                 </Dropdown>
-                                {showStartDateFilter &&
-                                    <DateFilter
-                                        className="row"
-                                        onChange={(date) => {
-                                            dispatch({ type: 'set-start-date', date })
-                                        }} title="Start date" selected={state.filters.startDate}
-                                        onClose={() => {
-                                            setShowStartDateFitler(false)
-                                            dispatch({ type: "set-start-date", date: null })
+                                {showDateFilter && (
+                                    <div className="row">
+                                        <div className='col-12'>
+                                            <div className="row">
 
-                                        }}
-                                    />
-                                }
-                                {showEndDateFilter &&
-                                    <DateFilter
-                                        className="row"
-                                        onChange={(date) => {
-                                            dispatch({ type: 'set-end-date', date })
-                                        }} title="End date" selected={state.filters.endDate}
-                                        onClose={() => {
-                                            setShowEndDateFitler(false)
-                                            dispatch({ type: "set-end-date", date: null })
-                                        }}
-                                    />
+
+                                                <DateFilter
+                                                    className="datefilter col-5"
+                                                    onChange={(date) => {
+                                                        dispatch({ type: 'set-start-date', date })
+                                                    }} title="Start date" selected={state.filters.startDate}
+
+                                                />
+
+                                                <DateFilter
+                                                    className="datefilter col-5"
+
+                                                    onChange={(date) => {
+                                                        dispatch({ type: 'set-end-date', date })
+                                                    }} title="End date" selected={state.filters.endDate}
+
+                                                />
+                                                <FiX className="col-1" size={25} style={{ marginLeft: "15px" }} onClick={() => {
+                                                    setShowDateFilter(false)
+                                                    dispatch({ type: 'set-start-date', date: null })
+                                                    dispatch({ type: 'set-end-date', date: null })
+
+                                                }} />
+                                            </div>
+                                        </div>
+                                    </div>
+                                )
                                 }
                                 {showLocationFilter &&
                                     <div className="row">
                                         <span className='col-12 col-md-2'>Location(s)</span>
-                                        <MultiSelect
-                                            onChange={onSelectChange}
-                                            className="react-select"
-                                            data={filteredStateFips}
-                                            filterable={true}
-                                            onFilterChange={onFilterChange}
-                                            textField={'label'}
-                                            dataItemKey={'value'} />
+
+                                        <TreeSelect
+                                            data={stateFips}
+                                            onChange={onFipsChange}
+                                            placeholder="Search Counties, State, FIPS"
+                                        />
+
                                         <FiX onClick={() => {
                                             setShowLocationFilter(false)
                                             dispatch({
@@ -440,7 +522,7 @@ function CustomDownloads() {
                                 }
                             </form>
                         </li>
-                        <li>
+                        <li className="step">
                             <span>Download</span>
                             <div>
 
@@ -460,12 +542,12 @@ const DateFilter = (props) => {
 
     return (
         <div className={props.className}>
-            <span className='col-12 col-md-2'>{props.title} </span>
+
+            <span >{props.title} </span>
             <Datepicker onChange={props.onChange}
                 selected={props.selected}
             />
-            <FiX onClick={props.onClose} size={25} style={{ marginLeft: "15px" }} />
-        </div>
+        </div >
     )
 }
 export default CustomDownloads
