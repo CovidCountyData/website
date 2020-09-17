@@ -235,22 +235,9 @@ function CustomDownloads() {
     }, [])
 
     const downloadData = () => {
-        console.log(state)
-        // Make api request for each dataset
         const start = state.filters.startDate ? moment(state.filters.startDate).format("YYYY-MM-DD") : null
         const end = state.filters.endDate ? moment(state.filters.endDate).format("YYYY-MM-DD") : null
-        // const queryParams = {
-        //     variable: variablesToReq.length ? `in.(${variablesToReq.join(',')})` : "",
-        //     dt: (start || end) ? `${start ? "gt." + start : ""}` + ((start && end) ? "&" : "") + `${end ? 'lt.' + end : ""}` : null,
-        //     fips: `in.(${state.fipsCodes.map(fips => fips.value).join(',')})`
-        // }
-        // const query = qs.stringify(queryParams)
 
-        // Axios.get(`https://api.covidcountydata.org/${datasetName}?${query}`).then(resp => {
-        //     downloadDataBlob(resp.data, "data.json")
-        // }).catch(err => {
-        //     console.error(err)
-        // })
         // TODO: Get apikey out of local storage
         var reqParams = {
             parameters: {}
@@ -273,8 +260,10 @@ function CustomDownloads() {
                 // Build parameters for dataset
                 const params = {
                     variable: vars,
-                    location: state.fipsCodes,
                     dt: start ? (end ? `${start}>=${end}` : `>=${start}`) : `<=${end}`
+                }
+                if (state.fipsCodes.length) {
+                    params['location'] = state.fipsCodes
                 }
 
                 reqParams = {
@@ -294,18 +283,7 @@ function CustomDownloads() {
         })
     }
 
-    const onSelectChange = (ev) => {
-        console.log("on select change: ", ev)
-        const fipsCodes = ev.value.map(val => {
-            console.log("val: ", val)
-            return val.label.match(/\(([^)]+)\)/)[1]
-        })
-
-        dispatch({
-            type: "select-fips",
-            selected: fipsCodes
-        })
-    }
+    // Downloads csv to filename on the users machine
     const downloadDataBlob = (csv, filename) => {
         // Create binary data url
         const blob = new Blob([csv], { type: "text/csv" })
@@ -324,15 +302,6 @@ function CustomDownloads() {
 
         a.addEventListener("click", clickHandler, false)
         a.click()
-    }
-
-    const onFilterChange = (event) => {
-        clearTimeout(timeout);
-        const timeout = setTimeout(() => {
-            setFiltered(filterBy(stateFips.slice(), event.filter))
-
-        }, 500);
-
     }
 
     const onFipsChange = (currentNode, selectedNodes) => {
