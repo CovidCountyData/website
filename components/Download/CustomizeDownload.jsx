@@ -277,9 +277,12 @@ function CustomDownloads() {
         })
 
         console.log(reqParams)
-
+        toast("Downloading data...")
         Axios.post("https://api.covidcountydata.org/apiclient", reqParams).then(resp => {
             downloadDataBlob(resp.data)
+            toast.success("Done!")
+        }).catch(err => {
+            toast.error("An error occurred downloading the data!")
         })
     }
 
@@ -306,10 +309,10 @@ function CustomDownloads() {
 
     const onFipsChange = (currentNode, selectedNodes) => {
         console.log("selected nodes", selectedNodes)
-
+        const flatLocations = Array.from(new Set(selectedNodes.map(node => node.value))).flat()
         dispatch({
             type: "select-fips",
-            selected: selectedNodes
+            selected: flatLocations
         })
 
     }
