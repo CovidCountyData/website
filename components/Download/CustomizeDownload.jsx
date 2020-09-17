@@ -410,7 +410,7 @@ function CustomDownloads() {
                                                     }} title="End date" selected={state.filters.endDate}
 
                                                 />
-                                                <FiX className="col-1" size={25} style={{ marginLeft: "15px" }} onClick={() => {
+                                                <FiX className=" close-icon" size={25} style={{ marginLeft: "15px" }} onClick={() => {
                                                     setShowDateFilter(false)
                                                     dispatch({ type: 'set-start-date', date: null })
                                                     dispatch({ type: 'set-end-date', date: null })
@@ -431,7 +431,7 @@ function CustomDownloads() {
                                             placeholder="Search Counties, State, FIPS"
                                         />
 
-                                        <FiX onClick={() => {
+                                        <FiX className="close-icon" onClick={() => {
                                             setShowLocationFilter(false)
                                             dispatch({
                                                 type: "select-fips",

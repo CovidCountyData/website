@@ -6700,3 +6700,11 @@ button:disabled {
   }
 }
 
+.close-icon {
+  border-radius: 5px;
+&:hover {
+  cursor: pointer;
+  background-color: #dddddd;
+}
+}
+
