@@ -20,57 +20,7 @@ function CustomDownloads() {
     const [stateFips, setStateFips] = React.useState({})
     const [showDateFilter, setShowDateFilter] = React.useState(false)
     const [showLocationFilter, setShowLocationFilter] = React.useState(false)
-    const [rawFipsCodes, setRawFips] = React.useState([])
 
-
-    const createData = (rawData, selected) => {
-        console.log("creating data with selected: ", selected)
-        const data = {}
-        rawData.forEach(county => {
-            const selectedCounty = selected ? selected.find(county => selected.label === county.label) : false
-            if (data[county.state_name]) {
-                data[county.state_name].children.push(
-                    JSON.stringify({
-                        label: `${county.county_name}, ${county.state_name}, ${county.location}`,
-                        value: county.location,
-                        selected: selectedCounty ? true : false
-                    }))
-            } else {
-                data[county.state_name] = {
-                    label: county.state_name,
-                    value: data[county.state_name],
-                    children: [
-                        JSON.stringify({
-                            label: `${county.county_name}, ${county.state_name}, ${county.location}`,
-                            value: county.location,
-                            selected: selectedCounty ? true : false
-                        })
-                    ]
-                }
-            }
-
-        })
-
-        Object.keys(data).forEach(statename => {
-
-            data[statename].children = data[statename].children.filter((value, index, self) => { // Remove duplicates
-                return self.indexOf(value) === index;
-            })
-                .map(val => JSON.parse(val)) // Convert back to object
-                .sort((a, b) => a.label > b.label) // Sort alphabetically
-
-
-        })
-        const result = Object.keys(data).map(statename => {
-            return {
-                label: statename,
-                value: data[statename].children.map(child => child.value),
-                children: data[statename].children
-            }
-        }).sort((a, b) => a.label > b.label)
-        console.log("returneding state fips tree data: ", result)
-        return result
-    }
     const reducer = (state, action) => {
 
         switch (action.type) {
@@ -150,7 +100,6 @@ function CustomDownloads() {
                 }
                 return newEDate
             case 'select-fips':
-                console.log("setting slected: ", action.selected)
                 return {
                     ...state,
                     fipsCodes: action.selected
@@ -187,7 +136,6 @@ function CustomDownloads() {
         })
 
         Promise.all([Axios.get("https://api.covidcountydata.org/us_counties"), Axios.get("https://api.covidcountydata.org/us_states")]).then(resp => {
-            console.debug("counties resp: ", resp)
             setRawFips(resp[0].data)
             const data = {}
             resp[0].data.forEach(county => {
@@ -223,7 +171,6 @@ function CustomDownloads() {
             })
 
 
-            console.log("setting state fips")
             setStateFips(Object.keys(data).map(statename => {
                 return {
                     label: statename,
@@ -276,7 +223,7 @@ function CustomDownloads() {
             }
         })
 
-        console.log(reqParams)
+        console.debug("Requesting with parameters: ", reqParams)
         toast("Downloading data...")
         Axios.post("https://api.covidcountydata.org/apiclient", reqParams).then(resp => {
             downloadDataBlob(resp.data)
@@ -297,7 +244,6 @@ function CustomDownloads() {
         a.download = filename || 'data.csv'
         const clickHandler = () => {
             setTimeout(() => {
-                console.log("Timeout exceeded")
                 URL.revokeObjectURL(data)
                 a.removeEventListener("click", clickHandler)
             }, 150)
@@ -308,7 +254,6 @@ function CustomDownloads() {
     }
 
     const onFipsChange = (currentNode, selectedNodes) => {
-        console.log("selected nodes", selectedNodes)
         const flatLocations = Array.from(new Set(selectedNodes.map(node => node.value))).flat()
         dispatch({
             type: "select-fips",
