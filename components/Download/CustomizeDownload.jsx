@@ -136,7 +136,6 @@ function CustomDownloads() {
         })
 
         Promise.all([Axios.get("https://api.covidcountydata.org/us_counties"), Axios.get("https://api.covidcountydata.org/us_states")]).then(resp => {
-            setRawFips(resp[0].data)
             const data = {}
             resp[0].data.forEach(county => {
                 if (data[county.state_name]) {
@@ -207,7 +206,9 @@ function CustomDownloads() {
                 // Build parameters for dataset
                 const params = {
                     variable: vars,
-                    dt: start ? (end ? `${start}>=${end}` : `>=${start}`) : `<=${end}`
+                }
+                if (start || end) {
+                    params['dt'] = start ? (end ? `${start}>=${end}` : `>=${start}`) : `<=${end}`
                 }
                 if (state.fipsCodes.length) {
                     params['location'] = state.fipsCodes
@@ -306,7 +307,9 @@ function CustomDownloads() {
                         <li className="step">
                             <span>
                                 Choose variable(s)
-                        </span>
+                                <br />
+                                <em style={{ fontSize: "10pt" }}>Note: not all variables will be available for all locations</em>
+                            </span>
 
                             {Object.keys(state.selectedDatasets).map((datasetName, k) => {
                                 if (state.selectedDatasets[datasetName] && datasets[datasetName]) {

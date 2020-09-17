@@ -6679,3 +6679,24 @@ form.filter {
   border-color: #2196f3;
 }
 
+button:disabled {
+  border: none !important;
+  &:hover {
+    &::before {
+      background-color: #dddddd;
+    }
+    cursor: not-allowed;
+    background-color: #dddddd;
+
+  }
+  &::before {
+    border: none;
+
+    &:hover {
+    background: #dddddd;
+
+    }
+    background-color: #dddddd;
+  }
+}
+
