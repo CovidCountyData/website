@@ -127,7 +127,7 @@ function CustomDownloads() {
         Axios.get("https://api.covidcountydata.org/variable_names").then(resp => {
             const datasetVariables = {}
             resp.data.forEach(d => {
-                datasetVariables[d.name] = d.variables
+                datasetVariables[d.name] = d.variables.sort((a, b) => a > b ? 1 : -1)
             });
             setDatasetVariables(datasetVariables)
             dispatch({ type: 'select-dataset', dataset: 'covid_us' })
