@@ -71,6 +71,7 @@ export default class MyApp extends App {
           />
         </Head>
         <ToastContainer
+          hideProgressBar
           position="top-center"
           autoClose={3000}
           closeOnClick
