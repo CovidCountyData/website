@@ -164,19 +164,20 @@ function CustomDownloads() {
                     return self.indexOf(value) === index;
                 })
                     .map(val => JSON.parse(val)) // Convert back to object
-                    .sort((a, b) => a.label > b.label) // Sort alphabetically
+                    .sort((a, b) => a.label > b.label ? 1 : -1) // Sort alphabetically
 
 
             })
 
-
-            setStateFips(Object.keys(data).map(statename => {
+            const orderedStates = Object.keys(data).map(statename => {
                 return {
                     label: statename,
                     value: data[statename].children.map(child => child.value),
                     children: data[statename].children
                 }
-            }).sort((a, b) => a.label > b.label))
+            }).sort((a, b) => a.label > b.label ? 1 : -1)
+            console.debug("Ordered states: ", orderedStates)
+            setStateFips(orderedStates)
         })
     }, [])
 
