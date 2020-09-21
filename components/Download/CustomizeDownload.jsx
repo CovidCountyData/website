@@ -267,7 +267,8 @@ function CustomDownloads() {
     return (
         <React.Fragment>
             {datasets && datasets !== {} &&
-                <div className="custom-downloads container" id="customize-downloads">
+                <div className="custom-downloads container">
+                    <div id="customize-downloads" className="hyperlink-anchor" />
                     <h2>Customize data downloads</h2>
                     <ol>
                         <li className="step">

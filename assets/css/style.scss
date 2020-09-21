@@ -6702,9 +6702,12 @@ button:disabled {
 
 .close-icon {
   border-radius: 5px;
-&:hover {
-  cursor: pointer;
-  background-color: #dddddd;
-}
+  &:hover {
+    cursor: pointer;
+    background-color: #dddddd;
+  }
 }
 
+.hyperlink-anchor {
+  translate: 0px -100px;
+}
