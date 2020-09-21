@@ -285,7 +285,7 @@ function CustomDownloads() {
                                                 key={k}
                                                 className={
                                                     state.selectedDatasets[dataset]
-                                                        ? "col-12 col-md-2 dataset selected"
+                                                        ? "col-10 col-md-2 dataset selected"
                                                         : "col-10 col-md-2 dataset"}
                                                 onClick={() => {
                                                     dispatch({ type: 'select-dataset', dataset })
@@ -397,7 +397,7 @@ function CustomDownloads() {
 
 
                                                 <DateFilter
-                                                    className="datefilter col-5"
+                                                    className="datefilter col-md-5 col-12"
                                                     onChange={(date) => {
                                                         dispatch({ type: 'set-start-date', date })
                                                     }} title="Start date" selected={state.filters.startDate}
@@ -405,7 +405,7 @@ function CustomDownloads() {
                                                 />
 
                                                 <DateFilter
-                                                    className="datefilter col-5"
+                                                    className="datefilter col-md-5 col-12"
 
                                                     onChange={(date) => {
                                                         dispatch({ type: 'set-end-date', date })
