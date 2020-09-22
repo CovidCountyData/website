@@ -8,6 +8,7 @@ import useRequest from "../../utils/useRequest";
 import { order } from '../datasets'
 import { useRouter } from 'next/router'
 import React from 'react'
+import { toast } from 'react-toastify'
 function CustomToggle({ children, eventKey }) {
   const decoratedOnClick = useAccordionToggle(eventKey, () =>
     console.log("totally custom!")
@@ -56,39 +57,20 @@ const SwaggerDocs = () => {
           console.log(key, " description: ", definition);
           // const properties = definition['properties']
           return (
-            <Accordion className="path-desc" id={key} defaultActiveKey={(key == activeLink) ? (i + 1) : null}>
+            <Accordion className="path-desc" id={key + "_dataset"} defaultActiveKey={(key == activeLink) ? (i + 1) : null}>
+              <div id={key} className="hyperlink-anchor" />
+
               <CustomToggle eventKey={i + 1}>
-                <div className="col-md-3 col-12 dataset">
+                <div className="col-md-3 col-12 dataset pre-line">
                   {definition["name"]}
                 </div>
                 <div className="table-name col-md-3 col-12">{key}</div>
-                <div className="summary col-md-6 col-12">{obj.get.summary}</div>
+                <div className="summary col-md-6 col-12 pre-line">{obj.get.summary}</div>
               </CustomToggle>
               <AccordionCollapse eventKey={i + 1} className="description">
                 <div>
                   <ReactMarkdown source={obj.get.description} />
-                  {/* <div className="proprties">
-                    <h3>Properites</h3>
-                    <table className="container">
-                      {Object.keys(properties).map(propkey => {
 
-                        return (
-                          <tr className="property row">
-                            <td className="title col-3">{propkey}</td>
-                            <td className="description col-7">
-                              {properties[propkey].description}
-                            </td>
-                            <td className="formal col-1">
-                              {properties[propkey].format}
-                            </td>
-                            <td className="datatype col-1">
-                              {properties[propkey].type}
-                            </td>
-                          </tr>
-                        )
-                      })}
-                    </table>
-                  </div> */}
                 </div>
               </AccordionCollapse>
             </Accordion>
