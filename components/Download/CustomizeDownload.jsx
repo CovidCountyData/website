@@ -20,7 +20,8 @@ function CustomDownloads() {
     const [stateFips, setStateFips] = React.useState({})
     const [showDateFilter, setShowDateFilter] = React.useState(false)
     const [showLocationFilter, setShowLocationFilter] = React.useState(false)
-
+    const [downloadingData, setDownloadingData] = React.useState(false)
+    const [downloadError, setDownloadError] = React.useState(false)
     const reducer = (state, action) => {
 
         switch (action.type) {
@@ -121,6 +122,7 @@ function CustomDownloads() {
     React.useEffect(() => {
 
         Axios.get("https://clean-swagger-inunbrtacq-uk.a.run.app").then(resp => {
+
             setDatasets(resp.data.definitions)
         }).catch(err => {
             toast.error("Error requesting available datasets")
@@ -182,6 +184,8 @@ function CustomDownloads() {
     }, [])
 
     const downloadData = () => {
+        setDownloadingData(true)
+        setDownloadError(false)
         const start = state.filters.startDate ? moment(state.filters.startDate).format("YYYY-MM-DD") : null
         const end = state.filters.endDate ? moment(state.filters.endDate).format("YYYY-MM-DD") : null
 
@@ -208,10 +212,20 @@ function CustomDownloads() {
                 const params = {
                     variable: vars,
                 }
-                if (start || end) {
-                    params['dt'] = start ? (end ? `${start}>=${end}` : `>=${start}`) : `<=${end}`
+
+
+                console.debug(datasets, dataset)
+                if ((start || end) && "dt" in datasets[dataset].properties) {
+                    // params['dt'] = start ? (end ? `>=${start}&<=${end}` : `>=${start}`) : `<=${end}`
+                    params['dt'] = {}
+                    if (start) {
+                        params['dt']['start'] = start
+                    }
+                    if (end) {
+                        params['dt']['end'] = end
+                    }
                 }
-                if (state.fipsCodes.length) {
+                if (state.fipsCodes.length && "location" in datasets[dataset].properties) {
                     params['location'] = state.fipsCodes
                 }
 
@@ -230,7 +244,11 @@ function CustomDownloads() {
         Axios.post("https://api.covidcountydata.org/apiclient", reqParams).then(resp => {
             downloadDataBlob(resp.data)
             toast.success("Done!")
+            setDownloadingData(false)
+            setDownloadError(false)
         }).catch(err => {
+            setDownloadingData(false)
+            setDownloadError(true)
             toast.error("An error occurred downloading the data!")
         })
     }
@@ -452,6 +470,16 @@ function CustomDownloads() {
 
                                 <button onClick={downloadData} className="btn btn-primary">Download data</button>
                             </div>
+                            {downloadingData &&
+                                <div>
+                                    Downloading data...
+                                </div>
+                            }
+                            {downloadError &&
+                                <div className="error">
+                                    An error occurred downloading the data!
+                                </div>
+                            }
                         </li>
                     </ol>
                 </div>
