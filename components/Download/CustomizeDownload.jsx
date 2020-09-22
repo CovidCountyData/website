@@ -27,11 +27,12 @@ function CustomDownloads() {
             case 'select-dataset':
                 const newSelectedVariables = {}
                 if (!state.selectedDatasets[action.dataset] && datasetVariables[action.dataset]) {
-
+                    // Select all variables in dataset by default
                     datasetVariables[action.dataset].forEach(variable => {
                         newSelectedVariables[variable] = true
                     })
                 }
+
                 const newState = {
                     ...state,
                     selectedDatasets: {
@@ -122,7 +123,7 @@ function CustomDownloads() {
         Axios.get("https://clean-swagger-inunbrtacq-uk.a.run.app").then(resp => {
             setDatasets(resp.data.definitions)
         }).catch(err => {
-            toast.error("Error requesting available datasets", { er })
+            toast.error("Error requesting available datasets")
         })
         Axios.get("https://api.covidcountydata.org/variable_names").then(resp => {
             const datasetVariables = {}
@@ -176,7 +177,6 @@ function CustomDownloads() {
                     children: data[statename].children
                 }
             }).sort((a, b) => a.label > b.label ? 1 : -1)
-            console.debug("Ordered states: ", orderedStates)
             setStateFips(orderedStates)
         })
     }, [])
@@ -359,7 +359,7 @@ function CustomDownloads() {
                                         )
                                     } else {
                                         return (
-                                            <div className="variable-selection">
+                                            <div className="variable-selection" key={k}>
                                                 <div>No variable filters are available for <em>{datasets[datasetName].name}</em>. All variables available will be included in the download</div>
                                             </div>
                                         )
