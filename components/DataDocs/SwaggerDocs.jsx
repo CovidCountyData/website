@@ -54,7 +54,6 @@ const SwaggerDocs = () => {
           if (!definition) {
             return <div></div>;
           }
-          console.log(key, " description: ", definition);
           // const properties = definition['properties']
           return (
             <Accordion className="path-desc" id={key + "_dataset"} defaultActiveKey={(key == activeLink) ? (i + 1) : null}>
@@ -70,7 +69,6 @@ const SwaggerDocs = () => {
               <AccordionCollapse eventKey={i + 1} className="description">
                 <div>
                   <ReactMarkdown source={obj.get.description} />
-
                 </div>
               </AccordionCollapse>
             </Accordion>

@@ -6483,6 +6483,10 @@ Data API CSS
       vertical-align: middle;
 
     }
+
+    span {
+      word-break: break-word;
+    }
     padding-right: 0px;
     padding-left: 0px;
     height: 100px;

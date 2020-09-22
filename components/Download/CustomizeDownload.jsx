@@ -292,7 +292,9 @@ function CustomDownloads() {
                                                 }}>
 
                                                 <Card.Body>
-                                                    {datasets[dataset].name}
+                                                    <span>
+                                                        {datasets[dataset].name}
+                                                    </span>
                                                     <a href={`/data/documentation#${dataset}`} target="_blank" onClick={(ev) => {
                                                         ev.stopPropagation()
                                                     }}>
