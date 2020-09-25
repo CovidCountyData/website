@@ -4,13 +4,10 @@ import Datepicker from 'react-datepicker'
 import moment from 'moment'
 import { Card } from "react-bootstrap";
 import { order } from '../datasets'
-import { useRouter } from "next/router";
 // import { MultiSelect } from '@progress/kendo-react-dropdowns'
-import { filterBy } from '@progress/kendo-data-query'
 import { FiX, FiPlus } from 'react-icons/fi'
 import Dropdown from 'react-bootstrap/Dropdown'
-import DropdownTreeSelect from 'react-dropdown-tree-select'
-import { ToastContainer, toast } from 'react-toastify'
+import { toast } from 'react-toastify'
 import TreeSelect from "./TreeSelect";
 function CustomDownloads() {
     // STATE -----------------------------------------------------
@@ -226,7 +223,14 @@ function CustomDownloads() {
                     }
                 }
                 if (state.fipsCodes.length && "location" in datasets[dataset].properties) {
-                    params['location'] = state.fipsCodes
+                    if (dataset === "economics") {
+                        params['location'] = Array.from(new Set(state.fipsCodes.map(code => {
+                            const str = `${code}`
+                            return parseInt(str.substring(0, str.length - 3))
+                        })))
+                    } else {
+                        params['location'] = state.fipsCodes
+                    }
                 }
 
                 reqParams = {
@@ -342,6 +346,9 @@ function CustomDownloads() {
                                         return (
                                             <div className="variable-selection" key={k}>
                                                 <span>Variables for <em>{datasets[datasetName].name}</em></span>
+                                                {datasetName === "economics" &&
+                                                    <div className="warning">Only state level data is available for this dataset!</div>
+                                                }
                                                 <div className="variable-list row">
                                                     {variables.sort((a, b) => a > b).map((variable, i) => {
                                                         const selected = state.selectedVariables[datasetName] && state.selectedVariables[datasetName][variable]
