@@ -223,6 +223,7 @@ function CustomDownloads() {
                     }
                 }
                 if (state.fipsCodes.length && "location" in datasets[dataset].properties) {
+                    // The economics dataset only has state level data
                     if (dataset === "economics") {
                         params['location'] = Array.from(new Set(state.fipsCodes.map(code => {
                             const str = `${code}`
@@ -287,7 +288,15 @@ function CustomDownloads() {
     }
     // RENDER ---------------------------------------------------------------------
     // Prepare tree data with selected nodes
+    const selectedDatasets = []
+    Object.keys(state.selectedDatasets).forEach(dname => {
+        if (state.selectedDatasets[dname]) {
+            selectedDatasets.push(dname)
+        }
+    })
+    console.log("selectedDatasets: ", selectedDatasets)
     return (
+
         <React.Fragment>
             {datasets && datasets !== {} &&
                 <div className="custom-downloads container">
@@ -474,8 +483,13 @@ function CustomDownloads() {
                         <li className="step">
                             <span>Download</span>
                             <div>
-
-                                <button onClick={downloadData} className="btn btn-primary">Download data</button>
+                                {
+                                    (selectedDatasets.includes("economics") && selectedDatasets.length > 1) &&
+                                    <div className="warning">
+                                        The <em>economics</em> dataset only contains state level data and cannot be combined with other datsests. Please either remove the <em>economics</em> dataset, or all other datasets from selection.
+                                    </div>
+                                }
+                                <button onClick={downloadData} className="btn btn-primary" disabled={selectedDatasets.includes("economics") && selectedDatasets.length > 1}>Download data</button>
                             </div>
                             {downloadingData &&
                                 <div>
