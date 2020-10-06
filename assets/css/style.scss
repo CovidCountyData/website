@@ -6726,3 +6726,16 @@ button:disabled {
 .warning {
   color: #cc3300
 }
+
+.level-select {
+  span {
+    border-bottom: 1px solid #dddddd;
+    padding-bottom: 5px;
+    &:hover {
+      cursor: pointer;
+    }
+    &.selected {
+    color: #2196f3;
+    }
+  }
+}

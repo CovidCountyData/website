@@ -10,6 +10,15 @@ import Dropdown from 'react-bootstrap/Dropdown'
 import { toast } from 'react-toastify'
 import TreeSelect from "./TreeSelect";
 function CustomDownloads() {
+    const state_only_datasets = [
+        "nytimes_covid",
+        "covidtrackingproject",
+        "economics",
+        "hhs",
+        "us_states"
+
+    ]
+    const [selectedLevel, setSelectedLevel] = React.useState("county")
     // STATE -----------------------------------------------------
     const [datasetVariables, setDatasetVariables] = React.useState({})
     const [datasets, setDatasets] = React.useState({})
@@ -43,6 +52,14 @@ function CustomDownloads() {
                     }
                 }
                 return newState
+            case "clear-datasets":
+                return {
+                    ...state,
+                    selectedDatasets: {},
+                    selectedVariables: {},
+
+                }
+
             case 'restore-all':
                 const vars = {}
                 datasetVariables[action.dataset].forEach(variable => {
@@ -224,13 +241,22 @@ function CustomDownloads() {
                 }
                 if (state.fipsCodes.length && "location" in datasets[dataset].properties) {
                     // The economics dataset only has state level data
-                    if (dataset === "economics") {
+                    if (dataset === "economics" || selectedLevel === "state") {
                         params['location'] = Array.from(new Set(state.fipsCodes.map(code => {
                             const str = `${code}`
                             return parseInt(str.substring(0, str.length - 3))
                         })))
                     } else {
                         params['location'] = state.fipsCodes
+                    }
+                } else if (state.fipsCodes.length && "fips" in datasets[dataset].properties) {
+                    if (dataset === "economics" || selectedLevel === "state") {
+                        params['fips'] = Array.from(new Set(state.fipsCodes.map(code => {
+                            const str = `${code}`
+                            return parseInt(str.substring(0, str.length - 3))
+                        })))
+                    } else {
+                        params['fips'] = state.fipsCodes
                     }
                 }
 
@@ -307,9 +333,32 @@ function CustomDownloads() {
                             <span>
                                 Choose dataset(s)
                         </span>
+                            <div className="row level-select">
+                                <span
+                                    className={`col ${selectedLevel === "county" ? 'selected' : ""}`}
+                                    onClick={(ev) => {
+                                        setSelectedLevel("county")
+                                        dispatch({ type: "clear-datasets" })
+
+                                    }}
+                                >
+                                    County Level Data
+                                </span>
+                                <span
+                                    className={`col ${selectedLevel === "state" ? 'selected' : ""}`}
+                                    onClick={(ev) => {
+                                        setSelectedLevel('state')
+                                        dispatch({ type: "clear-datasets" })
+                                    }}
+                                >
+                                    State Level Data
+                                </span>
+                            </div>
                             <div className="row">
+
                                 {order.map((dataset, k) => {
-                                    if (datasets[dataset]) {
+                                    const shouldRender = datasets[dataset] && ((selectedLevel === "county" && !state_only_datasets.includes(dataset)) || selectedLevel === "state")
+                                    if (shouldRender) {
 
                                         return (
                                             <Card
@@ -355,9 +404,9 @@ function CustomDownloads() {
                                         return (
                                             <div className="variable-selection" key={k}>
                                                 <span>Variables for <em>{datasets[datasetName].name}</em></span>
-                                                {datasetName === "economics" &&
+                                                {/* {datasetName === "economics" &&
                                                     <div className="warning">Only state level data is available for this dataset!</div>
-                                                }
+                                                } */}
                                                 <div className="variable-list row">
                                                     {variables.sort((a, b) => a > b).map((variable, i) => {
                                                         const selected = state.selectedVariables[datasetName] && state.selectedVariables[datasetName][variable]
@@ -483,13 +532,13 @@ function CustomDownloads() {
                         <li className="step">
                             <span>Download</span>
                             <div>
-                                {
+                                {/* {
                                     (selectedDatasets.includes("economics") && selectedDatasets.length > 1) &&
                                     <div className="warning">
                                         The <em>economics</em> dataset only contains state level data and cannot be combined with other datsests. Please either remove the <em>economics</em> dataset, or all other datasets from selection.
                                     </div>
-                                }
-                                <button onClick={downloadData} className="btn btn-primary" disabled={selectedDatasets.includes("economics") && selectedDatasets.length > 1}>Download data</button>
+                                } */}
+                                <button onClick={downloadData} className="btn btn-primary">Download data</button>
                             </div>
                             {downloadingData &&
                                 <div>
@@ -498,7 +547,7 @@ function CustomDownloads() {
                             }
                             {downloadError &&
                                 <div className="error">
-                                    An error occurred downloading the data!
+                                    An error occurred downloading the data! Expand the filters and try again.
                                 </div>
                             }
                         </li>
