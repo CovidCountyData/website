@@ -357,6 +357,12 @@ function CustomDownloads() {
                             <div className="row">
 
                                 {order.map((dataset, k) => {
+                                    var renderName = datasets[dataset].name
+                                    if (dataset === "covid_historical" && selectedLevel === "state") {
+                                        renderName = "Vintage state-level covid data"
+                                    } else if (dataset === "covid_us" && selectedLevel === "state") {
+                                        renderName = "State-level covid data"
+                                    }
                                     const shouldRender = datasets[dataset] && ((selectedLevel === "county" && !state_only_datasets.includes(dataset)) || selectedLevel === "state")
                                     if (shouldRender) {
 
@@ -373,7 +379,7 @@ function CustomDownloads() {
 
                                                 <Card.Body>
                                                     <span>
-                                                        {datasets[dataset].name}
+                                                        {renderName}
                                                     </span>
                                                     <a href={`/data/documentation#${dataset}`} target="_blank" onClick={(ev) => {
                                                         ev.stopPropagation()

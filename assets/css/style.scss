@@ -6731,11 +6731,13 @@ button:disabled {
   span {
     border-bottom: 1px solid #dddddd;
     padding-bottom: 5px;
+    text-align: center;
     &:hover {
       cursor: pointer;
     }
     &.selected {
-    color: #2196f3;
+      background-color: #2196f3;
+     color:white;
     }
   }
 }
