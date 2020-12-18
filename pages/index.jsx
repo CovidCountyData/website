@@ -7,12 +7,14 @@ import RegisterFormContainer from "../components/Register/RegisterFormContainer"
 // import News from "../components/News/News";
 import Mission from "../components/Home/Mission";
 import DownloadCTA from "../components/Common/DownloadCTA";
+import CANBanner from "../components/Common/CANBanner";
 
 class Home extends Component {
   render() {
     return (
       <React.Fragment>
         <NavbarThree />
+        <CANBanner />
         <MainBanner />
         <Mission className="bg-grey" />
         <FeaturedSources />
