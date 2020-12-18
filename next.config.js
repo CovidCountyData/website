@@ -6,7 +6,7 @@ const optimizedImages = require("next-optimized-images");
 const withVideos = require("next-videos");
 
 const nextJsConfig = {
-  exportTrailingSlash: false,
+  trailingSlash: false,
   // exportPathMap: function() {
   //     return {
   //         '/': { page: '/' },

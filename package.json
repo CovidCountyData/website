@@ -21,6 +21,7 @@
         "body-parser": "^1.19.0",
         "classnames": "^2.2.6",
         "express": "^4.17.1",
+        "file-loader": "^4.3.0",
         "firebase": "^7.14.3",
         "imagemin-mozjpeg": "^8.0.0",
         "imagemin-optipng": "^7.1.0",
@@ -53,7 +54,8 @@
         "react-visibility-sensor": "^5.1.1",
         "react-wow": "^1.0.0",
         "sass": "^1.26.5",
-        "swr": "^0.2.2"
+        "swr": "^0.2.2",
+        "url-loader": "^2.3.0"
     },
     "devDependencies": {
         "prettier": "^2.0.5"
