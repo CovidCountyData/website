@@ -94,7 +94,10 @@ $can-green-color: #00d474;
   background-color: black;
   padding: 40px;
   font-family: "Roboto";
-  max-width: 750px;
+
+  & .can-banner-content {
+    max-width: 750px;
+  }
 
   & .can-logo {
     max-width: 200px;
