@@ -34,6 +34,7 @@ module.exports = withPlugins([
       handleImages: ["jpeg", "jpg", "png", "svg", "webp", "gif", "ico", "mp4"],
       optimizeImages: true,
       optimizeImagesInDev: true,
+      esModule: false,
       mozjpeg: {
         quality: 80,
       },
