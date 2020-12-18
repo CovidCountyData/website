@@ -126,9 +126,14 @@ $can-green-color: #00d474;
     margin-right: 1em;
   }
 
+  button.can-docs-button {
+    background-color: black;
+  }
+
   & button.can-docs-button::before {
     background: black;
     border-color: #828282 !important;
+    border-width: 5px;
   }
 }
 
