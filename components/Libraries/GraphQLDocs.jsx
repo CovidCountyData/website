@@ -3,7 +3,8 @@ import Markdown from "react-markdown";
 import RegisterFormContainer from "../Register/RegisterFormContainer";
 
 const GraphQLDocs = () => {
-  const md = [`# GraphQL API
+  const md = [
+    `# GraphQL API
 
 Welcome to the GraphQL documentation for the [Covid County Data](https://covidcountydata.org) (CCD) database.
 
@@ -144,7 +145,8 @@ To add your apikey, click the "Headers" button, which will open a panel on the r
 
 Enjoy! And please [get in touch](https://covidcountydata.org/contact) if you have questions or need assistance.
 
-`];
+`,
+  ];
 
   return (
     <div className="container">

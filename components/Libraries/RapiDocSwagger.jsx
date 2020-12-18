@@ -1,10 +1,11 @@
 import "rapidoc";
 import React from "react";
-import Markdown from 'react-markdown'
+import Markdown from "react-markdown";
 import RegisterFormContainer from "../Register/RegisterFormContainer";
 
 function RapiDoc() {
-  const info = [`# Rest API
+  const info = [
+    `# Rest API
 
 The REST API does not require any software to be installed on your computer, it allows you to
 interact with our data through standard web protocols.
@@ -30,7 +31,6 @@ After obtaining an API key, please attach it as either the \`apikey\` header or 
 For example, if my API key were \`abc123\` and I was getting data from \`https://api.covidcountydata.org/covid_us?fips=eq.6\`, I
 would adjust the url to be \`https://api.covidcountydata.org/covid_us?fips=eq.6&apikey=abc123\`
 `,
-
 
     `## Request structure
 
@@ -149,24 +149,26 @@ documenting our API. We are also grateful to Google Cloud for helping us host an
 data.
 
 ## API Endpoints
-`
-  ]
+`,
+  ];
   const rd = () => {
-    const result = (<rapi-doc
-      spec-url="https://clean-swagger-inunbrtacq-uk.a.run.app"
-      render-style="view"
-      schema-style="table"
-      show-header="false"
-      layout="column"
-      schema-description-expanded="true"
-      show-info="false"
-      allow-server-selection="false"
-      font-size="largest"
-      regular-font="Open Sans"
-    />)
-    console.log(result)
-    return result
-  }
+    const result = (
+      <rapi-doc
+        spec-url="https://clean-swagger-inunbrtacq-uk.a.run.app"
+        render-style="view"
+        schema-style="table"
+        show-header="false"
+        layout="column"
+        schema-description-expanded="true"
+        show-info="false"
+        allow-server-selection="false"
+        font-size="largest"
+        regular-font="Open Sans"
+      />
+    );
+    console.log(result);
+    return result;
+  };
   return (
     <div className="container">
       <div className="row">
@@ -175,9 +177,7 @@ data.
           <RegisterFormContainer mini={true} className="register-container" />
 
           <Markdown source={info[1]} />
-          <div>
-            {rd()}
-          </div>
+          <div>{rd()}</div>
         </div>
       </div>
     </div>
