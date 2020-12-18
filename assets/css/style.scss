@@ -69,6 +69,7 @@ $h2-line-height: 50px;
 $h2-font-weight: 500 !important;
 
 $can-green-color: #00d474;
+$can-grey: #828282;
 
 .register-container.mini {
   padding-top: 25px;
@@ -128,12 +129,17 @@ $can-green-color: #00d474;
 
   button.can-docs-button {
     background-color: black;
+    border: 1px solid $can-grey !important;
+    box-sizing: border-box;
+    border-radius: 3px;
+
+    & i {
+      color: $can-grey;
+    }
   }
 
   & button.can-docs-button::before {
     background: black;
-    border-color: #828282 !important;
-    border-width: 5px;
   }
 }
 
