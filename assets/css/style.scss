@@ -94,10 +94,12 @@ $can-green-color: #00d474;
   background-color: black;
   padding: 40px;
   font-family: "Roboto";
+  max-width: 750px;
 
-  .can-logo {
+  & .can-logo {
     max-width: 200px;
     padding-top: 30px;
+    padding-bottom: 10px;
   }
 
   & p,
@@ -108,6 +110,10 @@ $can-green-color: #00d474;
     text-align: left;
     padding-top: 10px;
     font-size: 1rem;
+  }
+
+  & .can-button {
+    padding-top: 10px;
   }
 
   & .btn {
