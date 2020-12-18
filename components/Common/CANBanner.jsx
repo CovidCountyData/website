@@ -1,5 +1,6 @@
 import classNames from "classnames";
 import React from "react";
+import Button from "react-bootstrap/Button";
 import { useMixpanel } from "./mixpanel";
 
 const CANBanner = (props) => {
@@ -43,12 +44,21 @@ const CANBanner = (props) => {
             <div className="col-auto">
               <div className="can-button">
                 <a
-                  id="can-button"
+                  target="_blank"
                   onClick={mixpanel.track("visit can button click")}
-                  className="btn"
+                  className="btn can-button"
                   href="https://covidactnow.org"
                 >
-                  Visit CovidActNow
+                  Covid Act Now <i className="icofont-external-link"></i>
+                </a>
+                <a
+                  target="_blank"
+                  onClick={mixpanel.track("visit can button click")}
+                  href="https://apidocs.covidactnow.org/"
+                >
+                  <Button className="can-button can-docs-button border border-light">
+                    CAN API Docs <i className="icofont-external-link"></i>
+                  </Button>
                 </a>
               </div>
             </div>
