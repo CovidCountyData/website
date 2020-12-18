@@ -2,7 +2,7 @@ import classNames from "classnames";
 import React from "react";
 import { useMixpanel } from "./mixpanel";
 
-const ContactCTA = (props) => {
+const CANBanner = (props) => {
   const { className } = props;
   const cn = classNames("can-banner", "pt-100", className);
   const mixpanel = useMixpanel();
@@ -54,4 +54,4 @@ const ContactCTA = (props) => {
   );
 };
 
-export default ContactCTA;
+export default CANBanner;

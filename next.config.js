@@ -33,7 +33,7 @@ module.exports = withPlugins([
       imagesName: "[name]-[hash].[ext]",
       handleImages: ["jpeg", "jpg", "png", "svg", "webp", "gif", "ico", "mp4"],
       optimizeImages: true,
-      optimizeImagesInDev: false,
+      optimizeImagesInDev: true,
       mozjpeg: {
         quality: 80,
       },
@@ -51,9 +51,9 @@ module.exports = withPlugins([
       },
     },
   ],
-//   [withCSS],
+  //   [withCSS],
   [withFonts],
-//   [withSass],
+  //   [withSass],
   [withVideos],
   nextJsConfig,
 ]);
