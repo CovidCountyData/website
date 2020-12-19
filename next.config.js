@@ -6,7 +6,7 @@ const optimizedImages = require("next-optimized-images");
 const withVideos = require("next-videos");
 
 const nextJsConfig = {
-  exportTrailingSlash: false,
+  trailingSlash: false,
   // exportPathMap: function() {
   //     return {
   //         '/': { page: '/' },
@@ -33,7 +33,8 @@ module.exports = withPlugins([
       imagesName: "[name]-[hash].[ext]",
       handleImages: ["jpeg", "jpg", "png", "svg", "webp", "gif", "ico", "mp4"],
       optimizeImages: true,
-      optimizeImagesInDev: false,
+      optimizeImagesInDev: true,
+      esModule: false,
       mozjpeg: {
         quality: 80,
       },
@@ -51,9 +52,9 @@ module.exports = withPlugins([
       },
     },
   ],
-//   [withCSS],
+  //   [withCSS],
   [withFonts],
-//   [withSass],
+  //   [withSass],
   [withVideos],
   nextJsConfig,
 ]);

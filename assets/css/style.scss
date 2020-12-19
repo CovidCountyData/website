@@ -47,6 +47,7 @@ Default CSS
 =================================================*/
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i&display=swap");
 @import url("https://fonts.googleapis.com/css?family=Saira:100,200,300,400,500,600,700,800,900&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Roboto:100,200,300,400,500,600,700,800,900&display=swap");
 
 // $main-color: #ff2c9c;
 // $gradient-color: linear-gradient(to left top, #ff2c9c, #ff287b, #ff395a, #ff5137, #ff6a00);
@@ -67,7 +68,8 @@ $h2-font-size: 36px !important;
 $h2-line-height: 50px;
 $h2-font-weight: 500 !important;
 
-
+$can-green-color: #00d474;
+$can-grey: #828282;
 
 .register-container.mini {
   padding-top: 25px;
@@ -86,6 +88,63 @@ $h2-font-weight: 500 !important;
 
   & .form-control {
     background: $white-color;
+  }
+}
+
+.can-banner {
+  background-color: black;
+  padding: 2.7em;
+  font-family: "Roboto";
+
+  & .can-banner-content {
+    max-width: 670px;
+  }
+
+  & .can-logo {
+    max-width: 200px;
+    padding-top: 1em;
+    padding-bottom: 1em;
+  }
+
+  & p,
+  & li {
+    color: white;
+    line-height: 1.5;
+    font-weight: 500;
+    text-align: left;
+    padding-top: 0.6em;
+    font-size: 1rem;
+  }
+
+  .can-button {
+    padding-top: 0.6em;
+    & i {
+      padding-left: 0.3em;
+    }
+  }
+
+  button.can-home-button {
+    color: #ffffff;
+    font-weight: 700;
+  }
+
+  button.can-home-button::before {
+    background-color: $can-green-color;
+  }
+
+  button.can-docs-button {
+    background-color: black;
+    border: 1px solid $can-grey !important;
+    box-sizing: border-box;
+    border-radius: 3px;
+
+    i {
+      color: $can-grey;
+    }
+  }
+
+  button.can-docs-button::before {
+    background: black;
   }
 }
 
@@ -970,7 +1029,7 @@ Main Banner CSS
   position: relative;
   z-index: 1;
   // height: 600px;
-  padding-top: 241px;
+  padding-top: 40px;
   padding-bottom: 150px;
   background: {
     position: bottom center;
@@ -3997,7 +4056,7 @@ Fun Facts CSS
 }
 
 .contact-form {
-  &>.container>div{
+  & > .container > div {
     padding-top: 15px;
     padding-bottom: 15px;
   }
@@ -6293,7 +6352,6 @@ Mission CSS
   & .emph {
     color: $main-color;
   }
-
 }
 
 /*================================================
@@ -6433,7 +6491,6 @@ Data API CSS
 
 .properties {
   table {
-
     tr.property {
       td.title {
         font-weight: 800 !important;
@@ -6450,7 +6507,7 @@ Data API CSS
 
 .bio {
   padding-top: 30px;
-  padding-bottom: 30px;;
+  padding-bottom: 30px;
   img {
     margin-top: 10px;
     height: 200px;

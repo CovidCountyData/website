@@ -21,7 +21,12 @@ const DownloadCTA = (props) => {
 
   return (
     <section className={classNames("download-area", className)}>
-      <CTATitleButtons title={title} buttons={buttons} centered={true} use={"h2"} />
+      <CTATitleButtons
+        title={title}
+        buttons={buttons}
+        centered={true}
+        use={"h2"}
+      />
     </section>
   );
 };

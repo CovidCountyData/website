@@ -12,7 +12,12 @@ const CTATitleButtons = (props) => {
     };
     return (
       <Link key={x.target} href={x.target}>
-        <button className={x.className ? "btn btn-primary " + x.className : "btn btn-primary"} onClick={onClick}>
+        <button
+          className={
+            x.className ? "btn btn-primary " + x.className : "btn btn-primary"
+          }
+          onClick={onClick}
+        >
           {x.text}
         </button>
       </Link>
@@ -24,17 +29,24 @@ const CTATitleButtons = (props) => {
       <div className="container flex">
         <div className="row d-flex justify-content-center">
           <div className="col-lg-8 col-sm-10">
-            {props.use == "h2"
-              ? <h2 className="text-centered left-align-sm">{title}</h2>
-              : <h1 className="text-centered left-align-sm">{title}</h1>
-            }
+            {props.use == "h2" ? (
+              <h2 className="text-centered left-align-sm">{title}</h2>
+            ) : (
+              <h1 className="text-centered left-align-sm">{title}</h1>
+            )}
           </div>
         </div>
-        <div className={props.buttonsContainerClassName ? props.buttonsContainerClassName : "row justify-content-center buttons row-sm-none"}>
+        <div
+          className={
+            props.buttonsContainerClassName
+              ? props.buttonsContainerClassName
+              : "row justify-content-center buttons row-sm-none"
+          }
+        >
           {buttonComponents}
         </div>
       </div>
-    </section >
+    </section>
   );
 };
 
