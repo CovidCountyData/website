@@ -10,7 +10,7 @@ Welcome to the GraphQL documentation for the [Covid County Data](https://covidco
 
 ## Installation
 
-The GraphQL endpoint can be used from any http client capable of issuing POST requests with JSON body. 
+The GraphQL endpoint can be used from any http client capable of issuing POST requests with JSON body.
 
 There is no additional installation necessary
 
@@ -27,10 +27,13 @@ with our data.
 
 To register for an API key, you can register below.
 
-After obtaining an API key, please attach it as the \`apikey\` header in future requests 
+After obtaining an API key, please attach it as the \`apikey\` header in future requests
 `,
 
-    `## Data
+    `
+**Update March 4, 2021**: API keys are now required for data access
+
+## Data
 
 ### Datasets
 

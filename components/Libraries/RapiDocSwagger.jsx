@@ -32,7 +32,10 @@ For example, if my API key were \`abc123\` and I was getting data from \`https:/
 would adjust the url to be \`https://api.covidcountydata.org/covid_us?fips=eq.6&apikey=abc123\`
 `,
 
-    `## Request structure
+    `
+**Update March 4, 2021**: API keys are now required for data access
+
+## Request structure
 
 In order to be able to request data, you will need to know which endpoint the data comes from and,
 optionally, which filters you would like to apply to the data before it's delivered:
