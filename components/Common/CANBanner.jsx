@@ -36,7 +36,10 @@ const CANBanner = (props) => {
                     available, but any new datasets or expanded data coverage
                     will be integrated solely into the CAN API.
                   </li>
-                  <li>We will soon require registration to access our API</li>
+                  <li>
+                    (Update on March 4, 2021) API key registration is now
+                    required to access our data.
+                  </li>
                 </ul>
               </div>
             </div>
